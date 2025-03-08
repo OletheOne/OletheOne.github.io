@@ -32,15 +32,17 @@ body {
 
 
 #sticky-header {
-    background: #4CAF50;
-    color: white;
+    background-image: url('/Users/brandonoleson/Documents/Developer/walkthrough-website/video-game-walkthroughs/assets/images/header-image.jpg');
+    background-size: cover;
+    background-position: center;
+    color: rgb(48, 145, 74);
     padding: 20px 0;
     text-align: center;
     position: sticky;
     top: 0;
     z-index: 1000;
     opacity: 0;
-    animation: headerFadeIn 2s 3s ease-in-out forwards;
+    animation: headerFadeIn 2.5s 2.5s ease-in-out forwards;
 }
 
 @keyframes headerFadeIn {
