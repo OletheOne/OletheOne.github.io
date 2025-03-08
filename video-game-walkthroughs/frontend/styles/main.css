@@ -1,0 +1,190 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+#full-screen-image {
+    background-color: black;
+    background-image: url('/Users/brandonoleson/Documents/Developer/walkthrough-website/video-game-walkthroughs/assets/images/stardew-valley-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    animation: backgroundFadeOut 3s 1s ease-in-out forwards;
+}
+
+@keyframes backgroundFadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        height: 0;
+    }
+}
+
+
+#sticky-header {
+    background: #4CAF50;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    opacity: 0;
+    animation: headerFadeIn 2s 3s ease-in-out forwards;
+}
+
+@keyframes headerFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+nav {
+    margin: 20px 0;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 1.2em;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+.intro, .guide-intro {
+    background-color: #fff;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-image: url('/Users/brandonoleson/Documents/Developer/walkthrough-website/video-game-walkthroughs/assets/images/stardew-valley-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    color: #333;
+}
+
+.intro h2, .guide-intro h2 {
+    color: #fff;
+}
+
+section {
+    margin-bottom: 2rem;
+}
+
+section h2 {
+    color: #333;
+    border-bottom: 2px solid #333;
+    padding-bottom: 0.5rem;
+}
+
+section ul {
+    list-style: disc inside;
+    padding-left: 1rem;
+}
+
+section ul li {
+    margin-bottom: 0.5rem;
+}
+
+section#videos {
+    text-align: center;
+}
+
+section#videos video {
+    width: 100%;
+    max-width: 600px;
+    border: 2px solid #333;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.intro {
+    padding: 20px;
+    text-align: center;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 800px;
+}
+
+.intro h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.intro p {
+    font-size: 1.2em;
+    line-height: 1.5;
+}
+
+.guides {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 20px;
+}
+
+.guide-card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    padding: 20px;
+    text-align: center;
+    width: 300px;
+    transition: transform 0.2s;
+}
+
+.guide-card:hover {
+    transform: scale(1.05);
+}
+
+.guide-card h3 {
+    margin: 0 0 10px;
+}
+
+.guide-card a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 15px;
+    background: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.guide-card a:hover {
+    background: #45a049;
+}
+
+footer {
+    text-align: center;
+    padding: 20px 0;
+    background: #333;
+    color: white;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
