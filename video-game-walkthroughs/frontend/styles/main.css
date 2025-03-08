@@ -1,8 +1,9 @@
-body {
+html, body {
+    height: 100%;
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #e0f7fa; /* Comfortable blue background color for the main content */
+    background-color: #89CFF0; /* Comfortable blue background color for the main content */
     color: #333;
 }
 
@@ -17,46 +18,6 @@ body {
     text-align: center;
     position: relative;
     animation: backgroundFadeOut 3s 1s ease-in-out forwards;
-}
-
-#main-header {
-    background-color: #4CAF50; /* Set the background color */
-    color: white;
-    padding: 20px 0;
-    text-align: center;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-}
-
-#main-header h1 {
-    margin: 0;
-    font-size: 2em;
-}
-
-nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-}
-
-nav ul li {
-    margin: 0 15px;
-}
-
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 1.2em;
-}
-
-nav ul li a:hover {
-    text-decoration: underline;
 }
 
 #full-screen-image {
@@ -83,9 +44,9 @@ nav ul li a:hover {
     }
 }
 
-#sticky-header {
-    background-color: #1F2937; /* Set the background color */
-    color: #F9FAFB;
+header {
+    background-color: #102A43; /* Set the background color */
+    color: #89CFF0;
     padding: 20px 0;
     text-align: center;
     position: sticky;
@@ -104,6 +65,29 @@ nav ul li a:hover {
     }
 }
 
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #89CFF0;
+    text-decoration: none;
+    font-size: 1.2em;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+
 header h1 {
     margin: 0;
     font-size: 2.5em;
@@ -114,7 +98,7 @@ nav {
 }
 
 nav a {
-    color: white;
+    color: #89CFF0;
     text-decoration: none;
     margin: 0 15px;
     font-size: 1.2em;
@@ -125,34 +109,47 @@ nav a:hover {
 }
 
 .intro, .guide-intro {
-    background-color: #FFFFFF;
+    background-color: white;
     padding: 2rem;
     margin-bottom: 2rem auto;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    color: #374151;
+    color: #102A43;
     text-align: left;
+    animation: introFadeIn 2.5s 2.5s ease-in-out forwards;
+}
+
+@keyframes introFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 .intro h2, .guide-intro h2 {
-    color: #374151;
+    color: #102A43;
     font-size: 2.5em;
     margin-bottom: 1rem;
+    animation: introFadeIn 2.5s 2.5s ease-in-out forwards;
 }
 
-.intro p {
+.intro p, .guide-intro p {
     font-size: 1.2em;
     line-height: 1.5;
-    color: #333;
+    color: #102A43;
+    animation: introFadeIn 2.5s 2.5s ease-in-out forwards;
 }
 
-.intro a {
-    color: #4CAF50;
+.intro a, .guide-intro a {
+    color: #89CFF0;
     text-decoration: none;
     font-weight: bold;
+    animation: introFadeIn 2.5s 2.5s ease-in-out forwards;
 }
 
-.intro a:hover {
+.intro a:hover, .guide-intro a:hover {
     text-decoration: underline;
 }
 
@@ -221,22 +218,12 @@ section#videos video {
     display: inline-block;
     margin-top: 10px;
     padding: 10px 15px;
-    background: #4CAF50;
+    background: #89CFF0;
     color: white;
     text-decoration: none;
     border-radius: 5px;
 }
 
 .guide-card a:hover {
-    background: #45a049;
-}
-
-footer {
-    text-align: center;
-    padding: 20px 0;
-    background: #333;
-    color: white;
-    position: relative;
-    bottom: 0;
-    width: 100%;
+    background: #89CFF0;
 }
