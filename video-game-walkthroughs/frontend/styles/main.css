@@ -2,7 +2,7 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background-color: #e0f7fa; /* Comfortable blue background color for the main content */
     color: #333;
 }
 
@@ -30,12 +30,9 @@ body {
     }
 }
 
-
 #sticky-header {
-    background-image: url('/Users/brandonoleson/Documents/Developer/walkthrough-website/video-game-walkthroughs/assets/images/header-image.jpg');
-    background-size: cover;
-    background-position: center;
-    color: rgb(48, 145, 74);
+    background-color: #1F2937; /* Set the background color */
+    color: #F9FAFB;
     padding: 20px 0;
     text-align: center;
     position: sticky;
@@ -75,19 +72,16 @@ nav a:hover {
 }
 
 .intro, .guide-intro {
-    background-color: #fff;
+    background-color: #FFFFFF;
     padding: 2rem;
     margin-bottom: 2rem;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-image: url('/Users/brandonoleson/Documents/Developer/walkthrough-website/video-game-walkthroughs/assets/images/stardew-valley-bg.jpg');
-    background-size: cover;
-    background-position: center;
-    color: #333;
+    color: #374151;
 }
 
 .intro h2, .guide-intro h2 {
-    color: #fff;
+    color: #374151;
 }
 
 section {
