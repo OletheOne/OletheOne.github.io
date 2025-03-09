@@ -1,0 +1,7 @@
+exclude:
+  - node_modules
+  - backend/node_modules
+  - vendor
+  - .gitignore
+  - Gemfile
+  - Gemfile.lock
