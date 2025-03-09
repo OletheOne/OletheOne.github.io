@@ -115,15 +115,13 @@
             const mainContent = document.getElementById('main-content');
             const body = document.body;
             
-            // Phase 1: After 3 seconds, fade in the gradient
+            // Start the animation immediately but keep the transitions
+            introAnimation.classList.add('phase1');
+            
+            // Phase 2: After background transition, show the content
             setTimeout(function() {
-                introAnimation.classList.add('phase1');
-                
-                // Phase 2: After background transition, show the content
-                setTimeout(function() {
-                    introAnimation.classList.add('phase2');
-                }, 1500);
-            }, 3000);
+                introAnimation.classList.add('phase2');
+            }, 1500);
             
             // Button click completes the animation
             exploreButton.addEventListener('click', function(e) {
@@ -337,8 +335,8 @@
             
             window.addEventListener('scroll', revealOnScroll);
             
-            // Initial check for animations (after intro animation completes)
-            setTimeout(revealOnScroll, 4500);
+            // Initial check for animations (after intro animation phases complete)
+            setTimeout(revealOnScroll, 2000);
         });
     </script>
 </body>
