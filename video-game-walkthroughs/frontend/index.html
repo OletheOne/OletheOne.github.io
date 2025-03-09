@@ -3,27 +3,484 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video Game Walkthroughs</title>
+    <meta name="description" content="Comprehensive video game walkthroughs to help you master your favorite games with expert tips and strategies.">
+    <title>Video Game Walkthroughs | Expert Gaming Guides</title>
     <link rel="stylesheet" href="styles/main.css">
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+    <style>
+        /* Initial loading styles */
+        body {
+            overflow-x: hidden;
+        }
+        
+        .intro-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: 9999;
+            overflow: hidden;
+        }
+        
+        .intro-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('assets/images/intro-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            transition: transform 2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .intro-background::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(59, 110, 143, 0.9) 0%, rgba(104, 176, 136, 0.8) 100%);
+            opacity: 0;
+            transition: opacity 1.5s ease;
+        }
+        
+        .intro-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, calc(-50% + 60px));
+            width: 100%;
+            max-width: 800px;
+            text-align: center;
+            color: white;
+            opacity: 0;
+            transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.5s ease;
+            z-index: 2;
+        }
+        
+        .intro-title {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: #ffffff; /* Bright white */
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 0, 0, 0.3); /* Stronger shadow */
+            font-weight: 700;
+        }
+        
+        .intro-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: #f0f8ff; /* Alice blue - slightly off-white with blue tint */
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+            font-weight: 500;
+}
+        
+        .intro-cta {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background-color: var(--color-accent);
+            color: white;
+            font-weight: 600;
+            border-radius: var(--radius-md);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        
+        .intro-cta:hover {
+            background-color: var(--color-accent-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+            text-decoration: none;
+            color: white;
+        }
+        
+        /* Animation states */
+        .intro-animation.animate .intro-background::before {
+            opacity: 1;
+        }
+        
+        .intro-animation.animate .intro-content {
+            opacity: 1;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Optional: add a subtle background to the content container */
+        .intro-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, calc(-50% + 60px));
+            width: 100%;
+            max-width: 800px;
+            text-align: center;
+            color: white;
+            opacity: 0;
+            transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.5s ease;
+            z-index: 2;
+            background-color: rgba(0, 0, 0, 0.25); /* Slightly darker background */
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem 3rem;
+        }
+        
+        .intro-animation.complete {
+            pointer-events: none;
+        }
+        
+        .intro-animation.complete .intro-background {
+            transform: translateY(-100vh);
+        }
+        
+        .intro-animation.complete .intro-content {
+            opacity: 0;
+        }
+        
+        /* Hide main content until animation completes */
+        .main-content {
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+        
+        .main-content.visible {
+            opacity: 1;
+        }
+        
+        /* Hide hero section - we'll use the intro animation instead */
+        .hero {
+            display: none;
+        }
+    </style>
 </head>
 <body>
-    <section id="intro-section">
-    </section>
-    <header id="main-header">
-        <h1>Guides</h1>
-        <nav>
-            <ul>
-                <a href="guides/stardew-valley.html">Stardew Valley</a>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <section class="intro">
-            <h2>Hello and Welcome ^-^</h2>
-            <p>Explore our comprehensive video game walkthroughs designed to help you conquer your favorite games with ease. Whether you're a beginner or a seasoned player, our guides provide tips, strategies, and insights to enhance your gaming experience.</p>
-            <p>Start your journey with our first guide on <strong><a href="guides/stardew-valley.html">Stardew Valley</a></strong>!</p>
-        </section>
-    </main>
-    <script src="scripts/main.js"></script>
+    <!-- Intro Animation -->
+    <div class="intro-animation" id="intro-animation">
+        <div class="intro-background" id="intro-background"></div>
+        <div class="intro-content" id="intro-content">
+            <h1 class="intro-title">Video Game Walkthroughs</h1>
+            <p class="intro-subtitle">Your ultimate guide to mastering your favorite games</p>
+            <a href="#guides" class="intro-cta" id="explore-button">Explore Guides</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content" id="main-content">
+        <!-- Progress Bar -->
+        <div class="progress-bar" id="progress-bar"></div>
+        
+        <!-- Header -->
+        <header class="header" id="main-header">
+            <div class="container">
+                <div class="header__inner">
+                    <a href="index.html" class="header__logo">GameGuides</a>
+                    <nav class="nav" aria-label="Main Navigation">
+                        <ul class="nav__list">
+                            <li class="nav__item">
+                                <a href="index.html" class="nav__link active">Home</a>
+                            </li>
+                            <li class="nav__item">
+                                <a href="#guides" class="nav__link">Guides</a>
+                            </li>
+                            <li class="nav__item">
+                                <a href="#about" class="nav__link">About</a>
+                            </li>
+                        </ul>
+                        <button class="nav__toggle" id="nav-toggle" aria-label="Toggle navigation">
+                            <span>☰</span>
+                        </button>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        
+        <main>
+            <!-- Introduction Section -->
+            <section id="about" class="container">
+                <div class="intro-section fade-in">
+                    <h2 class="intro-section__title">Welcome to GameGuides</h2>
+                    <p class="intro-section__text">
+                        Explore our comprehensive video game walkthroughs designed to help you conquer your favorite games with ease. 
+                        Whether you're a beginner or a seasoned player, our guides provide tips, strategies, and insights to enhance your gaming experience.
+                    </p>
+                </div>
+            </section>
+            
+            <!-- Guide Cards -->
+            <section id="guides" class="container">
+                <h2 class="text-center mb-4">Featured Guides</h2>
+                <div class="guide-cards">
+                    <article class="guide-card">
+                        <div class="guide-card__image" style="background-image: url('assets/images/stardew-valley-card.jpg');"></div>
+                        <div class="guide-card__content">
+                            <h3 class="guide-card__title">Stardew Valley</h3>
+                            <p class="guide-card__text">
+                                Master farm life with our comprehensive guide to Stardew Valley. Learn essential tips for each season,
+                                optimize your farm layout, and build the perfect relationships with villagers.
+                            </p>
+                            <a href="guides/stardew-valley.html" class="guide-card__link">Read Guide</a>
+                        </div>
+                    </article>
+                    
+                    <article class="guide-card">
+                        <div class="guide-card__image" style="background-color: var(--color-primary-light);"></div>
+                        <div class="guide-card__content">
+                            <h3 class="guide-card__title">Coming Soon</h3>
+                            <p class="guide-card__text">
+                                We're working on more comprehensive guides for your favorite games. 
+                                Stay tuned for upcoming walkthroughs and strategy guides.
+                            </p>
+                            <a href="#" class="guide-card__link" style="background-color: var(--color-text-lighter);">Stay Tuned</a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </main>
+        
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <p class="footer__text">&copy; 2025 Video Game Walkthroughs. All rights reserved.</p>
+            </div>
+        </footer>
+        
+        <!-- Back to Top Button -->
+        <a href="#" id="back-to-top" class="back-to-top" aria-label="Back to top">↑</a>
+    </div>
+    
+    <!-- Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Intro animation elements
+            const introAnimation = document.getElementById('intro-animation');
+            const introBackground = document.getElementById('intro-background');
+            const introContent = document.getElementById('intro-content');
+            const exploreButton = document.getElementById('explore-button');
+            const mainContent = document.getElementById('main-content');
+            
+            // Check if we should show the intro (skip if returning from a guide)
+            const fromGuide = sessionStorage.getItem('fromGuide');
+            
+            if (fromGuide) {
+                // Skip animation if returning from a guide
+                introAnimation.style.display = 'none';
+                mainContent.classList.add('visible');
+                sessionStorage.removeItem('fromGuide');
+            } else {
+                // Run the animation sequence
+                setTimeout(function() {
+                    introAnimation.classList.add('animate');
+                }, 500);
+                
+                // Button click completes the animation
+                exploreButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    completeIntroAnimation();
+                    
+                    // Scroll to guides section after animation completes
+                    setTimeout(function() {
+                        const guidesSection = document.getElementById('guides');
+                        if (guidesSection) {
+                            window.scrollTo({
+                                top: guidesSection.offsetTop - 80,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }, 1000);
+                });
+                
+                
+                
+            }
+            
+            // Function to complete the intro animation
+            function completeIntroAnimation() {
+                introAnimation.classList.add('complete');
+                
+                // Show main content after animation completes
+                setTimeout(function() {
+                    mainContent.classList.add('visible');
+                    document.body.style.overflow = 'auto';
+                    
+                    // IMPORTANT: Completely remove the intro animation element after transition
+                    setTimeout(() => {
+                        introAnimation.style.display = 'none';
+                        // Optional: Remove from DOM entirely
+                        introAnimation.remove();
+                    }, 2000); // Wait for the animation to complete before removing
+                }, 500);
+            }
+            
+            // Set flag when navigating to a guide
+            document.querySelectorAll('a[href*="guides/"]').forEach(link => {
+                link.addEventListener('click', function() {
+                    sessionStorage.setItem('fromGuide', 'true');
+                });
+            });
+            
+            // Handle missing background image
+            const testBg = new Image();
+            testBg.onerror = function() {
+                introBackground.style.backgroundImage = 'linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%)';
+            };
+            testBg.src = 'assets/images/intro-bg.jpg';
+            
+            // Variables for main site functionality
+            const header = document.getElementById('main-header');
+            const backToTopButton = document.getElementById('back-to-top');
+            const progressBar = document.getElementById('progress-bar');
+            const navToggle = document.getElementById('nav-toggle');
+            const navList = document.querySelector('.nav__list');
+            
+            let lastScrollY = window.scrollY;
+            
+            // Smooth scroll for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    if(this.getAttribute('href') !== '#') {
+                        e.preventDefault();
+                        
+                        const targetId = this.getAttribute('href');
+                        const targetElement = document.querySelector(targetId);
+                        
+                        if(targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 80,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+            
+            // Handle scroll events
+            window.addEventListener('scroll', function() {
+                // Progress bar
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+                progressBar.style.width = scrolled + "%";
+                
+                // Back to top button visibility
+                if(window.scrollY > 300) {
+                    backToTopButton.classList.add('visible');
+                } else {
+                    backToTopButton.classList.remove('visible');
+                }
+                
+                // Header appearance/disappearance on scroll
+                if(window.scrollY > 100) {
+                    header.classList.add('scrolled');
+                    
+                    if(window.scrollY > lastScrollY) {
+                        header.classList.add('hidden');
+                    } else {
+                        header.classList.remove('hidden');
+                    }
+                } else {
+                    header.classList.remove('scrolled');
+                }
+                
+                lastScrollY = window.scrollY;
+            });
+            
+            // Back to top functionality
+            backToTopButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // Mobile navigation toggle
+            if(navToggle) {
+                navToggle.addEventListener('click', function() {
+                    navList.classList.toggle('active');
+                });
+            }
+            
+            // Add active class to current section in navigation
+            function setActiveNavLink() {
+                const sections = document.querySelectorAll('section[id]');
+                const scrollPosition = window.scrollY + 200;
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.offsetHeight;
+                    const sectionId = section.getAttribute('id');
+                    
+                    if(scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                        document.querySelectorAll('.nav__link').forEach(link => {
+                            link.classList.remove('active');
+                            if(link.getAttribute('href') === '#' + sectionId) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', setActiveNavLink);
+            
+            // Check for missing images and apply fallbacks
+            function handleMissingImages() {
+                const images = document.querySelectorAll('[style*="background-image"]');
+                
+                images.forEach(img => {
+                    const style = getComputedStyle(img);
+                    const url = style.backgroundImage.match(/url\(['"]?([^'"]+)['"]?\)/);
+                    
+                    if (url) {
+                        const imageUrl = url[1];
+                        const tempImg = new Image();
+                        
+                        tempImg.onerror = function() {
+                            // Apply a fallback gradient if image fails to load
+                            const elementId = img.id;
+                            if (elementId === 'hero') {
+                                img.style.backgroundImage = 'linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%)';
+                            } else {
+                                img.style.backgroundImage = 'none';
+                                img.style.backgroundColor = 'var(--color-primary-light)';
+                            }
+                        };
+                        
+                        tempImg.src = imageUrl;
+                    }
+                });
+            }
+            
+            handleMissingImages();
+            
+            // Reveal animations for normal page content
+            document.querySelectorAll('.fade-in').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            });
+            
+            const revealOnScroll = function() {
+                const elements = document.querySelectorAll('.fade-in');
+                const windowHeight = window.innerHeight;
+                
+                elements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    if(elementTop < windowHeight - 100) {
+                        element.style.opacity = '1';
+                        element.style.transform = 'translateY(0)';
+                    }
+                });
+            };
+            
+            window.addEventListener('scroll', revealOnScroll);
+            
+            // Initial check for animations (after intro animation completes)
+            setTimeout(revealOnScroll, 2000);
+        });
+    </script>
 </body>
 </html>
