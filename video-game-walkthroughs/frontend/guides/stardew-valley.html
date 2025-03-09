@@ -8,135 +8,11 @@
     <link rel="stylesheet" href="../styles/main.css">
     <!-- Favicon -->
     <link rel="icon" href="../assets/images/favicon.ico" type="image/x-icon">
-    <style>
-        /* Initial loading styles */
-        body {
-            overflow-x: hidden;
-        }
-        
-        .intro-animation {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            z-index: 9999;
-            overflow: hidden;
-        }
-        
-        .intro-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('../assets/images/stardew-valley-bg.jpg');
-            background-size: cover;
-            background-position: center;
-            transition: transform 2s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        
-        .intro-background::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(59, 110, 143, 0.9) 0%, rgba(104, 176, 136, 0.8) 100%);
-            opacity: 0;
-            transition: opacity 1.5s ease;
-        }
-        
-        .intro-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, calc(-50% + 60px));
-            width: 100%;
-            max-width: 800px;
-            text-align: center;
-            color: white;
-            opacity: 0;
-            transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.5s ease;
-            z-index: 2;
-        }
-        
-        .intro-title {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-        }
-        
-        .intro-subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-        
-        .intro-cta {
-            display: inline-block;
-            padding: 0.75rem 1.5rem;
-            background-color: var(--color-accent);
-            color: white;
-            font-weight: 600;
-            border-radius: var(--radius-md);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            cursor: pointer;
-            text-decoration: none;
-        }
-        
-        .intro-cta:hover {
-            background-color: var(--color-accent-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-            text-decoration: none;
-            color: white;
-        }
-        
-        /* Animation states */
-        .intro-animation.animate .intro-background::before {
-            opacity: 1;
-        }
-        
-        .intro-animation.animate .intro-content {
-            opacity: 1;
-            transform: translate(-50%, -50%);
-        }
-        
-        .intro-animation.complete {
-            pointer-events: none;
-        }
-        
-        .intro-animation.complete .intro-background {
-            transform: translateY(-100vh);
-        }
-        
-        .intro-animation.complete .intro-content {
-            opacity: 0;
-        }
-        
-        /* Hide main content until animation completes */
-        .main-content {
-            opacity: 0;
-            transition: opacity 1s ease;
-        }
-        
-        .main-content.visible {
-            opacity: 1;
-        }
-        
-        /* Hide hero section - we'll use the intro animation instead */
-        .hero {
-            display: none;
-        }
-    </style>
 </head>
 <body>
     <!-- Intro Animation -->
     <div class="intro-animation" id="intro-animation">
-        <div class="intro-background" id="intro-background"></div>
+        <div class="intro-background" id="intro-background" style="background-image: url('../assets/images/stardew-valley-bg.jpg');"></div>
         <div class="intro-content" id="intro-content">
             <h1 class="intro-title">Stardew Valley Guide</h1>
             <p class="intro-subtitle">Your complete companion to farm life and adventures</p>
@@ -401,8 +277,6 @@
                     }
                 }, 1000);
             });
-            
-            
             
             // Function to complete the intro animation
             function completeIntroAnimation() {
