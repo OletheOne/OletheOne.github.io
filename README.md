@@ -20,3 +20,5 @@ We welcome contributions to expand the collection of walkthroughs. If you have a
 ## License
 
 This project is licensed under the MIT License. See the LICENSE file for more details.
+
+## Pages
