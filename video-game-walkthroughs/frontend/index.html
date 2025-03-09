@@ -9,9 +9,9 @@
     <!-- Favicon -->
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
     <style>
-        /* Initial loading styles */
-        body {
-            overflow-x: hidden;
+        /* Custom intro animation styles - using CSS variables from main.css */
+        body.no-scroll {
+            overflow: hidden;
         }
         
         .intro-animation {
@@ -30,7 +30,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('assets/images/intro-bg.jpg');
+            background-image: url('/Users/brandonoleson/Documents/Developer/walkthrough-website/video-game-walkthroughs/assets/images/intro-bg.jpg');
             background-size: cover;
             background-position: center;
             transition: transform 2s cubic-bezier(0.16, 1, 0.3, 1);
@@ -52,31 +52,38 @@
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, calc(-50% + 60px));
-            width: 100%;
+            transform: translate(-50%, -30%);
+            width: 90%;
             max-width: 800px;
             text-align: center;
-            color: white;
             opacity: 0;
-            transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.5s ease;
             z-index: 2;
+            background-color: rgba(0, 0, 0, 0.25);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem 3rem;
+            transition: opacity 1.5s ease, transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
         
         .intro-title {
             font-size: 3.5rem;
             margin-bottom: 1.5rem;
-            color: #ffffff; /* Bright white */
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 0, 0, 0.3); /* Stronger shadow */
+            color: #ffffff;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 0, 0, 0.3);
             font-weight: 700;
+            font-family: var(--font-sans);
+            line-height: 1.2;
         }
         
         .intro-subtitle {
             font-size: 1.5rem;
             margin-bottom: 2rem;
-            color: #f0f8ff; /* Alice blue - slightly off-white with blue tint */
+            color: #f0f8ff;
             text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
             font-weight: 500;
-}
+            font-family: var(--font-sans);
+            line-height: 1.5;
+        }
         
         .intro-cta {
             display: inline-block;
@@ -89,6 +96,7 @@
             transition: all 0.3s ease;
             cursor: pointer;
             text-decoration: none;
+            font-family: var(--font-sans);
         }
         
         .intro-cta:hover {
@@ -99,33 +107,14 @@
             color: white;
         }
         
-        /* Animation states */
-        .intro-animation.animate .intro-background::before {
+        /* Animation sequence classes */
+        .intro-animation.phase1 .intro-background::before {
             opacity: 1;
         }
         
-        .intro-animation.animate .intro-content {
+        .intro-animation.phase2 .intro-content {
             opacity: 1;
             transform: translate(-50%, -50%);
-        }
-
-        /* Optional: add a subtle background to the content container */
-        .intro-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, calc(-50% + 60px));
-            width: 100%;
-            max-width: 800px;
-            text-align: center;
-            color: white;
-            opacity: 0;
-            transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.5s ease;
-            z-index: 2;
-            background-color: rgba(0, 0, 0, 0.25); /* Slightly darker background */
-            backdrop-filter: blur(10px);
-            border-radius: var(--radius-lg);
-            padding: 2.5rem 3rem;
         }
         
         .intro-animation.complete {
@@ -138,25 +127,59 @@
         
         .intro-animation.complete .intro-content {
             opacity: 0;
+            transform: translate(-50%, -70%);
         }
         
-        /* Hide main content until animation completes */
+        /* Main content visibility management */
         .main-content {
             opacity: 0;
-            transition: opacity 1s ease;
+            visibility: hidden;
+            transition: opacity 1s ease, visibility 0s 0.5s;
         }
         
         .main-content.visible {
             opacity: 1;
+            visibility: visible;
+            transition: opacity 1s ease;
         }
         
         /* Hide hero section - we'll use the intro animation instead */
         .hero {
             display: none;
         }
+        
+        /* Ensure animations don't conflict with main.css */
+        @keyframes introFadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Media queries to match main.css responsiveness */
+        @media (max-width: 768px) {
+            .intro-title {
+                font-size: 2.5rem;
+            }
+            
+            .intro-subtitle {
+                font-size: 1.25rem;
+            }
+            
+            .intro-content {
+                padding: 2rem 1.5rem;
+            }
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+            .intro-background,
+            .intro-content,
+            .intro-animation.complete .intro-background,
+            .intro-animation.complete .intro-content {
+                transition: none !important;
+            }
+        }
     </style>
 </head>
-<body>
+<body class="no-scroll">
     <!-- Intro Animation -->
     <div class="intro-animation" id="intro-animation">
         <div class="intro-background" id="intro-background"></div>
@@ -260,55 +283,51 @@
             const introContent = document.getElementById('intro-content');
             const exploreButton = document.getElementById('explore-button');
             const mainContent = document.getElementById('main-content');
+            const body = document.body;
             
-            // Check if we should show the intro (skip if returning from a guide)
-            const fromGuide = sessionStorage.getItem('fromGuide');
-            
-            if (fromGuide) {
-                // Skip animation if returning from a guide
-                introAnimation.style.display = 'none';
-                mainContent.classList.add('visible');
-                sessionStorage.removeItem('fromGuide');
-            } else {
-                // Run the animation sequence
+            // Phase 1: After 3 seconds, fade in the gradient
+            setTimeout(function() {
+                introAnimation.classList.add('phase1');
+                
+                // Phase 2: After background transition, show the content
                 setTimeout(function() {
-                    introAnimation.classList.add('animate');
-                }, 500);
+                    introAnimation.classList.add('phase2');
+                }, 1500);
+            }, 3000);
+            
+            // Button click completes the animation
+            exploreButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                completeIntroAnimation();
                 
-                // Button click completes the animation
-                exploreButton.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    completeIntroAnimation();
-                    
-                    // Scroll to guides section after animation completes
-                    setTimeout(function() {
-                        const guidesSection = document.getElementById('guides');
-                        if (guidesSection) {
-                            window.scrollTo({
-                                top: guidesSection.offsetTop - 80,
-                                behavior: 'smooth'
-                            });
-                        }
-                    }, 1000);
-                });
-                
-                
-                
-            }
+                // Scroll to guides section after animation completes
+                setTimeout(function() {
+                    const guidesSection = document.getElementById('guides');
+                    if (guidesSection) {
+                        window.scrollTo({
+                            top: guidesSection.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                }, 1000);
+            });
             
             // Function to complete the intro animation
             function completeIntroAnimation() {
+                // Remove listener to prevent multiple calls
+                exploreButton.removeEventListener('click', completeIntroAnimation);
+                
+                // Add the complete class to trigger animation
                 introAnimation.classList.add('complete');
                 
                 // Show main content after animation completes
                 setTimeout(function() {
                     mainContent.classList.add('visible');
-                    document.body.style.overflow = 'auto';
+                    body.classList.remove('no-scroll');
                     
                     // IMPORTANT: Completely remove the intro animation element after transition
                     setTimeout(() => {
                         introAnimation.style.display = 'none';
-                        // Optional: Remove from DOM entirely
                         introAnimation.remove();
                     }, 2000); // Wait for the animation to complete before removing
                 }, 500);
@@ -320,6 +339,16 @@
                     sessionStorage.setItem('fromGuide', 'true');
                 });
             });
+            
+            // Check if we should show the intro (skip if returning from a guide)
+            const fromGuide = sessionStorage.getItem('fromGuide');
+            if (fromGuide) {
+                // Skip animation if returning from a guide
+                introAnimation.style.display = 'none';
+                mainContent.classList.add('visible');
+                body.classList.remove('no-scroll');
+                sessionStorage.removeItem('fromGuide');
+            }
             
             // Handle missing background image
             const testBg = new Image();
@@ -479,7 +508,7 @@
             window.addEventListener('scroll', revealOnScroll);
             
             // Initial check for animations (after intro animation completes)
-            setTimeout(revealOnScroll, 2000);
+            setTimeout(revealOnScroll, 4500);
         });
     </script>
 </body>
