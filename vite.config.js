@@ -6,7 +6,8 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
-        guide: resolve(__dirname, 'elden-ring-guide.html'),
+        eldenRing: resolve(__dirname, 'elden-ring-guide.html'),
+        scheduleOne: resolve(__dirname, 'schedule-1-guide.html'),
       },
     },
   },

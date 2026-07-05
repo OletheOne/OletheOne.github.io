@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Hyland Point Playbook — The Ultimate Schedule I Strategy Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Karla:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0e1411;
+  --panel:#151d18;
+  --panel-2:#1a241d;
+  --line:#2a3a2f;
+  --cash:#4fbe77;
+  --cash-bright:#82e8a8;
+  --neon:#a6ffc8;
+  --paper:#e2e9dc;
+  --muted:#8fa295;
+  --amber:#d9932f;
+  --amber-dim:#8a5c1e;
+  --scan:#5fa8d3;
+  --scan-dim:#31586f;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
+body{
+  background:var(--ink);
+  color:var(--paper);
+  font-family:'Karla',system-ui,sans-serif;
+  font-size:1.06rem;
+  line-height:1.65;
+}
+.wrap{max-width:1200px;margin:0 auto;padding:0 1.25rem}
+
+/* ---------- Hero ---------- */
+.hero{
+  position:relative;
+  padding:5rem 0 3.5rem;
+  text-align:center;
+  background:
+    radial-gradient(ellipse 60% 45% at 50% 0%, rgba(79,190,119,.20), transparent 70%),
+    var(--ink);
+  border-bottom:1px solid var(--line);
+}
+.hero .eyebrow{
+  font-family:'Courier Prime',monospace;
+  font-size:.85rem;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--cash);
+  margin-bottom:1.1rem;
+}
+.hero h1{
+  font-family:'Oswald',sans-serif;font-weight:700;
+  text-transform:uppercase;letter-spacing:.05em;
+  font-size:clamp(2.5rem,6vw,4.5rem);line-height:1.05;
+  color:var(--paper);
+  text-shadow:0 0 40px rgba(79,190,119,.35);
+}
+.hero h1 .lit{color:var(--cash-bright)}
+.hero .sub{
+  max-width:66ch;margin:1.3rem auto 0;
+  color:var(--muted);font-size:1.12rem;
+}
+.hero-meta{
+  margin:2.2rem auto 0;max-width:900px;
+  display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem 2.2rem;
+  font-family:'Courier Prime',monospace;font-size:.82rem;letter-spacing:.1em;
+  color:var(--muted);text-transform:uppercase;
+}
+.hero-meta b{color:var(--cash);font-weight:700}
+
+/* ---------- Layout ---------- */
+.layout{display:grid;grid-template-columns:255px 1fr;gap:3rem;padding:3rem 0 5rem}
+@media(max-width:900px){.layout{grid-template-columns:1fr}}
+
+/* ---------- Sidebar ---------- */
+.sidenav{position:sticky;top:1.25rem;align-self:start;max-height:calc(100vh - 2.5rem);overflow:auto;padding-right:.5rem}
+@media(max-width:900px){.sidenav{position:static;max-height:none;border:1px solid var(--line);background:var(--panel);padding:1.1rem;border-radius:6px}}
+.sidenav h2{
+  font-family:'Oswald',sans-serif;font-weight:600;font-size:.8rem;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--muted);
+  margin:1.5rem 0 .55rem;padding-bottom:.3rem;border-bottom:1px solid var(--line);
+}
+.sidenav h2:first-child{margin-top:0}
+.sidenav a{
+  display:flex;align-items:baseline;gap:.55rem;
+  color:var(--paper);text-decoration:none;
+  font-size:.94rem;padding:.32rem .35rem;border-radius:4px;
+}
+.sidenav a:hover{background:var(--panel-2);color:var(--cash-bright)}
+.sidenav a::before{
+  content:"";flex:none;width:8px;height:8px;border-radius:50%;
+  align-self:center;
+  background:radial-gradient(circle at 35% 35%, var(--neon), var(--cash) 60%, transparent 75%);
+  box-shadow:0 0 6px rgba(79,190,119,.7);
+}
+.sidenav a.rf::before{
+  background:radial-gradient(circle at 35% 35%, #bfe3ff, var(--scan) 60%, transparent 75%);
+  box-shadow:0 0 6px rgba(95,168,211,.7);
+}
+.sidenav a.plain::before{background:var(--muted);box-shadow:none;width:6px;height:6px}
+
+/* ---------- Phases ---------- */
+section.phase{margin-bottom:4.5rem;scroll-margin-top:1.25rem}
+.phase-head{
+  display:flex;align-items:center;gap:.9rem;flex-wrap:wrap;
+  border-bottom:1px solid var(--line);
+  padding-bottom:.8rem;margin-bottom:1.1rem;
+}
+.pin{
+  flex:none;width:16px;height:16px;border-radius:50%;
+  background:radial-gradient(circle at 35% 35%, var(--neon), var(--cash) 55%, rgba(79,190,119,.15) 80%);
+  box-shadow:0 0 14px rgba(79,190,119,.8), 0 0 3px rgba(166,255,200,.9);
+}
+section.reference .pin{
+  background:radial-gradient(circle at 35% 35%, #cfeaff, var(--scan) 55%, rgba(95,168,211,.15) 80%);
+  box-shadow:0 0 14px rgba(95,168,211,.8), 0 0 3px rgba(191,227,255,.9);
+}
+.phase-head h2{
+  font-family:'Oswald',sans-serif;font-weight:600;text-transform:uppercase;
+  letter-spacing:.05em;font-size:clamp(1.5rem,3vw,2.05rem);line-height:1.1;
+  color:var(--paper);
+}
+.region-tag{
+  margin-left:auto;
+  font-family:'Courier Prime',monospace;font-size:.78rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--cash);
+  border:1px solid var(--line);background:var(--panel);
+  padding:.28rem .7rem;border-radius:999px;white-space:nowrap;
+}
+section.reference .region-tag{color:var(--scan)}
+p.lede{
+  font-size:1.13rem;color:var(--muted);font-style:italic;
+  max-width:74ch;margin-bottom:1.4rem;
+}
+h3{
+  font-family:'Oswald',sans-serif;font-weight:600;text-transform:uppercase;
+  letter-spacing:.07em;font-size:1.12rem;color:var(--cash-bright);
+  margin:2.1rem 0 .7rem;
+}
+h4{font-family:'Oswald',sans-serif;font-weight:600;letter-spacing:.05em;text-transform:uppercase;font-size:1.05rem;margin:0 0 .45rem}
+p{margin-bottom:.95rem;max-width:76ch}
+section ul:not(.checklist),section ol{margin:0 0 1.1rem 1.35rem;max-width:74ch}
+section li{margin-bottom:.45rem}
+strong{color:var(--paper);font-weight:700}
+em{font-style:italic}
+.small{font-size:.9rem;color:var(--muted)}
+a.inline{color:var(--cash-bright);text-decoration:underline;text-underline-offset:3px}
+section.reference a.inline{color:#a8d4ee}
+
+/* ---------- Cards (boss-card equivalent) ---------- */
+.file-card{
+  border:1px solid var(--line);border-left:4px solid var(--cash);
+  background:linear-gradient(180deg, var(--panel-2), var(--panel));
+  border-radius:6px;
+  padding:1.2rem 1.35rem;margin:1.4rem 0 1.6rem;
+  max-width:80ch;
+  box-shadow:0 6px 24px rgba(0,0,0,.35);
+}
+.card-sub{
+  font-family:'Courier Prime',monospace;font-size:.78rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--cash);margin-bottom:.4rem;
+}
+.file-card p:last-child{margin-bottom:0}
+.file-card ul{margin-bottom:.9rem}
+
+/* ---------- Callouts ---------- */
+.callout{
+  border:1px solid var(--line);border-radius:6px;
+  background:var(--panel);
+  padding:1rem 1.2rem;margin:1.3rem 0 1.5rem;max-width:80ch;
+}
+.co-label{
+  display:block;
+  font-family:'Oswald',sans-serif;font-weight:600;font-size:.82rem;
+  letter-spacing:.18em;text-transform:uppercase;margin-bottom:.4rem;
+}
+.callout.pay{border-left:4px solid var(--cash)}
+.callout.pay .co-label{color:var(--cash-bright)}
+.callout.warn{border-left:4px solid var(--amber);background:linear-gradient(180deg, rgba(217,147,47,.07), var(--panel))}
+.callout.warn .co-label{color:var(--amber)}
+.callout.note{border-left:4px solid var(--scan)}
+.callout.note .co-label{color:var(--scan)}
+.callout p:last-child{margin-bottom:0}
+
+/* ---------- Checklists ---------- */
+ul.checklist{list-style:none;margin:0 0 1.4rem;max-width:80ch;border:1px solid var(--line);border-radius:6px;background:var(--panel);overflow:hidden}
+ul.checklist li{
+  display:flex;gap:.75rem;align-items:flex-start;
+  padding:.6rem .95rem;margin:0;
+  border-bottom:1px dashed var(--line);
+}
+ul.checklist li:last-child{border-bottom:none}
+ul.checklist input{margin-top:.34rem;accent-color:var(--cash);width:15px;height:15px;flex:none}
+ul.checklist label{cursor:pointer;font-size:.98rem}
+ul.checklist input:checked+label{color:var(--muted);text-decoration:line-through;text-decoration-color:rgba(79,190,119,.6)}
+
+/* ---------- Tables ---------- */
+.tablewrap{overflow-x:auto;margin:1.3rem 0 1.6rem;border:1px solid var(--line);border-radius:6px}
+table{border-collapse:collapse;width:100%;background:var(--panel);font-size:.94rem}
+caption{
+  caption-side:top;text-align:left;
+  font-family:'Oswald',sans-serif;font-weight:600;font-size:.82rem;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--cash);
+  background:var(--panel-2);border-bottom:1px solid var(--line);
+  padding:.6rem 1rem;
+}
+section.reference caption{color:var(--scan)}
+th{
+  font-family:'Oswald',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.07em;
+  font-size:.78rem;text-align:left;color:var(--muted);
+  background:var(--panel-2);
+  border-bottom:1px solid var(--line);
+  padding:.55rem .9rem;white-space:nowrap;
+}
+td{border-bottom:1px solid rgba(42,58,47,.55);padding:.55rem .9rem;vertical-align:top}
+tr:last-child td{border-bottom:none}
+td.mono,.mono{font-family:'Courier Prime',monospace;font-size:.88rem}
+td.money{font-family:'Courier Prime',monospace;color:var(--cash-bright);font-weight:700;white-space:nowrap}
+
+/* ---------- Recipe chains ---------- */
+.chain{
+  font-family:'Courier Prime',monospace;font-size:.9rem;
+  background:var(--panel-2);
+  border:1px dashed var(--line);border-radius:6px;
+  padding:.65rem .9rem;margin:.4rem 0 1rem;max-width:80ch;
+  color:var(--paper);
+}
+.chain b{color:var(--cash-bright)}
+.chain .arrow{color:var(--amber);font-weight:700}
+
+/* ---------- End-of-day marker ---------- */
+.rest-marker{
+  margin-top:2.4rem;
+  text-align:center;
+  font-family:'Oswald',sans-serif;font-weight:600;font-size:.85rem;
+  letter-spacing:.3em;text-transform:uppercase;color:var(--cash);
+  padding:.75rem 0;
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  background:
+    radial-gradient(ellipse 45% 120% at 50% 50%, rgba(79,190,119,.12), transparent 70%);
+  text-shadow:0 0 12px rgba(79,190,119,.6);
+}
+
+footer.colophon{
+  border-top:1px solid var(--line);
+  padding:2.2rem 0 3.5rem;text-align:center;
+  font-family:'Courier Prime',monospace;font-size:.83rem;color:var(--muted);
+}
+footer.colophon p{max-width:none;margin:0 auto;max-width:90ch}
+
+/* Back to the collection — quiet signpost above the hero */
+.back-home{
+  display:inline-block;margin-bottom:1.4rem;
+  font-family:'Courier Prime',monospace;font-size:.78rem;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--muted);text-decoration:none;
+  border:1px solid var(--line);border-radius:999px;padding:.4rem 1rem;
+  transition:color .3s,border-color .3s;
+}
+.back-home:hover,.back-home:focus-visible{color:var(--cash-bright);border-color:var(--cash)}
+.back-home:focus-visible{outline:2px solid var(--cash);outline-offset:3px}
+
+/* Motion vocabulary shared with the title gate */
+:root{--ease-out:cubic-bezier(.22,.61,.36,1);--ease-spring:cubic-bezier(.34,1.56,.64,1)}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+
+/* Hero entrance cascade — the operation boots up as the gate falls */
+.hero .back-home,.hero .eyebrow,.hero h1,.hero .sub,.hero .hero-meta{animation:rise .8s var(--ease-out) both}
+.hero .eyebrow{animation-delay:.05s}
+.hero h1{animation-delay:.12s}
+.hero .sub{animation-delay:.22s}
+.hero .hero-meta{animation-delay:.32s}
+
+/* ================= The Cinematic Arrival — title gate ================= */
+/* Hidden unless JS declares the gate (html.cine), so no-JS visitors go straight in */
+.intro{display:none}
+html.cine{overflow:hidden}
+html.cine.entered{overflow:auto}
+html.cine .intro{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  position:fixed;inset:0;z-index:100;text-align:center;padding:1.5rem;
+  background:
+    radial-gradient(ellipse 75% 55% at 50% 108%, rgba(79,190,119,.14), transparent 65%),
+    radial-gradient(ellipse 55% 45% at 50% 42%, rgba(95,168,211,.08), transparent 70%),
+    #070a08;
+  transition:opacity 1.1s var(--ease-out),visibility 1.1s;
+}
+html.cine.entered .intro{opacity:0;visibility:hidden;pointer-events:none}
+/* Surveillance-camera scanlines — the town is always watching */
+.intro::before{
+  content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
+  background:repeating-linear-gradient(0deg, rgba(166,255,200,.028) 0 1px, transparent 1px 4px);
+}
+
+/* The great ring — draws itself closed around the title */
+.intro .ring{
+  position:absolute;left:50%;top:50%;
+  width:min(78vmin,600px);height:min(78vmin,600px);
+  transform:translate(-50%,-50%);
+  transition:opacity .6s var(--ease-out);
+}
+.intro .ring .arc{
+  fill:none;stroke:var(--cash);stroke-width:1.6;stroke-linecap:round;
+  stroke-dasharray:1006;stroke-dashoffset:1006;
+  transform:rotate(-90deg);transform-origin:center;
+  filter:drop-shadow(0 0 7px rgba(130,232,168,.4));
+  animation:ringdraw 2.8s var(--ease-out) .55s forwards;
+}
+.intro .ring .halo{
+  fill:none;stroke:var(--cash);stroke-width:1;opacity:0;
+  animation:halofade 1.8s var(--ease-out) 2.2s forwards;
+}
+@keyframes ringdraw{to{stroke-dashoffset:0}}
+@keyframes halofade{to{opacity:.16}}
+
+/* Neon motes adrift — loose bills on the night air */
+.intro .motes i{
+  position:absolute;bottom:-8px;width:4px;height:4px;border-radius:50%;
+  background:var(--neon);opacity:0;filter:blur(.5px);
+  box-shadow:0 0 6px rgba(130,232,168,.6);
+  animation:mote 12s linear infinite;
+}
+.intro .motes i:nth-child(odd){--sway:-6vw;width:3px;height:3px}
+.intro .motes i:nth-child(3n){--sway:9vw}
+.intro .motes i:nth-child(1){left:8%;animation-delay:.6s}
+.intro .motes i:nth-child(2){left:19%;animation-delay:4.2s;animation-duration:14s}
+.intro .motes i:nth-child(3){left:31%;animation-delay:2.1s}
+.intro .motes i:nth-child(4){left:43%;animation-delay:6.5s;animation-duration:15s}
+.intro .motes i:nth-child(5){left:55%;animation-delay:1.4s;animation-duration:10.5s}
+.intro .motes i:nth-child(6){left:66%;animation-delay:5.3s}
+.intro .motes i:nth-child(7){left:77%;animation-delay:3s;animation-duration:13.5s}
+.intro .motes i:nth-child(8){left:88%;animation-delay:7.8s}
+.intro .motes i:nth-child(9){left:50%;animation-delay:9.4s;animation-duration:11s}
+.intro .motes i:nth-child(10){left:12%;animation-delay:11s;animation-duration:16s}
+@keyframes mote{
+  0%{transform:translateY(0) translateX(0) scale(1);opacity:0}
+  8%{opacity:.85}
+  60%{opacity:.45}
+  100%{transform:translateY(-105vh) translateX(var(--sway,5vw)) scale(.35);opacity:0}
+}
+
+/* The signal lights first — everything else follows from its glow */
+.intro .signal{
+  position:relative;width:16px;height:16px;border-radius:50%;
+  background:radial-gradient(circle at 35% 35%, var(--neon), var(--cash) 60%);
+  margin-bottom:2.4rem;
+  box-shadow:0 0 16px 6px rgba(130,232,168,.6), 0 0 64px 24px rgba(130,232,168,.2);
+  animation:ignite 1.2s var(--ease-out) .15s both, signal-breathe 3.4s ease-in-out 1.4s infinite;
+}
+@keyframes ignite{
+  0%{opacity:0;transform:scale(.15)}
+  60%{opacity:1;transform:scale(1.3)}
+  100%{opacity:1;transform:scale(1)}
+}
+@keyframes signal-breathe{
+  0%,100%{box-shadow:0 0 16px 6px rgba(130,232,168,.55), 0 0 64px 24px rgba(130,232,168,.18)}
+  50%{box-shadow:0 0 22px 9px rgba(130,232,168,.8), 0 0 72px 28px rgba(130,232,168,.26)}
+}
+
+.intro .eyebrow{
+  position:relative;
+  font-family:'Courier Prime',monospace;font-size:.82rem;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--cash);
+  animation:rise 1s var(--ease-out) .95s both;
+}
+.intro .title{
+  position:relative;
+  font-family:'Oswald',sans-serif;font-weight:700;text-transform:uppercase;
+  font-size:clamp(2.4rem,7vw,4.4rem);line-height:1.1;
+  max-width:16ch;margin:.9rem 0 .4rem;
+  color:var(--paper);text-shadow:0 0 44px rgba(79,190,119,.4);
+  animation:trackin 1.7s var(--ease-out) 1.15s both;
+}
+.intro .title .lit{color:var(--cash-bright)}
+@keyframes trackin{
+  from{opacity:0;letter-spacing:.28em;filter:blur(7px)}
+  to{opacity:1;letter-spacing:.05em;filter:blur(0)}
+}
+.intro .sub{
+  position:relative;max-width:46ch;
+  color:var(--muted);font-size:1.1rem;font-style:italic;
+  animation:rise 1s var(--ease-out) 2.05s both;
+}
+
+/* The gate — a payphone ringing off the hook */
+.intro .enter{
+  position:relative;margin-top:2.8rem;cursor:pointer;
+  font-family:'Oswald',sans-serif;font-size:.85rem;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--cash);background:rgba(79,190,119,.05);
+  border:1px solid rgba(79,190,119,.45);border-radius:2px;
+  padding:1.05rem 2.6rem .95rem;
+  transition:color .35s var(--ease-out),border-color .35s var(--ease-out),
+             background .35s var(--ease-out),transform .2s var(--ease-spring);
+  animation:rise 1s var(--ease-out) 2.6s both;
+}
+.intro .enter::after{
+  content:"";position:absolute;inset:-1px;border-radius:2px;pointer-events:none;
+  box-shadow:0 0 22px rgba(130,232,168,.25), inset 0 0 14px rgba(79,190,119,.12);
+  opacity:.25;animation:beckon 3.2s ease-in-out 3.7s infinite;
+}
+@keyframes beckon{0%,100%{opacity:.25}50%{opacity:1}}
+.intro .enter:hover,.intro .enter:focus-visible{
+  color:var(--neon);border-color:var(--cash);background:rgba(79,190,119,.1);
+  transform:translateY(-1px);
+}
+.intro .enter:focus-visible{outline:2px solid var(--cash);outline-offset:4px}
+.intro .enter:active{transform:scale(.96)}
+
+/* Crossing the threshold — the signal blooms and the gate dissolves */
+.intro.leaving .signal{
+  animation:none;
+  transition:transform 1.1s var(--ease-out),opacity 1.1s var(--ease-out);
+  transform:scale(30);opacity:0;
+}
+.intro.leaving .eyebrow,.intro.leaving .title,.intro.leaving .sub,.intro.leaving .enter{
+  animation:none;opacity:0;transition:opacity .5s var(--ease-out);
+}
+.intro.leaving .ring{opacity:0}
+.intro.leaving .motes{display:none}
+
+/* Hold the hero's entrance cascade until the gate falls */
+html.cine:not(.entered) .hero .back-home,
+html.cine:not(.entered) .hero .eyebrow,
+html.cine:not(.entered) .hero h1,
+html.cine:not(.entered) .hero .sub,
+html.cine:not(.entered) .hero .hero-meta{animation-play-state:paused}
+
+/* Title gate + signpost, pocket-sized */
+@media (max-width:900px){
+  html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+  html.cine .intro{padding:max(1rem,env(safe-area-inset-top)) 1rem max(1rem,env(safe-area-inset-bottom))}
+  .intro .eyebrow{letter-spacing:.18em;font-size:.72rem;padding:0 .5rem}
+  .intro .title{max-width:12ch}
+  .intro .sub{font-size:1rem;padding:0 .75rem;max-width:100%}
+  .intro .enter{
+    width:min(100%,20rem);padding:1rem 1.25rem .95rem;
+    letter-spacing:.22em;margin-top:2.2rem;
+  }
+  .intro .signal{margin-bottom:1.8rem}
+}
+@media (max-width:480px){
+  .intro .title{font-size:clamp(1.9rem,10vw,2.8rem)}
+}
+</style>
+</head>
+<body>
+
+<script>
+// The title gate rises only for front-door arrivals; deep links go straight to their section
+if (!location.hash) document.documentElement.classList.add('cine');
+</script>
+
+<div class="intro" role="dialog" aria-modal="true" aria-label="Welcome to The Hyland Point Playbook">
+  <svg class="ring" viewBox="0 0 340 340" aria-hidden="true">
+    <circle class="halo" cx="170" cy="170" r="148"/>
+    <circle class="arc" cx="170" cy="170" r="160"/>
+  </svg>
+  <div class="motes" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="signal" aria-hidden="true"></div>
+  <div class="eyebrow">An Unofficial Operator's Manual</div>
+  <div class="title">The Hyland Point <span class="lit">Playbook</span></div>
+  <p class="sub">Street Rat to Kingpin. No wasted days.</p>
+  <button class="enter" type="button">Answer the Payphone &amp; Enter</button>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <a class="back-home" href="index.html#select">&larr; All Game Guides</a><br>
+    <p class="eyebrow">An Unofficial Operator's Manual · Early Access v0.4.x</p>
+    <h1>The Hyland Point <span class="lit">Playbook</span></h1>
+    <p class="sub">A complete, phase-by-phase route through Schedule I. Follow it in order and you'll always know where to go next, what to buy, what to cook, who to hire, and which mistakes will stall your empire — from your first sad grow tent in an RV to a fully automated operation and the fall of the Benzies cartel.</p>
+    <div class="hero-meta">
+      <span>Objective: <b>Street Rat → Kingpin</b></span>
+      <span>Route: <b>7 Phases</b></span>
+      <span>Reference: <b>7 System Files</b></span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap layout">
+<nav class="sidenav" aria-label="Guide navigation">
+  <h2>Orientation</h2>
+  <a class="plain" href="#how-to-use">How to Use This Guide</a>
+  <a class="plain" href="#primer">Operation Primer</a>
+  <h2>The Route</h2>
+  <a href="#phase-1">I · The RV &amp; Motel Days</a>
+  <a href="#phase-2">II · Sweatshop &amp; First Dealer</a>
+  <a href="#phase-3">III · Westville &amp; the Cook</a>
+  <a href="#phase-4">IV · Downtown &amp; the Barn</a>
+  <a href="#phase-5">V · The Docks &amp; Coke</a>
+  <a href="#phase-6">VI · The Cartel War</a>
+  <a href="#phase-7">VII · Uptown &amp; Kingpin</a>
+  <h2>Reference Files</h2>
+  <a class="rf" href="#ref-mixing">A · The Mixing Lab</a>
+  <a class="rf" href="#ref-dealers">B · The Dealer Network</a>
+  <a class="rf" href="#ref-property">C · Property Portfolio</a>
+  <a class="rf" href="#ref-payroll">D · Payroll &amp; Automation</a>
+  <a class="rf" href="#ref-money">E · Money &amp; Laundering</a>
+  <a class="rf" href="#ref-heat">F · Heat &amp; Police</a>
+  <a class="rf" href="#ref-pitfalls">G · Field Notes &amp; Pitfalls</a>
+</nav>
+
+<main>
+<!-- ================= ORIENTATION ================= -->
+<section class="phase" id="how-to-use">
+  <div class="phase-head">
+    <span class="pin" aria-hidden="true"></span>
+    <h2>How to Use This Guide</h2>
+    <span class="region-tag">Read Once · Save Hours</span>
+  </div>
+  <p class="lede">Two halves: a strict ordered Route, and the Reference Files it links into. Here's the reading contract.</p>
+  <p><strong>The Route</strong> (Phases I–VII) is a strict, ordered walkthrough: it tells you what to do on day one, when to buy each property, when to recruit each dealer, when to switch products, and when to pick a fight with the cartel. <strong>The Reference Files</strong> are deep dives into each system — mixing, dealers, properties, employees, money, police. The Route links into them at the exact moment each system unlocks, so you never read a wall of theory before you need it.</p>
+  <ul>
+    <li><strong>Follow the phases in order.</strong> Each phase ends with exit criteria. Don't advance until you meet them — Schedule I punishes over-expansion far more than it punishes patience.</li>
+    <li><strong>Check off the checklists.</strong> They're interactive and cover every purchase and unlock that matters. Anything not on a list is optional flavor.</li>
+    <li><strong>Read every amber WARNING.</strong> There are a handful of ways to genuinely stall a save in this game (mostly around the cartel and cash limits). All of them are flagged.</li>
+    <li><strong>Green PAYDAY callouts</strong> mark disproportionately profitable moves. If you only skim, skim for those.</li>
+  </ul>
+  <div class="callout note">
+    <span class="co-label">Version Note</span>
+    <p>Schedule I is in active Early Access with monthly patches. This guide reflects the v0.4.x era (post-Cartel, post-Shrooms updates, 2026). Prices, XP values, and spawn behaviors get rebalanced; the <em>strategy</em> — the order of operations, the automation logic, the cartel approach — is what stays stable. Where a number is likely to drift, this guide says "about."</p>
+  </div>
+</section>
+
+<section class="phase" id="primer">
+  <div class="phase-head">
+    <span class="pin" aria-hidden="true"></span>
+    <h2>Operation Primer</h2>
+    <span class="region-tag">Core Systems</span>
+  </div>
+  <p class="lede">The five systems that drive everything: time, XP, money, customers, product.</p>
+
+  <h3>The Day Cycle</h3>
+  <p>One in-game day runs from 7:00 AM to 4:00 AM, at roughly one real minute per in-game hour. At 4:00 AM the clock <strong>freezes</strong> until you sleep — this frozen window is the most valuable time in the game. Curfew starts at 9:00 PM (police will stop and search you outside), and sleeping ends the day, pays employees, processes rent and orders, and banks your XP into rank progress.</p>
+  <div class="callout pay">
+    <span class="co-label">Payday · The 4 AM Rule</span>
+    <p>Time stops at 4:00 AM but <em>you</em> don't. Gas-Marts stay open, machines keep working when interacted with, and nothing costs you daylight. Do all your mixing experiments, restocking, base reorganization, and long drives during the freeze. Veterans do practically all logistics at 4 AM and spend the actual day selling and managing. Make this a habit in Phase I and every later phase gets faster.</p>
+  </div>
+
+  <h3>XP &amp; Ranks</h3>
+  <p>Everything meaningful is gated behind rank: store items, regions, suppliers, and gear. You climb from <strong>Street Rat</strong> through Hoodlum, Peddler, Hustler, Bagman, Enforcer, Shot Caller, Block Boss, Underlord, Baron, and finally <strong>Kingpin</strong> — each rank has five tiers. XP comes from harvesting plants, completing deals (yours and your dealers'), and escaping the police. Customer daily spending limits also scale with your level, so ranking up literally makes every customer richer.</p>
+  <div class="tablewrap">
+  <table>
+    <caption>Rank Milestones That Matter</caption>
+    <thead><tr><th>Rank</th><th>Key Unlocks</th><th>What It Means for You</th></tr></thead>
+    <tbody>
+      <tr><td>Street Rat</td><td>Grow gear, packaging, baggies, first dealer quest line</td><td>Your entire Phase I–II toolkit</td></tr>
+      <tr><td>Hoodlum</td><td>Westville region, better seeds, more ingredients</td><td>Meth era begins (Phase III)</td></tr>
+      <tr><td>Peddler</td><td>Downtown region, Motor Oil, high-value mixers, Brick Press at Peddler V</td><td>Scale era: bricks + dealers (Phase IV)</td></tr>
+      <tr><td>Hustler</td><td>Docks region, Horse Semen and premium mixers</td><td>Cocaine era (Phase V)</td></tr>
+      <tr><td>Bagman</td><td>Suburbia, remaining gear; most items unlocked by end of Bagman</td><td>Endgame regions (Phases VI–VII)</td></tr>
+      <tr><td>Enforcer → Baron</td><td>Uptown access along the way; few new items</td><td>Pure scale and cartel war</td></tr>
+      <tr><td>Kingpin</td><td>Everything unlocked; repeatable prestige tiers</td><td>You've won. Chase net-worth achievements</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>Dirty Money vs. Clean Money</h3>
+  <p>Sales pay in <strong>cash (dirty)</strong>. Your <strong>bank balance (clean)</strong> is what buys properties, businesses, vehicles, and most big-ticket items. You convert dirty to clean two ways: deposit up to <strong>$10,000 per week</strong> at ATMs, or <strong>launder through businesses you own</strong>, each of which cleans a daily cap. Cash flow is never your problem in this game — <em>cleaning</em> it is. That's why this guide has you buying laundering businesses far earlier than feels natural.</p>
+
+  <h3>Customers</h3>
+  <p>Every named NPC in a region is a potential customer. You unlock them by offering a <strong>free sample</strong> (or by being introduced through their friends once your mutual contacts like you). Each customer has: a product affinity (weed / meth / coke / shrooms), quality standards, favorite effects, a daily spending limit tied to your level, and a relationship meter. Successful, on-time deals raise relationship and addiction; both raise what they'll pay. Customers pay a <strong>quality bonus</strong> of +15% per quality tier above their standard, and maxed-relationship customers tolerate markups of roughly 30–60% over list price.</p>
+
+  <h3>Product</h3>
+  <p>Four product lines, unlocked in order: <strong>weed</strong> (grown), <strong>meth</strong> (cooked from purchased ingredients), <strong>cocaine</strong> (grown then processed), and <strong>shrooms</strong> (grown, post-Shrooms update). Raw product is worth little; the money is in <strong>mixing</strong> — layering up to eight effects onto a base using absurd household ingredients. A $35 batch of weed becomes a $150+ product with four cheap mixes. The Mixing Lab reference file is the single most valuable page in this guide.</p>
+  <div class="callout note">
+    <span class="co-label">Guiding Principle</span>
+    <p>Schedule I is a logistics game wearing a crime-sim costume. The player who wins is not the one who sells the most — it's the one who automates production, delegates sales to dealers, launders on a schedule, and spends their own time only on the three things NPCs can't do: unlocking customers, expanding territory, and fighting the cartel. Every phase in this route pushes you toward that end state.</p>
+  </div>
+</section>
+
+<!-- ================= PHASE I ================= -->
+<section class="phase" id="phase-1">
+  <div class="phase-head">
+    <span class="pin" aria-hidden="true"></span>
+    <h2>Phase I — The RV &amp; Motel Days</h2>
+    <span class="region-tag">Street Rat I–III</span>
+  </div>
+  <p class="lede">Finish the prologue, squeeze the RV dry, sell your first batches by hand, and bank ~$1,500.</p>
+
+  <h3>The Prologue, Done Right</h3>
+  <p>The game opens with your RV lab going up in flames and Uncle Nelson setting you up in Hyland Point's motel with a grow tent and a handful of OG Kush seeds. Play the prologue straight — it's a tutorial — but with one crucial exception:</p>
+  <div class="callout warn">
+    <span class="co-label">Warning · Loot the RV First</span>
+    <p>Before you answer Uncle Nelson's payphone call for the first time, <strong>strip everything you can carry out of the RV</strong>. The starting items inside (supplies, packaging, loose cash) are free capital, and the prologue moves on without you if you rush the phone. Thirty seconds of looting here is your seed money.</p>
+  </div>
+
+  <h3>Your First Grows</h3>
+  <p>Your motel room fits a grow tent. The loop: buy <strong>soil and OG Kush seeds</strong>, plant, water, wait (a plant matures in about a day), harvest, <strong>bag into baggies at the packaging station</strong>, sell. Each plant yields multiple buds; each bud baggie sells for roughly $35–40 raw. Do not sell raw for long — the moment the game hands you a mixing station quest in Phase II, raw sales are obsolete.</p>
+  <ul>
+    <li><strong>Water on a rhythm:</strong> check plants morning and evening. Dead plants are pure loss.</li>
+    <li><strong>Sell everything you grow, in person.</strong> Walk Northtown, approach NPCs, offer product. Early direct deals are your XP engine — about 20 XP per sale — and each successful sale warms that customer up. When a customer counter-offers a lowball price, counter back a step above list; they accept far more often than the tone of the haggle suggests.</li>
+    <li><strong>Offer free samples liberally.</strong> A sample converts an NPC into a repeat customer who texts you orders. Start with the NPCs clustered around the motel and the central strip — <strong>Austin Steiner, Kyle Cooley, Mick Lubbin, Peggy Myers, and Jessi Waters</strong> are classic first unlocks, and once someone likes you they'll introduce you to their friends (Kyle leads to the Cooley family, for instance). Unlocked customers are permanent infrastructure; product given away now returns tenfold.</li>
+    <li><strong>Read each customer's file.</strong> Once unlocked, a customer's entry in your phone shows their preferred drug type, quality standard, favorite effects, and spending limit. Check it before every deal — it's also how you'll pick dealer assignments in Phase II.</li>
+    <li><strong>Meet deal windows.</strong> When a customer texts an order, it has a time window. Late or missed deals crater relationships. Never accept a deal you can't make.</li>
+  </ul>
+
+  <h3>Free Money on the Ground</h3>
+  <div class="callout pay">
+    <span class="co-label">Payday · Trash Runs</span>
+    <p>Buy a <strong>Trash Grabber (~$20)</strong> from the hardware store. Hyland Point is covered in litter, and <strong>Cash for Trash machines</strong> pay per piece. During dead time (waiting on plants, the 4 AM freeze), do trash laps around Northtown. It's small money but it's <em>clean-adjacent</em> early cash, it tidies your surroundings (trash buildup hurts performance over long saves), and 500 pieces earns the Upstanding Citizen achievement along the way.</p>
+  </div>
+
+  <h3>Before you leave the motel era</h3>
+  <ul class="checklist">
+    <li><input type="checkbox" id="p1a"><label for="p1a">Loot every item from the RV before the first payphone call.</label></li>
+    <li><input type="checkbox" id="p1b"><label for="p1b">Complete the prologue and settle into the motel room.</label></li>
+    <li><input type="checkbox" id="p1c"><label for="p1c">Run continuous OG Kush grows — never leave the tent empty.</label></li>
+    <li><input type="checkbox" id="p1d"><label for="p1d">Buy a Trash Grabber and learn the Cash for Trash locations.</label></li>
+    <li><input type="checkbox" id="p1e"><label for="p1e">Unlock 5–8 Northtown customers with free samples.</label></li>
+    <li><input type="checkbox" id="p1f"><label for="p1f">Adopt the 4 AM habit: all shopping and prep during the time freeze.</label></li>
+    <li><input type="checkbox" id="p1g"><label for="p1g"><strong>Exit criteria:</strong> ~$1,500 cash on hand, Street Rat III+, steady daily orders coming in by text.</label></li>
+  </ul>
+  <div class="rest-marker">End of Day · Sleep &amp; Save</div>
+</section>
+
+<!-- ================= PHASE II ================= -->
+<section class="phase" id="phase-2">
+  <div class="phase-head">
+    <span class="pin" aria-hidden="true"></span>
+    <h2>Phase II — Sweatshop &amp; First Dealer</h2>
+    <span class="region-tag">Street Rat IV → Hoodlum I</span>
+  </div>
+  <p class="lede">Rent real production space, unlock mixing, recruit Benji, buy your first laundering business.</p>
+
+  <h3>Move Out of the Motel</h3>
+  <p>The motel room is a shoebox. As soon as you have the cash, rent the <strong>Sweatshop (~$800 + weekly rent)</strong> in Northtown — your first real property. It fits several grow tents/pots, a packaging station, a mixing station, and storage. Set it up as a dense weed floor: as many pots as fit, one packaging station, one mixing station, shelves for supplies.</p>
+
+  <h3>The main event: unlock mixing</h3>
+  <div class="file-card">
+    <div class="card-sub">Key Unlock · The Mixing Station · ~$500</div>
+    <h4>The Moment Schedule I Actually Begins</h4>
+    <p>The main quest line has you buy a <strong>Mixing Station</strong> from the hardware store. Mixing lets you layer effects onto product with cheap consumables — a banana, a cucumber-brand soda, motor oil — and every effect multiplies sale price. From this point on, <strong>never sell unmixed product</strong>.</p>
+    <p>Start with this cheap early chain on OG Kush (all ingredients from Gas-Mart):</p>
+    <div class="chain"><b>OG Kush</b> <span class="arrow">→</span> Cuke <span class="arrow">→</span> Banana <span class="arrow">→</span> Gasoline <span class="arrow">→</span> sells ~2.5–3× the raw price for pennies of ingredients</div>
+    <p>Full recipe theory, the effect system, and the exact chains to graduate into are in <a class="inline" href="#ref-mixing">Reference A: The Mixing Lab</a>. Read the "How Mixing Works" half of that file now; come back to the premium recipes in Phase IV+.</p>
+  </div>
+
+  <h3>Recruit Benji</h3>
+  <div class="file-card">
+    <div class="card-sub">Key Recruit · First Dealer · $500 · Motel Room 2</div>
+    <h4>Benji Coleman</h4>
+    <p>Keep following the quest line and unlocking customers; once you've satisfied the required contacts, you'll unlock <strong>Benji Coleman</strong>. Benji is your first <strong>dealer</strong> — he autonomously sells to customers you assign him, for a 20% cut, while you do literally anything else.</p>
+    <ul>
+      <li><strong>Which customers to assign (he handles up to 8):</strong> give Benji your <em>established, routine</em> Northtown customers — the ones whose relationship you've already built and who text small, frequent orders. The Phase I unlocks near his motel (Austin Steiner, Kyle Cooley, Mick Lubbin, Peggy Myers, Jessi Waters, and the like) are ideal: they're clustered around his home base, so he never misses a deal window walking to them. <strong>Keep 2–3 customers for yourself</strong> — your highest spenders and any customer whose relationship isn't maxed yet. Personal deals pay double the XP, take no 20% cut, and are the only way to push markup and grow a relationship quickly; dealers maintain relationships, they don't build them well.</li>
+      <li><strong>What to stock him with:</strong> your standard mixed weed — the Cuke → Banana → Gasoline Kush from this phase. Product choice absolutely matters: customers buy their preferred drug type first (check each assigned customer's file), and Northtown at this stage is weed country, so one product covers everyone. It also has to <em>meet their quality standards</em> — a dealer holding schwag that his assigned customers won't accept earns nothing. Don't waste your best premium batches on him, though: dealers sell at a fair auto-calculated price and take their cut, so top-shelf product always earns more sold personally.</li>
+      <li><strong>Keep him stocked.</strong> Visit him, hand over mixed product in bulk — 15–20 units lasts him about a day at full assignment. A dealer with an empty inventory earns nothing — restocking dealers becomes a fixed part of your daily loop from now until Kingpin.</li>
+      <li>Dealer sales still earn you ~10 XP each. Delegation doesn't slow your rank climb; it multiplies it.</li>
+    </ul>
+    <p>Dealer mechanics, all recruits, costs, and optimal customer assignments: <a class="inline" href="#ref-dealers">Reference B: The Dealer Network</a>.</p>
+  </div>
+
+  <h3>Buy the Laundromat</h3>
+  <div class="callout pay">
+    <span class="co-label">Payday · Launder Early</span>
+    <p>Your first <em>business</em> purchase should come shockingly early: the <strong>Laundromat (~$4,000, cleans ~$500/day)</strong>. The weekly ATM deposit cap (~$10,000) throttles clean money, and clean money is what buys every property from here forward. Every day the Laundromat isn't cleaning $500 is a day your empire's growth is capped. Buy it before you buy comfort upgrades — before a better car, before decor, before anything.</p>
+  </div>
+
+  <h3>Before you leave Phase II</h3>
+  <ul class="checklist">
+    <li><input type="checkbox" id="p2a"><label for="p2a">Rent the Sweatshop and fill it with pots + packaging + mixing station.</label></li>
+    <li><input type="checkbox" id="p2b"><label for="p2b">Buy the Mixing Station and switch 100% of sales to mixed product.</label></li>
+    <li><input type="checkbox" id="p2c"><label for="p2c">Learn the early Kush chain (Cuke → Banana → Gasoline) and price ~30% over list.</label></li>
+    <li><input type="checkbox" id="p2d"><label for="p2d">Recruit Benji ($500, Motel Room 2) and assign him 8 customers.</label></li>
+    <li><input type="checkbox" id="p2e"><label for="p2e">Establish the daily loop: restock Benji → personal deals → samples for new customers → 4 AM logistics → sleep.</label></li>
+    <li><input type="checkbox" id="p2f"><label for="p2f">Buy the Laundromat and start cleaning $500/day.</label></li>
+    <li><input type="checkbox" id="p2g"><label for="p2g"><strong>Exit criteria:</strong> Hoodlum I reached (Westville unlocks), Benji self-sufficient, ~$5,000+ total.</label></li>
+  </ul>
+  <div class="rest-marker">End of Day · Sleep &amp; Save</div>
+</section>
+
+<!-- ================= PHASE III ================= -->
+<section class="phase" id="phase-3">
+  <div class="phase-head">
+    <span class="pin" aria-hidden="true"></span>
+    <h2>Phase III — Westville &amp; the Cook</h2>
+    <span class="region-tag">Hoodlum → Peddler</span>
+  </div>
+  <p class="lede">Open Westville, start the meth line, upgrade housing, hire your first employees.</p>
+
+  <h3>Open Westville</h3>
+  <p>Hoodlum rank unlocks <strong>Westville</strong>, the region west of Northtown. Day one in a new region is always the same drill, and you'll repeat it for every region in the game:</p>
+  <ol>
+    <li><strong>Sample sweep.</strong> Walk the district with a stack of your best mixed weed and offer free samples to every NPC. Each new customer permanently raises regional demand.</li>
+    <li><strong>Meet the vendors.</strong> Westville adds shops with new mixing ingredients and gear.</li>
+    <li><strong>Note the dead drops and layout</strong> — you'll be routing dealers and deliveries through here for the rest of the game.</li>
+  </ol>
+  <div class="callout warn">
+    <span class="co-label">Warning · Cartel Rules Apply to New Regions</span>
+    <p>If you're playing post-Cartel update, the Benzies family contests territory from Westville onward, and <strong>two early choices can waste permanent progress</strong>: graffiti tags sprayed before you're hostile with the cartel count for nothing, and unlocking <em>every</em> customer in a region can stop cartel dealers from spawning — removing your best influence-farming target. The safe rule for every new region: <strong>unlock ~5 customers, no more, and spray no graffiti until you have read <a class="inline" href="#phase-6">Phase VI</a> and gone hostile.</strong> Phase VI covers the whole war; this warning exists so you don't disarm yourself before it starts.</p>
+  </div>
+
+  <h3>The main event: start the meth line</h3>
+  <div class="file-card">
+    <div class="card-sub">Key Unlock · Product Line 2 · Westville</div>
+    <h4>Meth — Your First Big Margin Jump</h4>
+    <ol>
+      <li>Give free samples to Westville locals (Jerry Montero and Meg Cooley are the classic targets) until one befriends you and <strong>introduces you to Shirley Watts</strong>, the pseudo supplier. Shirley works like all suppliers: you order by phone, pay into her debt ledger, and collect from a <strong>dead drop</strong> — so pseudo restocks slot neatly into your 4 AM circuit.</li>
+      <li>Buy a <strong>Chemistry Station</strong> and <strong>Lab Oven</strong> from Oscar at the warehouse.</li>
+      <li>The loop: Pseudo + Acid + Phosphorus into the Chemistry Station (~8 in-game hours) → liquid → Lab Oven (~6 hours) → crystal → package or mix.</li>
+    </ol>
+    <p>The margins are why this is the main event: one cook consumes one of each ingredient — about $120–140 all-in — and the oven turns the batch into <strong>~10 units of crystal</strong>. Unmixed crystal already sells around $70 (that's ~$700 back on a ~$130 cook before you've mixed anything); mixed meth clears well over $100 per unit with the same cheap Gas-Mart chains you used on Kush. Meth customers skew Westville/Downtown — check affinities before flooding Northtown weed loyalists with crystal. From now on run <strong>both lines in parallel</strong>: weed for the loyal base, meth for margins.</p>
+  </div>
+
+  <h3>Upgrade to the Bungalow, hire your first staff</h3>
+  <p>Buy the <strong>Bungalow (~$6,000)</strong> when clean cash allows. It's your first property big enough for a real workforce. Hire from the ledger at your property:</p>
+  <ul>
+    <li><strong>1 Botanist (~$100/day):</strong> assign to your pots — seeds in, watering, harvest to drying racks or shelves. Your growing is now automated.</li>
+    <li><strong>1 Chemist (~$150/day):</strong> assign to the Chemistry Station, Lab Oven, and mixing stations. Your cooking is now automated.</li>
+    <li><strong>1 Handler (~$100/day):</strong> moves items between stations/shelves on routes you define, and can package.</li>
+  </ul>
+  <p>Hiring costs a <strong>one-time signing fee</strong> (roughly $1,000–2,000 by role) on top of the daily wage, and every employee needs an assigned <strong>bed</strong> and their wages paid into a <strong>briefcase/locker daily</strong> — an unpaid employee simply stops. Full ratios, wages, and routing logic: <a class="inline" href="#ref-payroll">Reference D: Payroll &amp; Automation</a>.</p>
+  <p>Also this phase: buy your remaining <strong>laundering businesses as cash allows</strong> — Taco Ticklers, the Car Wash, and the Post Office each add daily cleaning capacity (see <a class="inline" href="#ref-money">Reference E: Money &amp; Laundering</a>). Once Westville customers pile up, recruit your second dealer, <strong>Molly Presley (~$1,000, Westville)</strong> — and stock her with <strong>mixed meth</strong>, not weed, since her Westville book skews meth-affinity (see <a class="inline" href="#ref-dealers">Reference B</a> for the full assignment doctrine). Grab a cheap <strong>vehicle</strong> (even the beater van) — trunk space turns restock runs from three trips into one.</p>
+
+  <h3>Before you leave Phase III</h3>
+  <ul class="checklist">
+    <li><input type="checkbox" id="p3a"><label for="p3a">Unlock Westville; run the sample sweep — but stop at ~5 customers (cartel rule).</label></li>
+    <li><input type="checkbox" id="p3b"><label for="p3b">Befriend Jerry/Meg → get introduced to Shirley Watts (pseudo supplier).</label></li>
+    <li><input type="checkbox" id="p3c"><label for="p3c">Buy Chemistry Station + Lab Oven from Oscar; run your first cook.</label></li>
+    <li><input type="checkbox" id="p3d"><label for="p3d">Buy the Bungalow; hire Botanist + Chemist + Handler with beds and daily wages.</label></li>
+    <li><input type="checkbox" id="p3e"><label for="p3e">Recruit Molly Presley (~$1,000) for Westville customers; stock her with mixed meth.</label></li>
+    <li><input type="checkbox" id="p3f"><label for="p3f">Buy Taco Ticklers and the Car Wash when clean cash allows.</label></li>
+    <li><input type="checkbox" id="p3g"><label for="p3g">Buy any vehicle with trunk space.</label></li>
+    <li><input type="checkbox" id="p3h"><label for="p3h"><strong>Exit criteria:</strong> Peddler rank, meth + weed lines both automated at the Bungalow, 2 dealers stocked daily.</label></li>
+  </ul>
+  <div class="rest-marker">End of Day · Sleep &amp; Save</div>
+</section>
+
+<!-- ================= PHASE IV ================= -->
+<section class="phase" id="phase-4">
+  <div class="phase-head">
+    <span class="pin" aria-hidden="true"></span>
+    <h2>Phase IV — Downtown &amp; the Barn</h2>
+    <span class="region-tag">Peddler → Hustler</span>
+  </div>
+  <p class="lede">Open Downtown, buy the Barn, hit Peddler V for the Brick Press, and convert from hustler to factory owner.</p>
+
+  <h3>Open Downtown</h3>
+  <p>Peddler unlocks <strong>Downtown</strong> — richer customers, new vendors, and the pawn shop. Run the standard region drill (samples, vendors, layout), respecting the 5-customer cartel rule. Downtown customers favor stronger effect profiles and tolerate higher prices; this is where your mixed meth line shines.</p>
+
+  <h3>The main event: the Barn</h3>
+  <div class="file-card">
+    <div class="card-sub">Key Property · ~$25,000 · The Road Out of Town</div>
+    <h4>The Barn — Your Factory</h4>
+    <p>The best value property in the game and the backbone of your mid-game: two floors of open space that fit a complete, closed production loop. The proven layout:</p>
+    <ul>
+      <li><strong>Grow floor:</strong> 16 pots (upgrade from tents to individual pots with grow lights — better yields), 4+ drying racks. Dried buds are a full quality tier up; never skip racks again.</li>
+      <li><strong>Process line:</strong> 2+ Chemistry Stations, 2+ Lab Ovens, and a <strong>daisy chain of 4–8 Mixing Station Mk2s</strong> — each mixer's output routed to the next, each pre-loaded with one recipe ingredient, so raw product enters mixer 1 and finished premium product exits the last one untouched by human hands. The chain <em>is</em> the recipe, one step per station: for the 8-step meth chain from <a class="inline" href="#ref-mixing">Reference A</a>, that's mixer 1 = Banana, 2 = Cuke, 3 = Paracetamol, 4 = Gasoline, 5 = Cuke, 6 = Battery, 7 = Horse Semen, 8 = Mega Bean. Handlers keep each mixer's ingredient shelf full; chemists run the stations.</li>
+      <li><strong>Logistics:</strong> large storage shelves for every input, packaging stations, employee beds upstairs, bins for trash.</li>
+      <li><strong>Staff:</strong> work toward 2–3 Botanists, 2–3 Chemists, 2 Handlers, 1 Cleaner — approaching the ~10-employee cap per property.</li>
+    </ul>
+  </div>
+  <div class="callout pay">
+    <span class="co-label">Payday · The Mk2 Mixer &amp; The Daisy Chain</span>
+    <p>Buy <strong>Mixing Station Mk2s (~$2,000, from Oscar)</strong> the moment they're available. They auto-insert ingredients, hold stacks of 20, run faster, and produce no trash. A daisy chain of Mk2s staffed by chemists is the single highest-leverage structure in Schedule I: it converts a ~$40 stack of ingredients into thousands of dollars of product per cycle with zero player time. This is the machine that pays for everything in Phases V–VII.</p>
+  </div>
+
+  <h3>Peddler V: the Brick Press</h3>
+  <p>At Peddler V you unlock the <strong>Brick Press</strong>, which compresses 20 units into a single brick. Bricks are how you restock dealers in one handoff instead of twenty, and how bulk deals get done. From here on, your dealers get bricks, your premium mixed product gets baggies/jars for personal high-margin sales.</p>
+
+  <h3>Round out the network</h3>
+  <ul>
+    <li><strong>Dealers:</strong> recruit your third dealer, <strong>Brad Crosby (~$2,000, Downtown)</strong>, as Downtown customers stack up. Downtown's mid-tier spenders lean meth and sedative-profile mixes, so brick him up accordingly; keep every dealer at 8 assigned customers near their home turf (<a class="inline" href="#ref-dealers">Reference B</a>).</li>
+    <li><strong>Businesses:</strong> by end of Phase IV, own all four laundering businesses. That's roughly $2,000+/day of cleaning — ~$140k/week of legitimate purchasing power (<a class="inline" href="#ref-money">Reference E</a>).</li>
+    <li><strong>Vehicles:</strong> upgrade to the van; it's a rolling warehouse for restock circuits.</li>
+  </ul>
+
+  <h3>Before you leave Phase IV</h3>
+  <ul class="checklist">
+    <li><input type="checkbox" id="p4a"><label for="p4a">Unlock Downtown; sample sweep (5-customer rule); meet the pawn shop.</label></li>
+    <li><input type="checkbox" id="p4b"><label for="p4b">Buy the Barn (~$25k) and build the two-floor factory layout.</label></li>
+    <li><input type="checkbox" id="p4c"><label for="p4c">Replace tents with pots + grow lights; add drying racks — everything dried before sale.</label></li>
+    <li><input type="checkbox" id="p4d"><label for="p4d">Buy 4–8 Mixing Station Mk2s and configure the daisy chain with a fixed recipe.</label></li>
+    <li><input type="checkbox" id="p4e"><label for="p4e">Staff toward the cap: 2–3 Botanists, 2–3 Chemists, 2 Handlers, 1 Cleaner.</label></li>
+    <li><input type="checkbox" id="p4f"><label for="p4f">Hit Peddler V; buy the Brick Press; switch dealer restocks to bricks.</label></li>
+    <li><input type="checkbox" id="p4g"><label for="p4g">Own all four laundering businesses.</label></li>
+    <li><input type="checkbox" id="p4h"><label for="p4h"><strong>Exit criteria:</strong> Hustler rank; the Barn produces and mixes without you; dealers restocked in bricks; you personally handle only premium deals and expansion.</label></li>
+  </ul>
+  <div class="rest-marker">End of Day · Sleep &amp; Save</div>
+</section>
+
+<!-- ================= PHASE V ================= -->
+<section class="phase" id="phase-5">
+  <div class="phase-head">
+    <span class="pin" aria-hidden="true"></span>
+    <h2>Phase V — The Docks &amp; Coke</h2>
+    <span class="region-tag">Hustler → Bagman</span>
+  </div>
+  <p class="lede">Open the Docks, unlock cocaine, buy the Docks Warehouse, and split production across two industrial sites.</p>
+
+  <h3>The main event: unlock cocaine</h3>
+  <div class="file-card">
+    <div class="card-sub">Key Unlock · Product Line 3 · The Docks</div>
+    <h4>Cocaine — Your Endgame Product</h4>
+    <p>Hustler unlocks the <strong>Docks</strong>. Run the region drill, and prioritize unlocking Docks customers because befriending them is what gets you introduced to <strong>Salvador Moreno — the coca seed supplier</strong>. The cocaine loop: grow coca (like weed, but slower and pricier inputs) → harvest leaves → <strong>Cauldron</strong> cooks a batch of about 20 leaves plus a can of gasoline (~6 in-game hours) into paste → <strong>Lab Oven</strong> finishes it → mix → sell.</p>
+    <p>Base coke sells around $150; premium mixed coke clears <strong>$500–700+ per unit</strong>.</p>
+  </div>
+
+  <h3>The Docks Warehouse &amp; the two-site split</h3>
+  <p>Buy the <strong>Docks Warehouse (~$50,000)</strong> — the biggest floor plan in the game. Because each property caps at ~10 employees, the optimal endgame is a <strong>two-site split</strong>:</p>
+  <ul>
+    <li><strong>Barn = agriculture.</strong> Max pots of coca (and a weed corner), drying racks, botanist-heavy staff. Output: dried leaves to shelves.</li>
+    <li><strong>Docks Warehouse = industry.</strong> Cauldrons, Lab Ovens, the grand Mk2 mixer chain, Brick Press, packaging, chemist/handler-heavy staff. Input: leaves you shuttle from the Barn by van.</li>
+    <li><strong>The van run</strong> between them is your one daily manual logistics task — do it at 4 AM (a road barricade near the Docks clears late at night, making the drive trivial).</li>
+  </ul>
+  <div class="callout note">
+    <span class="co-label">Note · Don't Overbuild</span>
+    <p>A 16-pot coca floor already covers every buyer in the game once mixed. Eighty-pot megafarms look impressive but outrun demand and your laundering caps. Build to what your customer base consumes, then spend the surplus on the cartel war and net-worth goals instead.</p>
+  </div>
+
+  <h3>Meanwhile: keep the machine turning</h3>
+  <ul>
+    <li>Recruit your fourth dealer, <strong>Jane Lucero (~$3,000, Docks)</strong>, as Docks customers stack up. The Docks is where coke affinity starts, so split her bricks between mixed coke and your meth volume line; <a class="inline" href="#ref-dealers">Reference B</a> lists ideal turf assignments.</li>
+    <li>Switch your personal selling entirely to premium coke deals; let dealers move the weed/meth volume in bricks.</li>
+    <li>Shrooms (if your version has the Shrooms update) slot in as a fourth line grown like weed; the same premium mix chain that caps coke also caps shrooms at ~$300+/unit. Optional, but the Docks Warehouse has room.</li>
+    <li>Start converting surplus clean money at the pawn shop/boutique into <strong>gold bars</strong> — the endgame store of value (<a class="inline" href="#ref-money">Reference E</a> explains the sell-day trick).</li>
+  </ul>
+
+  <h3>Before you leave Phase V</h3>
+  <ul class="checklist">
+    <li><input type="checkbox" id="p5a"><label for="p5a">Unlock the Docks; sample sweep (5-customer rule).</label></li>
+    <li><input type="checkbox" id="p5b"><label for="p5b">Befriend Docks customers → introduction to Salvador Moreno → coca seeds.</label></li>
+    <li><input type="checkbox" id="p5c"><label for="p5c">Buy Cauldron(s); run the first coke batch end to end.</label></li>
+    <li><input type="checkbox" id="p5d"><label for="p5d">Buy the Docks Warehouse (~$50k).</label></li>
+    <li><input type="checkbox" id="p5e"><label for="p5e">Reorganize: Barn grows, Warehouse processes/mixes/bricks; 4 AM van run links them.</label></li>
+    <li><input type="checkbox" id="p5f"><label for="p5f">Jane Lucero recruited at the Docks; personal sales = premium coke only.</label></li>
+    <li><input type="checkbox" id="p5g"><label for="p5g"><strong>Exit criteria:</strong> Bagman rank; coke line automated at $500+/unit; both sites staffed to cap.</label></li>
+  </ul>
+  <div class="rest-marker">End of Day · Sleep &amp; Save</div>
+</section>
+
+<!-- ================= PHASE VI ================= -->
+<section class="phase" id="phase-6">
+  <div class="phase-head">
+    <span class="pin" aria-hidden="true"></span>
+    <h2>Phase VI — The Cartel War</h2>
+    <span class="region-tag">Bagman → Enforcer+</span>
+  </div>
+  <p class="lede">Break the Benzies family's grip region by region and clear the influence gates blocking Suburbia and Uptown.</p>
+
+  <h3>The setup: truce or war</h3>
+  <p>Early in a post-Cartel-update save, <strong>Thomas Benzies</strong> offers you a deal: a truce where you deliver product to the mansion at insulting prices and, in exchange, his people leave you alone. Here's the catch that decides everything:</p>
+  <div class="callout warn">
+    <span class="co-label">Warning · The Truce Is a Progress Cap</span>
+    <p><strong>You cannot progress past Westville while the truce holds.</strong> The truce is training wheels for your early phases at best. Take it if you want peace while you build Phases II–III, but you must break it (text T.B., or just stop delivering) to advance — and once you go hostile, <strong>it is irreversible</strong>. The recommended line: accept the truce early if offered, break it deliberately at the start of Phase IV, and treat everything below as the playbook from that moment on. On older saves the game sets you hostile by default and skips the choice entirely.</p>
+  </div>
+
+  <h3>How influence works</h3>
+  <p>Each region from Westville onward has a <strong>cartel influence meter</strong>. New regions won't fully open (and Suburbia/Uptown progress gates won't clear) until you grind influence down. Every reduction method, ranked by reliability:</p>
+  <div class="tablewrap">
+  <table>
+    <caption>Influence Reduction Playbook</caption>
+    <thead><tr><th>Method</th><th>Influence</th><th>How</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Knock out + kill a cartel dealer</strong></td><td class="mono">−100 each (−200 combo)</td><td>Knock them out first, then finish — the combo counts both. The best tool in the war.</td></tr>
+      <tr><td><strong>Kill a cartel dealer outright</strong></td><td class="mono">−100</td><td>Dealers respawn, so this is repeatable forever.</td></tr>
+      <tr><td><strong>Spray your graffiti tags</strong></td><td class="mono">−50 per tag</td><td>Spray cans from any Gas-Mart (restock one per rank-up). Fixed tag spots per region. <strong>Only counts while hostile.</strong></td></tr>
+      <tr><td><strong>Break up cartel ambushes</strong></td><td class="mono">−moderate</td><td>Their thugs (black &amp; green) jump you mid-deal, ~3 at a time. Win the fight, gain ground.</td></tr>
+      <tr><td><strong>Interrupt cartel deals / graffiti crews</strong></td><td class="mono">−moderate</td><td>Catch their people mid-activity around the map and put them down.</td></tr>
+      <tr><td><strong>Unlock customers &amp; keep loyalty high</strong></td><td class="mono">passive</td><td>Loyal customers stop feeding cartel dealers orders. This is the endgame state per region — but see the softlock warning below for why you do it <em>last</em>.</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>The hunt: Benzies dealer safehouses</h3>
+  <div class="file-card">
+    <div class="card-sub">Targets · Repeatable · −200 Influence Per Combo</div>
+    <h4>Cartel Dealer Locations</h4>
+    <p>Cartel dealers work exactly like yours: they hole up in a safehouse, leave to serve any regional customers <em>you haven't</em> locked down, then return. Their known safehouses:</p>
+    <div class="tablewrap">
+    <table>
+      <caption>Benzies Dealer Safehouses</caption>
+      <thead><tr><th>Region</th><th>Safehouse</th><th>Field Notes</th></tr></thead>
+      <tbody>
+        <tr><td>Westville</td><td>Boarded-up building beside Dean's Tattoo Shop</td><td>Usually your first contact with the cartel</td></tr>
+        <tr><td>Downtown</td><td>Apartment block between the Diner and the Canal</td><td>Residential — easy to walk past; watch the doors</td></tr>
+        <tr><td>Docks</td><td>Billy's house, next to the police checkpoint by the warehouse (door beside the Cuke machine)</td><td>Mind the cops when you make your move</td></tr>
+        <tr><td>Suburbia</td><td>Locked-door building next to Jane's camper</td><td>Dealer often emerges ~11:30 AM–noon at peak orders</td></tr>
+        <tr><td>Uptown</td><td>The Crimson Canary</td><td>Final territory</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+  <div class="callout pay">
+    <span class="co-label">Payday · Farm Them Like a Route</span>
+    <p>Cartel dealers briefly step outside their safehouse door on a daily reset tick (historically midnight; some patches have shifted the timing — camp the door around resets and confirm on your version). They also take smoke breaks around the map since the Shrooms update. A daily circuit — check the safehouse at reset, knock out, kill, <strong>loot their pockets</strong> — is repeatable forever and pays twice: −200 influence and free product (including cocaine long before you can make it). This is also your gun supply chain: downed cops reliably drop an M1911.</p>
+  </div>
+
+  <h3>Combat prep</h3>
+  <p>Buy a <strong>bat and an M1911 with spare magazines from Stan at the illegal warehouse</strong>, and carry them always once hostile — ambushes trigger mid-deal with no warning. Knockouts (melee) are preferred on dealers for the −200 combo; guns are for when three thugs jump you at once. You can <strong>pickpocket knocked-out NPCs</strong> (crouch, aim at the back pocket, don't be wanted) — cartel dealers carry product and cash.</p>
+
+  <h3>The softlock file</h3>
+  <div class="callout warn">
+    <span class="co-label">Warning · Known Ways to Stall the War</span>
+    <p><strong>1. Unlocking every customer in a region too early.</strong> No free customers = cartel dealers have no reason to leave the safehouse = your best influence farm goes dormant, and some players have been left camping a door that never opens. Leave a few customers unlocked per region until its influence gate is cleared, then finish the sweep.</p>
+    <p><strong>2. Wasting graffiti before going hostile.</strong> Pre-hostile tags consume the spot permanently for zero influence. Spray nothing until the war is on.</p>
+    <p><strong>3. Stuck at a stubborn last few hundred influence.</strong> Dealers respawn — one more reset-camp kill usually clears it. As an absolute last resort the console (settime, etc.) can force spawns, but it has bugged saves; back up your save before touching it, and treat it as a repair tool, not a strategy.</p>
+  </div>
+
+  <h3>Before you leave Phase VI</h3>
+  <ul class="checklist">
+    <li><input type="checkbox" id="p6a"><label for="p6a">Break the truce deliberately (text T.B. / stop deliveries) — you're now permanently hostile.</label></li>
+    <li><input type="checkbox" id="p6b"><label for="p6b">Buy bat + M1911 + magazines from Stan; carry them at all times.</label></li>
+    <li><input type="checkbox" id="p6c"><label for="p6c">Learn all five safehouses; add a reset-camp dealer kill to your daily routine.</label></li>
+    <li><input type="checkbox" id="p6d"><label for="p6d">Spray every graffiti tag spot in each contested region (hostile only).</label></li>
+    <li><input type="checkbox" id="p6e"><label for="p6e">Win every ambush; interrupt cartel deals and taggers on sight; pickpocket the fallen.</label></li>
+    <li><input type="checkbox" id="p6f"><label for="p6f">Clear Westville → Downtown → Docks influence; keep a few customers unlocked until each gate clears.</label></li>
+    <li><input type="checkbox" id="p6g"><label for="p6g"><strong>Exit criteria:</strong> Suburbia influence collapsing and the region opening — Phase VII begins mid-war.</label></li>
+  </ul>
+  <div class="rest-marker">End of Day · Sleep &amp; Save</div>
+</section>
+
+<!-- ================= PHASE VII ================= -->
+<section class="phase" id="phase-7">
+  <div class="phase-head">
+    <span class="pin" aria-hidden="true"></span>
+    <h2>Phase VII — Uptown &amp; Kingpin</h2>
+    <span class="region-tag">Enforcer → Kingpin</span>
+  </div>
+  <p class="lede">Take Suburbia and Uptown, finish the Benzies storyline, and close the file at Kingpin.</p>
+
+  <h3>Suburbia: the money district</h3>
+  <p>Suburbia's customers have the deepest pockets outside Uptown and a taste for high-quality, high-effect product — exactly what your Docks Warehouse chain produces. Run the region drill, clear its influence (the Jane's-camper dealer is your farm), and recruit your fifth dealer, <strong>Wei Long (~$4,000)</strong>, stocking him with mixed coke for Suburbia's high-budget households. When Uptown opens, <strong>Leo Rivers (~$5,000)</strong> completes the network — he's the one dealer worth feeding your top-shelf premium product, because Uptown spending limits absorb his 20% cut and then some. From that point your six-dealer network can cover essentially every customer in Hyland Point; your personal deals should be only the absurd top-end orders.</p>
+
+  <h3>Uptown &amp; the endgame quests</h3>
+  <div class="file-card">
+    <div class="card-sub">Final Territory · The Benzies' Doorstep</div>
+    <h4>Uptown &amp; "Finishing the Job"</h4>
+    <p>Grind Suburbia's influence gate down and <strong>Uptown opens</strong> — the final district, home to the wealthiest clients and the Benzies' doorstep (their dealer runs out of the Crimson Canary). Once Uptown is unlocked, <strong>sleep</strong>: Uncle Nelson calls and the final quest chain against the Benzies family (culminating in the strike on the mansion, "Finishing the Job") triggers from there. Follow it through — it's the closest thing Early Access has to an ending, and clearing it plus the influence war leaves Hyland Manor territory in your hands.</p>
+  </div>
+  <div class="callout note">
+    <span class="co-label">Note · If the Call Doesn't Come</span>
+    <p>The Nelson call requires Uptown unlocked <em>and</em> a night's sleep. If you've met Benzies, gotten his texts, and nothing progresses — sleep again after confirming Uptown access. This is the most common "am I stuck?" moment in the endgame and it is almost never an actual bug.</p>
+  </div>
+
+  <h3>The Kingpin grind</h3>
+  <p>Everything unlocks by around Bagman/Enforcer; the ranks after that are pure XP scale, and Kingpin itself has deep repeatable tiers. The efficient close-out:</p>
+  <ul>
+    <li><strong>Volume is XP.</strong> Every dealer sale ticks ~10 XP; six stocked dealers plus your automated factories rank you passively. Harvests tick XP too — another reason the pots never sit empty.</li>
+    <li><strong>Chase the net-worth ladder:</strong> $100k (Businessman) → $1M (Bigwig) → $10M (Magnate). Net worth counts on end-of-day, so sleep to bank milestones. Gold bars from the boutique are the compact way to store it.</li>
+    <li><strong>Max your customer book.</strong> With all influence gates cleared, finish unlocking every remaining customer in every region — each is permanent passive income and starves any cartel remnant.</li>
+    <li><strong>Buy the toys.</strong> The golden skateboard is the traditional "I've won" purchase (and an achievement).</li>
+  </ul>
+
+  <h3>Closing the file</h3>
+  <ul class="checklist">
+    <li><input type="checkbox" id="p7a"><label for="p7a">Open Suburbia; region drill; recruit Wei Long (~$4,000) and stock him with mixed coke.</label></li>
+    <li><input type="checkbox" id="p7b"><label for="p7b">Clear Suburbia influence; unlock Uptown; recruit Leo Rivers (~$5,000) on premium stock.</label></li>
+    <li><input type="checkbox" id="p7c"><label for="p7c">Sleep → take Uncle Nelson's call → run the final Benzies quest chain to the end.</label></li>
+    <li><input type="checkbox" id="p7d"><label for="p7d">Finish unlocking every customer in every region.</label></li>
+    <li><input type="checkbox" id="p7e"><label for="p7e">Bank $1M, then $10M net worth (sleep to register).</label></li>
+    <li><input type="checkbox" id="p7f"><label for="p7f">Reach Kingpin. Buy the golden skateboard. Close the file.</label></li>
+  </ul>
+  <div class="rest-marker">Case Closed · Kingpin</div>
+</section>
+
+<!-- ================= REFERENCE A: MIXING ================= -->
+<section class="phase reference" id="ref-mixing">
+  <div class="phase-head">
+    <span class="pin" aria-hidden="true"></span>
+    <h2>Reference A — The Mixing Lab</h2>
+    <span class="region-tag">~80% of Your Profit</span>
+  </div>
+  <p class="lede">The system that generates most of your money. Master it here.</p>
+
+  <h3>How mixing works</h3>
+  <ul>
+    <li>Place an <strong>unpackaged</strong> product and one ingredient in a mixing station; ~6 seconds later you have a new product. Feed that product back in with the next ingredient to stack effects.</li>
+    <li>Products hold a maximum of <strong>8 effects</strong>. Each effect carries a price multiplier; the sale price is base price × (1 + sum of multipliers).</li>
+    <li><strong>Order is everything.</strong> Each ingredient adds its signature effect <em>and transforms effects already present</em> — Banana then Gasoline is not Gasoline then Banana. Follow chains exactly, left to right.</li>
+    <li>Some worthless effects are stepping stones: Paranoia adds nothing itself but converts into <strong>Anti-Gravity</strong> (one of the top multipliers) with the right follow-up. Trust the chain even when a middle step looks bad.</li>
+    <li>The <strong>Mk2 station</strong> (from Oscar) auto-inserts, holds 20-stacks, runs faster, makes no trash. Mandatory at scale.</li>
+    <li>Bag or jar the finished product — customers don't buy loose.</li>
+  </ul>
+  <div class="callout note">
+    <span class="co-label">Note · Experimenting Without Pain</span>
+    <p>Test new chains during the 4 AM freeze (Gas-Mart is open 24/7 for ingredients), and lean on the community mix calculators (search "Schedule 1 calculator") to preview effects, price, and profit before you commit a real batch. Recipes below are community-verified staples; exact dollar values drift a few percent between patches.</p>
+  </div>
+
+  <h3>The recipe ladder</h3>
+  <p>You only ever need a handful of chains. Run the best one your rank and wallet allow, in every mixer, all the time.</p>
+  <div class="tablewrap">
+  <table>
+    <caption>Staple Chains by Game Stage</caption>
+    <thead><tr><th>Stage</th><th>Base</th><th>Chain (in order)</th><th>Sells Around</th></tr></thead>
+    <tbody>
+      <tr><td>Phase II (broke)</td><td>OG Kush</td><td class="mono">Cuke → Banana → Gasoline</td><td class="money">~$90–110</td></tr>
+      <tr><td>Phase III</td><td>OG Kush / Sour Diesel</td><td class="mono">Mega Bean → Energy Drink → Banana → Energy Drink</td><td class="money">~$140–170</td></tr>
+      <tr><td>Phase III–IV</td><td>Meth crystal</td><td class="mono">Same Gas-Mart chains as Kush; meth base ≈ 2× weed base</td><td class="money">~$150–250</td></tr>
+      <tr><td>Phase IV–V</td><td>Meth crystal</td><td class="mono">Banana → Cuke → Paracetamol → Gasoline → Cuke → Battery → Horse Semen → Mega Bean</td><td class="money">~$450–550</td></tr>
+      <tr><td>Phase V+ (the ceiling)</td><td>Cocaine</td><td class="mono">Motor Oil → Cuke → Paracetamol → Gasoline → Cuke → Battery → Horse Semen → Mega Bean</td><td class="money">~$600–730</td></tr>
+      <tr><td>Phase V+ (shrooms)</td><td>Shrooms</td><td class="mono">Same 8-step premium chain as cocaine</td><td class="money">~$300+</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="small">The 8-step premium chain lands Anti-Gravity, Cyclopean, Long-Faced and friends — the top multiplier stack in the game. Motor Oil needs Peddler II; Horse Semen needs Hustler III. Until then, run the longest prefix of the chain you can buy.</p>
+
+  <h3>Selling what you mixed</h3>
+  <ul>
+    <li><strong>Match effects to districts.</strong> Broad tendencies: Northtown likes Energizing/Euphoric/Munchies, Westville likes Focused/Thought-Provoking, Downtown likes Sedating/Toxic/Shrinking, Docks likes Long-Faced/Refreshing/Anti-Gravity. A liked-effect match lets you push price harder.</li>
+    <li><strong>Price to move.</strong> Start around list, push +30% on regulars, up to +60% on maxed-relationship addicts. A $500 bag that doesn't sell earns less than a $150 bag that does.</li>
+    <li><strong>Quality pays.</strong> +15% per quality tier above the customer's standard — drying racks and good grow gear are direct price increases.</li>
+    <li><strong>Save rare ingredients</strong> (Horse Semen, Mega Bean) for the premium chain only. Never burn them experimenting.</li>
+  </ul>
+</section>
+
+<!-- ================= REFERENCE B: DEALERS ================= -->
+<section class="phase reference" id="ref-dealers">
+  <div class="phase-head">
+    <span class="pin" aria-hidden="true"></span>
+    <h2>Reference B — The Dealer Network</h2>
+    <span class="region-tag">Six Recruits · 20% Cut</span>
+  </div>
+  <p class="lede">They print money while you sleep — if you feed them.</p>
+  <div class="tablewrap">
+  <table>
+    <caption>All Recruitable Dealers</caption>
+    <thead><tr><th>Dealer</th><th>Where</th><th>Cost</th><th>Assign Them</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Benji Coleman</strong></td><td>Motel Room 2, Northtown</td><td class="money">$500</td><td>Northtown regulars — your Phase I–II customer base</td></tr>
+      <tr><td><strong>Molly Presley</strong></td><td>Westville</td><td class="money">~$1,000</td><td>Westville meth-affinity customers</td></tr>
+      <tr><td><strong>Brad Crosby</strong></td><td>Downtown</td><td class="money">~$2,000</td><td>Downtown mid-tier spenders</td></tr>
+      <tr><td><strong>Jane Lucero</strong></td><td>Docks</td><td class="money">~$3,000</td><td>Docks customers; coke affinity country</td></tr>
+      <tr><td><strong>Wei Long</strong></td><td>Suburbia</td><td class="money">~$4,000</td><td>Suburbia's high-budget households</td></tr>
+      <tr><td><strong>Leo Rivers</strong></td><td>Uptown</td><td class="money">~$5,000</td><td>Uptown whales — feed him only premium product</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <h3>Which customers to assign</h3>
+  <p>Assignment quality is the difference between a dealer clearing $2,000 a day and one clearing $400. Three rules, in priority order:</p>
+  <ul>
+    <li><strong>Cluster by geography first.</strong> Dealers walk to their deals. A customer three blocks from the dealer's base gets served on time, every time; a cross-district assignment means missed windows, and missed windows crater relationships you spent samples building. Open the map, look at where the customer lives and hangs out, and assign them to whichever dealer's turf that is — never the other way around.</li>
+    <li><strong>Hand off matured relationships, keep developing ones.</strong> Dealers are maintenance, not growth: they'll keep a warm customer warm, but they build relationship far slower than your personal deals do, and they never push markup. The rhythm for every region is the same — <em>you</em> unlock a customer with a sample, run their first several deals personally until relationship is high, then hand them to the local dealer and move your attention to the next unlock. A freshly-sampled customer assigned straight to a dealer is money left on the table for weeks.</li>
+    <li><strong>Keep the whales for yourself.</strong> Each region has a few standout spenders (they're obvious in the customer file — highest daily limits, lowest price sensitivity). Those are worth your personal time forever: no 20% cut, +30–60% markup on maxed relationships, and double XP. Everyone else goes to the network.</li>
+  </ul>
+
+  <h3>Which product to give them — and yes, it matters</h3>
+  <p>It matters in three distinct ways, and getting it wrong is the most common silent leak in a dealer network:</p>
+  <ul>
+    <li><strong>Drug type must match the assigned customers.</strong> Every customer has a preferred product line (it's in their file: weed / meth / coke / shrooms). A dealer only fulfills an order if he's holding something the customer will buy — a meth-affinity customer served by a dealer carrying only weed is simply a lost sale, repeated daily. Before stocking a dealer, skim his 8 assignments: if six prefer meth and two prefer weed, his bricks should be mostly meth with a weed sidecar. As a shortcut, regional affinity is strong — Benji's Northtown book is weed country, Molly's Westville book skews meth, Jane's Docks book is where coke affinity starts, and Wei and Leo's endgame books want premium coke.</li>
+    <li><strong>Quality must clear the customers' standards.</strong> Customers hold dealers to the same quality bar they hold you to. If a dealer's stock is below an assigned customer's standard, those deals fail or fizzle. Mid-game onward, everything that comes off your drying racks and Mk2 chain clears every bar in the game, so this mostly bites people who dump early low-grade surplus on a late-game dealer.</li>
+    <li><strong>Don't give dealers your ceiling product.</strong> Dealers sell at a fair, auto-calculated price and take 20%. They will never extract the +60% markup a maxed-relationship addict pays <em>you</em> for an 8-effect premium bag. So run two tiers: a cheap, fast <strong>volume mix</strong> (a 3–4 step Gas-Mart chain on weed or meth) bricked up for the network, and the <strong>premium chain</strong> (Reference A's 8-step) bagged individually for your personal deals. The one exception is Leo Rivers: Uptown's spending limits are so high that even at a 20% cut he should carry premium coke.</li>
+  </ul>
+
+  <h3>Operating doctrine</h3>
+  <ul>
+    <li><strong>8 customers each, home turf only.</strong> Dealers walk to deals; cross-town assignments mean missed windows. Assign customers clustered around the dealer's base.</li>
+    <li><strong>Restock in bricks, daily.</strong> An empty dealer earns $0 and every missed customer order quietly feeds cartel dealers instead (post-Cartel update). The daily brick drop is non-negotiable. A full 8-customer book burns through roughly a brick (20 units) a day; drop two if you'll skip a day.</li>
+    <li><strong>Collect their cash</strong> when you restock; it piles up on them otherwise (and dealers holding fat stacks are juicier cartel targets).</li>
+    <li><strong>They're targets.</strong> Hostile-cartel saves see Benzies thugs jump your dealers. Losses happen; keep them stocked anyway — their volume dwarfs the shrinkage.</li>
+    <li><strong>You still get ~10 XP per dealer sale.</strong> A full six-dealer network is a passive rank engine.</li>
+  </ul>
+</section>
+
+<!-- ================= REFERENCE C: PROPERTY ================= -->
+<section class="phase reference" id="ref-property">
+  <div class="phase-head">
+    <span class="pin" aria-hidden="true"></span>
+    <h2>Reference C — Property Portfolio</h2>
+    <span class="region-tag">Buy In This Order</span>
+  </div>
+  <p class="lede">Skip nothing except the vanity flat.</p>
+  <div class="tablewrap">
+  <table>
+    <caption>Production Properties (Buy Order)</caption>
+    <thead><tr><th>#</th><th>Property</th><th>Cost</th><th>Role in the Route</th></tr></thead>
+    <tbody>
+      <tr><td class="mono">01</td><td><strong>Motel Room</strong></td><td class="money">free (temp)</td><td>Prologue shoebox. One tent. Leave ASAP.</td></tr>
+      <tr><td class="mono">02</td><td><strong>Sweatshop</strong></td><td class="money">~$800 + rent</td><td>Phase II. First real weed floor + mixing.</td></tr>
+      <tr><td class="mono">03</td><td><strong>Bungalow</strong></td><td class="money">~$6,000</td><td>Phase III. First employees; weed + meth in parallel.</td></tr>
+      <tr><td class="mono">04</td><td><strong>Barn</strong></td><td class="money">~$25,000</td><td>Phase IV. The factory. Later: dedicated agriculture site.</td></tr>
+      <tr><td class="mono">05</td><td><strong>Docks Warehouse</strong></td><td class="money">~$50,000</td><td>Phase V. Biggest floor. Processing, mixing, bricking.</td></tr>
+      <tr><td class="mono">—</td><td>Storage units / apartments</td><td class="money">varies</td><td>Optional overflow for cash and stock; grab when convenient.</td></tr>
+      <tr><td class="mono">06</td><td><strong>Hyland Manor</strong></td><td class="money">endgame</td><td>Phase VII trophy — claimed through the cartel storyline.</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="small">The employee cap (~10 per property) is why the route ends on a two-site split: Barn grows, Warehouse processes. A third grow site (Bungalow) can feed the Warehouse too if you expand shrooms/coke simultaneously.</p>
+</section>
+
+<!-- ================= REFERENCE D: PAYROLL ================= -->
+<section class="phase reference" id="ref-payroll">
+  <div class="phase-head">
+    <span class="pin" aria-hidden="true"></span>
+    <h2>Reference D — Payroll &amp; Automation</h2>
+    <span class="region-tag">Bed · Wage · Route</span>
+  </div>
+  <p class="lede">Four job types, one golden rule: every worker needs a bed, a daily wage, and an unambiguous route.</p>
+  <div class="tablewrap">
+  <table>
+    <caption>Staff Files</caption>
+    <thead><tr><th>Role</th><th>Wage/Day</th><th>Assign To</th><th>Doctrine</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Botanist</strong></td><td class="money">~$100</td><td>Up to 8 pots, or drying racks</td><td>2 botanists per 16 pots, output routed to racks (quality tier up), then shelves</td></tr>
+      <tr><td><strong>Chemist</strong></td><td class="money">~$150</td><td>Chemistry stations, ovens, cauldrons, mixers (up to 4 stations)</td><td>Assign along the production order: cauldron → oven → mixers in chain sequence</td></tr>
+      <tr><td><strong>Handler</strong></td><td class="money">~$100</td><td>Move routes between shelves/stations; packaging; brick press</td><td>One route per input: ingredient shelves → each mixer; leaves → cauldrons; finished → storage</td></tr>
+      <tr><td><strong>Cleaner</strong></td><td class="money">~$100</td><td>Bins &amp; trash</td><td>One per big site keeps Mk1-era trash and litter from choking the floor</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <ul>
+    <li><strong>Budget the signing fee.</strong> Hiring costs a one-time fee of roughly $1,000–2,000 depending on role, paid before wages start — the wage column above is the ongoing daily cost.</li>
+    <li><strong>Set destinations with the management clipboard.</strong> Every station needs an output destination; every mixer in a daisy chain outputs to the next mixer, the last one to the brick press or storage.</li>
+    <li><strong>Wages go in the on-site briefcase/locker daily.</strong> Top it up for several days at a time during your 4 AM round; an unpaid worker silently stops and your whole chain stalls behind them.</li>
+    <li><strong>Beds first.</strong> A hire without an assigned bed won't work. Beds upstairs at the Barn; along the walls at the Warehouse.</li>
+    <li><strong>Watch the bottleneck, not the workers.</strong> If product piles up before one station type, add stations (or a chemist) there — the chain runs at the speed of its slowest link.</li>
+  </ul>
+</section>
+
+<!-- ================= REFERENCE E: MONEY ================= -->
+<section class="phase reference" id="ref-money">
+  <div class="phase-head">
+    <span class="pin" aria-hidden="true"></span>
+    <h2>Reference E — Money &amp; Laundering</h2>
+    <span class="region-tag">Clean Cash = Progress</span>
+  </div>
+  <p class="lede">Dirty cash is easy. Clean cash is the real progression bar.</p>
+  <h3>The four businesses</h3>
+  <div class="tablewrap">
+  <table>
+    <caption>Laundering Front Portfolio</caption>
+    <thead><tr><th>Business</th><th>Cost</th><th>Cleans/Day</th><th>Buy When</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Laundromat</strong></td><td class="money">~$4,000</td><td class="money">~$500</td><td>Phase II — before anything cosmetic</td></tr>
+      <tr><td><strong>Taco Ticklers</strong></td><td class="money">~$10,000</td><td class="money">~$1,000</td><td>Phase III</td></tr>
+      <tr><td><strong>Car Wash</strong></td><td class="money">~$20,000</td><td class="money">~$2,000</td><td>Phase III–IV</td></tr>
+      <tr><td><strong>Post Office</strong></td><td class="money">~$40,000</td><td class="money">~$4,000</td><td>Phase IV</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <ul>
+    <li><strong>Load laundering at every business, every day</strong> (fold it into the 4 AM circuit). All four running ≈ $7,500/day of cleaning on top of the ~$10k/week ATM deposit allowance.</li>
+    <li><strong>Deposit the ATM cap weekly</strong> without fail — it's free cleaning.</li>
+    <li><strong>Never hold huge dirty piles.</strong> Cash can be lost to arrest seizures and does nothing for property purchases. Convert relentlessly.</li>
+  </ul>
+  <h3>Gold bars &amp; the pawn shop trick</h3>
+  <div class="callout pay">
+    <span class="co-label">Payday · The Endgame Piggy Bank</span>
+    <p>Once laundering outruns your spending, buy <strong>gold bars from the boutique</strong> (next to the real estate office) as your store of value. The pawn shop's buyback isn't random — its offer swings from roughly 44% to 180% of item value on a cycle keyed to the item and the day of the week. So: buy gold with surplus clean money, <strong>check the pawn offer daily, and sell only on the fat days</strong>. Played patiently, gold bars are a profit engine on top of a piggy bank, and they compress millions of net worth into a shelf.</p>
+  </div>
+</section>
+
+<!-- ================= REFERENCE F: HEAT ================= -->
+<section class="phase reference" id="ref-heat">
+  <div class="phase-head">
+    <span class="pin" aria-hidden="true"></span>
+    <h2>Reference F — Heat &amp; Police</h2>
+    <span class="region-tag">Pay Zero Tax</span>
+  </div>
+  <p class="lede">The police are a tax on carelessness. Here's how to never pay it.</p>
+  <ul>
+    <li><strong>Curfew (9 PM–morning):</strong> cops stop and search anyone out at night. Route night business through back streets, or simply do night logistics at 4 AM when the map is quiet, and daytime selling.</li>
+    <li><strong>Searches:</strong> product visible in hand or pockets during a stop is what convicts you. Carry product in packed boxes/vehicle trunks in transit; comply when clean, run when not.</li>
+    <li><strong>Wanted status:</strong> break line of sight, duck through interiors, change district. Escaping a "Wanted: Dead or Alive" pursuit pays XP equal to several deals — experienced players deliberately farm escapes while making deliveries. Do this only once you know the map.</li>
+    <li><strong>Arrest costs:</strong> confiscated inventory and cash on hand plus fines. This is the other reason not to walk around with a week of product in your pockets.</li>
+    <li><strong>Dealing in front of cops, tagging in sight lines, brawling in the open</strong> — all self-inflicted. Check the minimap before every deal and every cartel move.</li>
+    <li><strong>Cops as a resource:</strong> post-Cartel, a downed officer reliably drops an M1911. Hostile-run players treat the occasional confrontation as an armory visit. High risk; your call.</li>
+  </ul>
+</section>
+
+<!-- ================= REFERENCE G: PITFALLS ================= -->
+<section class="phase reference" id="ref-pitfalls">
+  <div class="phase-head">
+    <span class="pin" aria-hidden="true"></span>
+    <h2>Reference G — Field Notes &amp; Pitfalls</h2>
+    <span class="region-tag">Run Killers</span>
+  </div>
+  <p class="lede">Everything that quietly ruins runs, in one place.</p>
+  <ul>
+    <li><strong>Selling raw product past Phase II.</strong> Mixing multiplies price 3–8×. Every unmixed sale is a donation.</li>
+    <li><strong>Wrong recipe order.</strong> The chain is a sequence, not a shopping list. One swapped step changes the whole effect stack.</li>
+    <li><strong>Overpricing.</strong> Unsold product is worth exactly $0/day. Move volume, push markup gradually as relationships max.</li>
+    <li><strong>Empty dealers.</strong> The #1 silent income leak. Bricks, daily, no exceptions.</li>
+    <li><strong>Unpaid or bedless employees.</strong> They don't complain; they just stop. Audit the briefcase on every 4 AM round.</li>
+    <li><strong>Ignoring the laundering caps.</strong> If your dirty pile grows week over week, buy the next business or raise deposits — dirty money is dead weight.</li>
+    <li><strong>Cartel missteps:</strong> graffiti before hostile (wasted), unlocking all regional customers early (dealer farm goes dormant), forgetting the truce blocks progression past Westville. All covered in <a class="inline" href="#phase-6">Phase VI</a> — the only phase worth re-reading twice.</li>
+    <li><strong>Trash buildup on long saves.</strong> Hyland Point's litter accumulates forever and drags performance. A Cleaner handles your properties; for the town itself, trash runs help, and the console's cleartrash command exists as a repair tool (back up your save before any console use).</li>
+    <li><strong>Skipping drying racks.</strong> Dried = a full quality tier = +15% price per tier above customer standards. Racks pay for themselves in days.</li>
+    <li><strong>Expanding production past demand.</strong> Sixteen mixed-coke pots satisfy the whole town. Spend surplus on the war and net worth, not pot #80.</li>
+    <li><strong>Early Access drift.</strong> Monthly patches move prices, timings, and spawn rules. When a number here disagrees with your game, trust your game and keep the strategy.</li>
+  </ul>
+  <p>That's the whole playbook. Follow the phases, respect the warnings, feed the dealers, and Hyland Point is yours.</p>
+  <div class="rest-marker">End of File</div>
+</section>
+
+</main>
+</div>
+
+<footer class="colophon">
+  <div class="wrap">
+    <p>THE HYLAND POINT PLAYBOOK — an unofficial fan-made strategy guide for Schedule I by TVGS. Verified against the v0.4.x era of Early Access (2026). Schedule I is a work of fiction; everything in this guide describes game mechanics only.</p>
+    <p style="margin-top:.8rem"><a class="back-home" href="index.html#select" style="margin-bottom:0">&larr; All Game Guides</a></p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- The Cinematic Arrival — title gate ---------- */
+  var docEl = document.documentElement;
+  var intro = document.querySelector('.intro');
+  var enterBtn = intro ? intro.querySelector('.enter') : null;
+  if (docEl.classList.contains('cine') && enterBtn) {
+    // Focus the threshold once it has risen into place
+    if (reduceMotion) {
+      enterBtn.focus();
+    } else {
+      enterBtn.addEventListener('animationend', function onRise(e){
+        if (e.animationName !== 'rise') return;
+        enterBtn.removeEventListener('animationend', onRise);
+        enterBtn.focus();
+      });
+    }
+    enterBtn.addEventListener('click', function(){
+      intro.classList.add('leaving');           // the signal blooms, the gate dissolves
+      window.setTimeout(function(){
+        docEl.classList.add('entered');          // overlay fades; hero cascade begins beneath it
+      }, reduceMotion ? 0 : 350);
+      window.setTimeout(function(){
+        intro.remove();
+        docEl.classList.remove('cine', 'entered');
+        var h1 = document.querySelector('.hero h1');
+        if (h1) { h1.setAttribute('tabindex', '-1'); h1.focus({ preventScroll: true }); }
+      }, reduceMotion ? 60 : 1600);
+    }, { once: true });
+  } else if (intro) {
+    intro.remove();                              // deep-link arrival: no gate, no residue
+  }
+})();
+</script>
+</body>
+</html>

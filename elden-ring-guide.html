@@ -346,6 +346,19 @@ nav.route ol.sideroute li::before{border-color:var(--ember);box-shadow:0 0 6px r
 footer{border-top:1px solid var(--line);padding:2.5rem 0 3rem;text-align:center;color:var(--muted);font-size:.95rem}
 footer .fin{font-family:'Cinzel',serif;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem}
 
+/* Back to the collection — quiet signpost above the hero */
+.back-home{
+  display:inline-block;margin-bottom:1.3rem;
+  font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--muted);text-decoration:none;
+  border:1px solid var(--line);border-radius:999px;padding:.42rem 1rem;
+  transition:color .3s var(--ease-out),border-color .3s var(--ease-out);
+}
+.back-home:hover,.back-home:focus-visible{color:var(--gold-bright);border-color:var(--gold)}
+.back-home:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.hero .back-home{animation:rise .8s var(--ease-out) both}
+html.cine:not(.entered) .hero .back-home{animation-play-state:paused}
+
 /* ================= The Cinematic Arrival — title gate ================= */
 /* Hidden unless JS declares the gate (html.cine), so no-JS visitors go straight in */
 .intro{display:none}
@@ -661,6 +674,7 @@ if (!location.hash) document.documentElement.classList.add('cine');
 
 <header class="hero">
   <div class="wrap">
+    <a class="back-home" href="index.html#select">&larr; All Game Guides</a><br>
     <div class="eyebrow">A Complete Walkthrough &amp; Build Guide</div>
     <h1>The Tarnished's Road</h1>
     <p class="sub">One route, one build, no wasted steps. Follow the golden thread from the Chapel of Anticipation to the Elden Throne — every stop, every item, every level, in order.</p>
@@ -1521,6 +1535,7 @@ if (!location.hash) document.documentElement.classList.add('cine');
   <div class="wrap">
     <div class="fin">Well Met, Tarnished</div>
     <p>An original walkthrough written for elden-ring newcomers and efficiency runners alike.</p>
+    <p style="margin-top:.9rem"><a class="back-home" href="index.html#select" style="margin-bottom:0">&larr; All Game Guides</a></p>
   </div>
 </footer>
 
