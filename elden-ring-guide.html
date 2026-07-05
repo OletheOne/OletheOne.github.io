@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>The Tarnished's Road — An Optimal Elden Ring Walkthrough</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -78,11 +78,9 @@ body{
 
 /* ---------- Layout: sidebar route + content ---------- */
 .layout{display:grid;grid-template-columns:250px 1fr;gap:3rem;padding:3rem 0}
-@media (max-width:900px){.layout{grid-template-columns:1fr;gap:1.5rem}}
 
 /* The Route of Grace — signature nav */
 nav.route{position:sticky;top:1.25rem;align-self:start}
-@media (max-width:900px){nav.route{position:static}}
 nav.route .route-title{
   font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.3em;
   text-transform:uppercase;color:var(--muted);margin-bottom:1rem;
@@ -489,6 +487,123 @@ html.cine:not(.entered) .hero .eyebrow,
 html.cine:not(.entered) .hero h1,
 html.cine:not(.entered) .hero p.sub,
 html.cine:not(.entered) .hero .flame{animation-play-state:paused}
+
+/* ================= Mobile — same site, pocket-sized grace ================= */
+@media (max-width:900px){
+  html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+  html,body{overflow-x:clip}
+  body{font-size:1.05rem}
+  .wrap{padding:0 1rem}
+
+  /* Hero */
+  .hero{padding:3rem 0 2.25rem}
+  .hero .eyebrow{letter-spacing:.22em;font-size:.7rem}
+  .hero p.sub{font-size:1.05rem;padding:0 .25rem}
+
+  /* Layout */
+  .layout{grid-template-columns:1fr;padding:1.5rem 0 2.5rem;gap:1.25rem}
+
+  /* Route of Grace — sticky horizontal pill strip instead of a full-page timeline */
+  nav.route{
+    position:sticky;top:0;z-index:30;align-self:auto;
+    margin:0 -1rem;padding:.65rem 1rem .85rem;
+    background:linear-gradient(180deg,var(--ink) 78%,rgba(22,17,12,0));
+    border-bottom:1px solid rgba(58,47,33,.55);
+  }
+  nav.route .route-title{font-size:.66rem;letter-spacing:.22em;margin-bottom:.55rem}
+  nav.route ol{
+    display:flex;flex-wrap:nowrap;gap:.45rem;
+    overflow-x:auto;overflow-y:hidden;
+    padding:.2rem 0 .55rem;padding-left:0;
+    -webkit-overflow-scrolling:touch;
+    scroll-snap-type:x proximity;scrollbar-width:none;
+  }
+  nav.route ol::-webkit-scrollbar{display:none}
+  nav.route ol::before{display:none}
+  nav.route li{margin:0;flex:0 0 auto;scroll-snap-align:start}
+  nav.route li::before{display:none}
+  nav.route a{
+    display:block;padding:.58rem .95rem;
+    border:1px solid rgba(58,47,33,.95);border-radius:999px;
+    background:var(--panel);font-size:.74rem;letter-spacing:.03em;
+    white-space:nowrap;transform:none;
+  }
+  nav.route a:hover,nav.route a:focus-visible{transform:none}
+  nav.route li.here a{
+    border-color:var(--gold);background:rgba(200,162,74,.12);
+    box-shadow:0 0 12px rgba(255,217,138,.18);
+  }
+  nav.route ol.sideroute li.here a{
+    border-color:var(--ember);background:rgba(192,90,46,.12);
+    box-shadow:0 0 12px rgba(192,90,46,.18);
+  }
+  nav.route li.done:not(.here) a{border-color:rgba(200,162,74,.55)}
+  .route-progress{margin-top:1rem;font-size:.62rem;letter-spacing:.2em}
+
+  /* Sections */
+  section.phase{margin-bottom:3.25rem;scroll-margin-top:6.5rem}
+  .phase-head{flex-wrap:wrap;gap:.45rem .65rem;padding-bottom:.65rem}
+  .phase-head .grace-mark{align-self:flex-start;margin-top:.35rem}
+  .phase-head h2{flex:1 1 calc(100% - 2rem);min-width:0}
+  .phase-head .region-tag{
+    margin-left:0;width:100%;white-space:normal;
+    letter-spacing:.18em;line-height:1.4;
+  }
+  section.phase h3{margin:1.65rem 0 .65rem;font-size:1.08rem}
+  section.phase p.lede{font-size:1.08rem}
+  section.phase p,ul.checklist,.callout,.boss-card,table,.side-ref{max-width:100%}
+  .phase-head h2{overflow-wrap:break-word}
+
+  /* Checklists — larger touch targets */
+  ul.checklist li{gap:.85rem;padding:.72rem 0}
+  ul.checklist input[type=checkbox]{
+    width:1.35rem;height:1.35rem;margin-top:.12rem;
+  }
+  ul.checklist input[type=checkbox]::after{left:.38rem;top:.1rem}
+
+  /* Cards & callouts */
+  .callout,.boss-card,.side-ref{padding-left:1rem;padding-right:1rem}
+  .boss-card{padding-top:1.2rem;padding-bottom:1.2rem}
+  .boss-card .boss-sub{letter-spacing:.18em;line-height:1.45}
+
+  /* Tables — swipe to read wide columns */
+  table{
+    display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    max-width:100%;font-size:.95rem;
+  }
+  th,td{padding:.5rem .6rem;word-break:break-word;vertical-align:top}
+  th{font-size:.66rem;letter-spacing:.14em}
+
+  /* Fixed chrome — safe areas for notched phones */
+  .thread i{height:2px}
+  .to-top{
+    right:max(1rem,env(safe-area-inset-right));
+    bottom:max(1rem,env(safe-area-inset-bottom));
+    width:48px;height:48px;
+  }
+
+  /* Title gate */
+  html.cine .intro{padding:max(1rem,env(safe-area-inset-top)) 1rem max(1rem,env(safe-area-inset-bottom))}
+  .intro .eyebrow{letter-spacing:.22em;font-size:.68rem;padding:0 .5rem}
+  .intro .title{max-width:11ch}
+  .intro .sub{font-size:1rem;padding:0 .75rem}
+  .intro .enter{
+    width:min(100%,20rem);padding:1rem 1.25rem .95rem;
+    letter-spacing:.22em;margin-top:2.2rem;
+  }
+  .intro .flame{margin-bottom:1.8rem}
+
+  footer{padding:2rem 0 max(2.5rem,env(safe-area-inset-bottom))}
+  footer .fin{letter-spacing:.22em;font-size:.85rem}
+}
+
+/* Very small phones */
+@media (max-width:480px){
+  .hero h1{font-size:clamp(1.85rem,9vw,2.6rem)}
+  .intro .title{font-size:clamp(2rem,10vw,3rem)}
+  .rest-marker{font-size:.62rem;letter-spacing:.2em}
+  nav.route a{font-size:.7rem;padding:.55rem .8rem}
+}
 </style>
 </head>
 <body>
@@ -1466,6 +1581,11 @@ if (!location.hash) document.documentElement.classList.add('cine');
   function setHere(li){
     navLinks.forEach(function(a){ a.parentElement.classList.remove('here'); });
     li.classList.add('here');
+    // Keep the active pill visible in the horizontal mobile nav
+    if (window.innerWidth <= 900) {
+      var link = li.querySelector('a');
+      if (link) link.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', inline: 'center', block: 'nearest' });
+    }
   }
   var spy = new IntersectionObserver(function(entries){
     entries.forEach(function(entry){

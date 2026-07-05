@@ -10,6 +10,7 @@ An optimal Elden Ring walkthrough for newcomers and efficiency runners — boss 
 - **Checklists** — tasks you tick off as you progress, saved to `localStorage` so your run survives closing the tab
 - **Progress tally** — an overall completion percentage under the sidebar, plus a golden reading-progress thread along the top of the page
 - **Motion with restraint** — grace flares on arrival, gentle section reveals, and tactile hover/press feedback; everything honors `prefers-reduced-motion`
+- **Mobile-ready** — at ≤900px the sidebar becomes a sticky horizontal pill nav, tables swipe-scroll, touch targets enlarge, and safe-area insets cover notched phones; desktop layout is unchanged
 
 ## Quick start
 
