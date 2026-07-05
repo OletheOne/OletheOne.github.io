@@ -21,6 +21,8 @@
   --ember:#c05a2e;
   --ember-dim:#7e3d22;
   --moss:#7d8a54;
+  --ease-out:cubic-bezier(.22,.61,.36,1);
+  --ease-spring:cubic-bezier(.34,1.56,.64,1);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -68,6 +70,11 @@ body{
   background:var(--grace);
   box-shadow:0 0 12px 4px rgba(255,217,138,.55), 0 0 40px 14px rgba(255,217,138,.18);
 }
+/* Entrance cascade — the page arrives like a grace igniting */
+.hero .eyebrow,.hero h1,.hero p.sub{animation:rise .8s var(--ease-out) both}
+.hero h1{animation-delay:.1s}
+.hero p.sub{animation-delay:.2s}
+.hero .flame{animation:rise .8s var(--ease-out) .32s both, breathe 3.4s ease-in-out 1.2s infinite}
 
 /* ---------- Layout: sidebar route + content ---------- */
 .layout{display:grid;grid-template-columns:250px 1fr;gap:3rem;padding:3rem 0}
@@ -91,13 +98,29 @@ nav.route li::before{
   margin-left:2px;border-radius:50%;
   background:var(--ink);border:1.5px solid var(--gold);
   box-shadow:0 0 6px rgba(255,217,138,.35);
+  transition:background .45s var(--ease-out),box-shadow .45s var(--ease-out),transform .45s var(--ease-spring);
 }
 nav.route a{
   color:var(--muted);text-decoration:none;
   font-family:'Cinzel',serif;font-size:.82rem;letter-spacing:.04em;
+  display:inline-block;
+  transition:color .3s var(--ease-out),transform .3s var(--ease-out);
 }
-nav.route a:hover,nav.route a:focus-visible{color:var(--gold-bright)}
+nav.route a:hover,nav.route a:focus-visible{color:var(--gold-bright);transform:translateX(3px)}
 nav.route a:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+/* Hovering a waypoint stirs its grace-dot */
+nav.route li:hover::before{box-shadow:0 0 9px rgba(255,217,138,.6);transform:scale(1.18)}
+/* Scrollspy — the grace you currently rest at burns lit */
+nav.route li.here::before{background:var(--grace);box-shadow:0 0 8px 2px rgba(255,217,138,.65);transform:scale(1.18)}
+nav.route li.here a{color:var(--gold-bright)}
+nav.route ol.sideroute li.here::before{background:var(--ember);box-shadow:0 0 8px 2px rgba(192,90,46,.65)}
+/* A phase with every task ticked earns a filled, settled dot */
+nav.route li.done:not(.here)::before{background:var(--gold);box-shadow:0 0 5px rgba(200,162,74,.45)}
+/* Route progress tally beneath the nav */
+.route-progress{margin-top:1.75rem;font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.25em;text-transform:uppercase;color:var(--muted)}
+.route-progress .bar{height:2px;background:rgba(58,47,33,.9);margin-top:.55rem;border-radius:1px;overflow:hidden}
+.route-progress .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--grace));box-shadow:0 0 6px rgba(255,217,138,.5);transition:width .8s var(--ease-out)}
+.route-progress .num{color:var(--gold);font-variant-numeric:tabular-nums}
 
 /* ---------- Sections ---------- */
 section.phase{margin-bottom:4.5rem;scroll-margin-top:1.5rem}
@@ -106,7 +129,24 @@ section.phase{margin-bottom:4.5rem;scroll-margin-top:1.5rem}
   flex:none;width:12px;height:12px;border-radius:50%;align-self:center;
   background:var(--grace);
   box-shadow:0 0 10px 3px rgba(255,217,138,.5);
+  animation:breathe 4s ease-in-out infinite;
 }
+/* Arriving at a phase via the route makes its grace flare in welcome */
+section.phase.arrived .grace-mark{animation:flare 1.6s var(--ease-out), breathe 4s ease-in-out 1.6s infinite}
+/* Content drifts up into place as you reach it */
+.reveal .phase-head,.reveal h3,.reveal p,.reveal ul.checklist,.reveal .callout,
+.reveal .boss-card,.reveal table,.reveal .side-ref,.reveal .rest-marker{
+  opacity:0;transform:translateY(14px);
+  transition:opacity .7s var(--ease-out),transform .7s var(--ease-out);
+}
+.reveal.lit .phase-head,.reveal.lit h3,.reveal.lit p,.reveal.lit ul.checklist,.reveal.lit .callout,
+.reveal.lit .boss-card,.reveal.lit table,.reveal.lit .side-ref,.reveal.lit .rest-marker{
+  opacity:1;transform:none;
+}
+.reveal.lit .phase-head{transition-delay:0s}
+.reveal.lit>*:nth-child(2){transition-delay:.08s}
+.reveal.lit>*:nth-child(3){transition-delay:.14s}
+.reveal.lit>*:nth-child(4){transition-delay:.2s}
 .phase-head h2{
   font-family:'Cinzel',serif;font-weight:600;
   font-size:clamp(1.4rem,3vw,1.9rem);color:var(--gold-bright);
@@ -129,25 +169,47 @@ ul.checklist{list-style:none;margin:0 0 1.25rem;max-width:76ch}
 ul.checklist li{
   display:flex;gap:.7rem;align-items:flex-start;
   padding:.55rem .2rem;border-bottom:1px dashed rgba(58,47,33,.7);
+  transition:background .35s var(--ease-out);
 }
+ul.checklist li:hover{background:rgba(200,162,74,.04)}
 ul.checklist input[type=checkbox]{
   flex:none;appearance:none;width:1.05rem;height:1.05rem;margin-top:.28rem;
   border:1.5px solid var(--gold);border-radius:2px;background:transparent;cursor:pointer;
+  position:relative;
+  transition:background .25s var(--ease-out),border-color .25s var(--ease-out),
+             box-shadow .25s var(--ease-out),transform .18s var(--ease-spring);
 }
+ul.checklist input[type=checkbox]:hover{border-color:var(--gold-bright);box-shadow:0 0 6px rgba(255,217,138,.3);transform:scale(1.08)}
+ul.checklist input[type=checkbox]:active{transform:scale(.9)}
 ul.checklist input[type=checkbox]:checked{
   background:var(--gold);
   box-shadow:0 0 8px rgba(255,217,138,.5);
+  animation:seal .45s var(--ease-spring);
 }
+/* Inked check-mark, drawn on tick */
+ul.checklist input[type=checkbox]::after{
+  content:"";position:absolute;left:.28rem;top:.08rem;width:.3rem;height:.6rem;
+  border:solid var(--ink);border-width:0 2px 2px 0;
+  transform:rotate(45deg) scale(0);transform-origin:center 60%;
+  transition:transform .25s var(--ease-spring) .06s;
+}
+ul.checklist input[type=checkbox]:checked::after{transform:rotate(45deg) scale(1)}
 ul.checklist input[type=checkbox]:checked+label{color:var(--muted)}
 ul.checklist input[type=checkbox]:focus-visible{outline:2px solid var(--gold-bright);outline-offset:2px}
-ul.checklist label{cursor:pointer}
+ul.checklist label{cursor:pointer;transition:color .4s var(--ease-out),opacity .4s var(--ease-out)}
+ul.checklist input[type=checkbox]:checked~label{opacity:.72}
+ul.checklist input[type=checkbox]:checked~label strong,
+ul.checklist input[type=checkbox]:checked~label em{color:inherit}
 
 /* Callouts */
 .callout{
   border-left:3px solid var(--gold);
   background:var(--panel);
   padding:1rem 1.25rem;margin:1.25rem 0;max-width:76ch;border-radius:0 4px 4px 0;
+  transition:border-left-color .35s var(--ease-out),box-shadow .35s var(--ease-out);
 }
+.callout:hover{border-left-color:var(--gold-bright);box-shadow:inset 0 0 0 1px rgba(200,162,74,.12)}
+.callout.warn:hover{border-left-color:var(--ember);box-shadow:inset 0 0 0 1px rgba(192,90,46,.16)}
 .callout.warn{border-left-color:var(--ember);background:#241611}
 .callout .co-label{
   font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.25em;
@@ -163,11 +225,20 @@ ul.checklist label{cursor:pointer}
   border:1px solid var(--line);border-radius:6px;
   padding:1.4rem 1.5rem;margin:1.5rem 0;max-width:76ch;
   position:relative;
+  transition:border-color .4s var(--ease-out),box-shadow .4s var(--ease-out),transform .4s var(--ease-out);
 }
 .boss-card::before{
   content:"";position:absolute;inset:0 0 auto 0;height:2px;
   background:linear-gradient(90deg,transparent,var(--ember),transparent);
+  opacity:.75;transition:opacity .4s var(--ease-out);
 }
+/* Boss cards loom slightly on approach — a fog gate you can feel */
+.boss-card:hover{
+  border-color:#4a3c29;
+  transform:translateY(-2px);
+  box-shadow:0 10px 30px -12px rgba(0,0,0,.55), 0 0 0 1px rgba(192,90,46,.1);
+}
+.boss-card:hover::before{opacity:1}
 .boss-card h4{
   font-family:'Cinzel',serif;font-weight:700;font-size:1.25rem;
   color:var(--parchment);letter-spacing:.03em;
@@ -186,18 +257,75 @@ th{
   font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
   color:var(--gold);text-align:left;padding:.6rem .75rem;border-bottom:1px solid var(--gold);
 }
-td{padding:.55rem .75rem;border-bottom:1px solid var(--line);vertical-align:top}
+td{padding:.55rem .75rem;border-bottom:1px solid var(--line);vertical-align:top;transition:background .3s var(--ease-out)}
 tr:hover td{background:rgba(200,162,74,.05)}
+tbody tr:hover td:first-child,tr:hover td:first-child{box-shadow:inset 2px 0 0 var(--gold)}
 
 /* Progress footer per section */
 .rest-marker{
   margin-top:2.25rem;text-align:center;color:var(--muted);
   font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;
+  transition:color .4s var(--ease-out);
 }
-.rest-marker::before,.rest-marker::after{content:" ✦ ";color:var(--gold)}
+.rest-marker::before,.rest-marker::after{content:" ✦ ";color:var(--gold);display:inline-block;transition:transform .5s var(--ease-spring),color .4s var(--ease-out)}
+.rest-marker:hover{color:var(--parchment)}
+.rest-marker:hover::before{transform:rotate(180deg);color:var(--grace)}
+.rest-marker:hover::after{transform:rotate(-180deg);color:var(--grace)}
+
+/* The golden thread — reading progress woven along the top edge */
+.thread{position:fixed;top:0;left:0;right:0;height:2px;z-index:50;pointer-events:none;background:transparent}
+.thread i{
+  display:block;height:100%;width:100%;
+  background:linear-gradient(90deg,var(--gold),var(--grace));
+  box-shadow:0 0 8px rgba(255,217,138,.55);
+  transform:scaleX(0);transform-origin:left center;
+  transition:transform .15s linear;
+}
+
+/* Return to the First Step — back-to-top grace */
+.to-top{
+  position:fixed;right:1.5rem;bottom:1.5rem;z-index:40;
+  width:44px;height:44px;border-radius:50%;cursor:pointer;
+  background:var(--panel);border:1px solid var(--line);
+  color:var(--gold);font-size:1.1rem;line-height:1;
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;transform:translateY(10px);pointer-events:none;
+  transition:opacity .4s var(--ease-out),transform .4s var(--ease-out),
+             border-color .3s var(--ease-out),box-shadow .3s var(--ease-out);
+}
+.to-top.show{opacity:1;transform:none;pointer-events:auto}
+.to-top:hover{border-color:var(--gold);box-shadow:0 0 14px rgba(255,217,138,.25);color:var(--gold-bright)}
+.to-top:active{transform:scale(.92)}
+.to-top:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+
+@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes breathe{
+  0%,100%{box-shadow:0 0 10px 3px rgba(255,217,138,.5)}
+  50%{box-shadow:0 0 14px 5px rgba(255,217,138,.72)}
+}
+@keyframes flare{
+  0%{box-shadow:0 0 10px 3px rgba(255,217,138,.5)}
+  25%{box-shadow:0 0 26px 10px rgba(255,217,138,.85)}
+  100%{box-shadow:0 0 10px 3px rgba(255,217,138,.5)}
+}
+@keyframes seal{
+  0%{transform:scale(.8)}
+  55%{transform:scale(1.16)}
+  100%{transform:scale(1)}
+}
 
 /* Side path variant — ember-marked */
-section.phase.side .grace-mark{background:var(--ember);box-shadow:0 0 10px 3px rgba(192,90,46,.5)}
+section.phase.side .grace-mark{background:var(--ember);box-shadow:0 0 10px 3px rgba(192,90,46,.5);animation:breathe-ember 4s ease-in-out infinite}
+section.phase.side.arrived .grace-mark{animation:flare-ember 1.6s var(--ease-out), breathe-ember 4s ease-in-out 1.6s infinite}
+@keyframes breathe-ember{
+  0%,100%{box-shadow:0 0 10px 3px rgba(192,90,46,.5)}
+  50%{box-shadow:0 0 14px 5px rgba(192,90,46,.72)}
+}
+@keyframes flare-ember{
+  0%{box-shadow:0 0 10px 3px rgba(192,90,46,.5)}
+  25%{box-shadow:0 0 26px 10px rgba(192,90,46,.85)}
+  100%{box-shadow:0 0 10px 3px rgba(192,90,46,.5)}
+}
 section.phase.side .phase-head{border-bottom-color:var(--ember-dim)}
 section.phase.side .phase-head h2{color:var(--parchment)}
 nav.route ol.sideroute::before{background:linear-gradient(var(--ember) 0%, var(--ember-dim) 100%)}
@@ -208,18 +336,182 @@ nav.route ol.sideroute li::before{border-color:var(--ember);box-shadow:0 0 6px r
   display:block;max-width:76ch;margin:1.1rem 0;
   padding:.7rem 1rem;border:1px dashed var(--ember-dim);border-radius:4px;
   background:rgba(192,90,46,.06);font-size:1.02rem;
+  transition:border-color .35s var(--ease-out),background .35s var(--ease-out),transform .35s var(--ease-out);
 }
+.side-ref:hover{border-color:var(--ember);background:rgba(192,90,46,.1);transform:translateX(3px)}
 .side-ref::before{content:"⤷ Side Path · ";font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ember)}
-.side-ref a{color:var(--gold-bright);text-decoration:none;border-bottom:1px solid var(--ember-dim)}
+.side-ref a{color:var(--gold-bright);text-decoration:none;border-bottom:1px solid var(--ember-dim);transition:color .25s var(--ease-out),border-bottom-color .25s var(--ease-out)}
 .side-ref a:hover,.side-ref a:focus-visible{color:var(--grace);border-bottom-color:var(--gold)}
 .side-ref a:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 .side-ref .why{color:var(--muted)}
 
 footer{border-top:1px solid var(--line);padding:2.5rem 0 3rem;text-align:center;color:var(--muted);font-size:.95rem}
 footer .fin{font-family:'Cinzel',serif;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem}
+
+/* ================= The Cinematic Arrival — title gate ================= */
+/* Hidden unless JS declares the gate (html.cine), so no-JS visitors go straight in */
+.intro{display:none}
+html.cine{overflow:hidden}
+html.cine.entered{overflow:auto}
+html.cine .intro{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  position:fixed;inset:0;z-index:100;text-align:center;padding:1.5rem;
+  background:
+    radial-gradient(ellipse 75% 55% at 50% 108%, rgba(192,90,46,.12), transparent 65%),
+    radial-gradient(ellipse 55% 45% at 50% 42%, rgba(200,162,74,.12), transparent 70%),
+    #0b0805;
+  transition:opacity 1.1s var(--ease-out),visibility 1.1s;
+}
+html.cine.entered .intro{opacity:0;visibility:hidden;pointer-events:none}
+
+/* The great ring — draws itself closed around the title */
+.intro .ring{
+  position:absolute;left:50%;top:50%;
+  width:min(78vmin,600px);height:min(78vmin,600px);
+  transform:translate(-50%,-50%);
+  transition:opacity .6s var(--ease-out);
+}
+.intro .ring .arc{
+  fill:none;stroke:var(--gold);stroke-width:1.6;stroke-linecap:round;
+  stroke-dasharray:1006;stroke-dashoffset:1006;
+  transform:rotate(-90deg);transform-origin:center;
+  filter:drop-shadow(0 0 7px rgba(255,217,138,.4));
+  animation:ringdraw 2.8s var(--ease-out) .55s forwards;
+}
+.intro .ring .halo{
+  fill:none;stroke:var(--gold);stroke-width:1;opacity:0;
+  animation:halofade 1.8s var(--ease-out) 2.2s forwards;
+}
+@keyframes ringdraw{to{stroke-dashoffset:0}}
+@keyframes halofade{to{opacity:.16}}
+
+/* Ember motes adrift */
+.intro .motes i{
+  position:absolute;bottom:-8px;width:4px;height:4px;border-radius:50%;
+  background:var(--grace);opacity:0;filter:blur(.5px);
+  box-shadow:0 0 6px rgba(255,217,138,.6);
+  animation:mote 12s linear infinite;
+}
+.intro .motes i:nth-child(odd){--sway:-6vw;width:3px;height:3px}
+.intro .motes i:nth-child(3n){--sway:9vw}
+.intro .motes i:nth-child(1){left:8%;animation-delay:.6s}
+.intro .motes i:nth-child(2){left:19%;animation-delay:4.2s;animation-duration:14s}
+.intro .motes i:nth-child(3){left:31%;animation-delay:2.1s}
+.intro .motes i:nth-child(4){left:43%;animation-delay:6.5s;animation-duration:15s}
+.intro .motes i:nth-child(5){left:55%;animation-delay:1.4s;animation-duration:10.5s}
+.intro .motes i:nth-child(6){left:66%;animation-delay:5.3s}
+.intro .motes i:nth-child(7){left:77%;animation-delay:3s;animation-duration:13.5s}
+.intro .motes i:nth-child(8){left:88%;animation-delay:7.8s}
+.intro .motes i:nth-child(9){left:50%;animation-delay:9.4s;animation-duration:11s}
+.intro .motes i:nth-child(10){left:12%;animation-delay:11s;animation-duration:16s}
+@keyframes mote{
+  0%{transform:translateY(0) translateX(0) scale(1);opacity:0}
+  8%{opacity:.85}
+  60%{opacity:.45}
+  100%{transform:translateY(-105vh) translateX(var(--sway,5vw)) scale(.35);opacity:0}
+}
+
+/* The grace ignites first — everything else follows from its light */
+.intro .flame{
+  position:relative;width:16px;height:16px;border-radius:50%;
+  background:var(--grace);margin-bottom:2.4rem;
+  box-shadow:0 0 16px 6px rgba(255,217,138,.6), 0 0 64px 24px rgba(255,217,138,.2);
+  animation:ignite 1.2s var(--ease-out) .15s both, breathe 3.4s ease-in-out 1.4s infinite;
+}
+@keyframes ignite{
+  0%{opacity:0;transform:scale(.15)}
+  60%{opacity:1;transform:scale(1.3)}
+  100%{opacity:1;transform:scale(1)}
+}
+
+.intro .eyebrow{
+  position:relative;
+  font-family:'Cinzel',serif;font-size:.78rem;letter-spacing:.35em;
+  text-transform:uppercase;color:var(--gold);
+  animation:rise 1s var(--ease-out) .95s both;
+}
+.intro .title{
+  position:relative;
+  font-family:'Cinzel',serif;font-weight:700;
+  font-size:clamp(2.4rem,7vw,4.4rem);line-height:1.12;
+  max-width:16ch;margin:.9rem 0 .4rem;
+  color:var(--gold-bright);text-shadow:0 0 44px rgba(255,217,138,.32);
+  animation:trackin 1.7s var(--ease-out) 1.15s both;
+}
+@keyframes trackin{
+  from{opacity:0;letter-spacing:.24em;filter:blur(7px)}
+  to{opacity:1;letter-spacing:.04em;filter:blur(0)}
+}
+.intro .sub{
+  position:relative;max-width:46ch;
+  color:var(--muted);font-size:1.12rem;font-style:italic;
+  animation:rise 1s var(--ease-out) 2.05s both;
+}
+
+/* The gate — a beckoning grace-lit threshold */
+.intro .enter{
+  position:relative;margin-top:2.8rem;cursor:pointer;
+  font-family:'Cinzel',serif;font-size:.82rem;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--gold);background:rgba(200,162,74,.04);
+  border:1px solid rgba(200,162,74,.45);border-radius:2px;
+  padding:1.05rem 2.6rem .95rem;
+  transition:color .35s var(--ease-out),border-color .35s var(--ease-out),
+             background .35s var(--ease-out),transform .2s var(--ease-spring);
+  animation:rise 1s var(--ease-out) 2.6s both;
+}
+.intro .enter::after{
+  content:"";position:absolute;inset:-1px;border-radius:2px;pointer-events:none;
+  box-shadow:0 0 22px rgba(255,217,138,.22), inset 0 0 14px rgba(200,162,74,.1);
+  opacity:.25;animation:beckon 3.2s ease-in-out 3.7s infinite;
+}
+@keyframes beckon{0%,100%{opacity:.25}50%{opacity:1}}
+.intro .enter:hover,.intro .enter:focus-visible{
+  color:var(--grace);border-color:var(--gold);background:rgba(200,162,74,.09);
+  transform:translateY(-1px);
+}
+.intro .enter:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+.intro .enter:active{transform:scale(.96)}
+
+/* Crossing the threshold — the grace blooms and the gate dissolves */
+.intro.leaving .flame{
+  animation:none;
+  transition:transform 1.1s var(--ease-out),opacity 1.1s var(--ease-out);
+  transform:scale(30);opacity:0;
+}
+.intro.leaving .eyebrow,.intro.leaving .title,.intro.leaving .sub,.intro.leaving .enter{
+  animation:none;opacity:0;transition:opacity .5s var(--ease-out);
+}
+.intro.leaving .ring{opacity:0}
+.intro.leaving .motes{display:none}
+
+/* Hold the hero's entrance cascade until the gate falls */
+html.cine:not(.entered) .hero .eyebrow,
+html.cine:not(.entered) .hero h1,
+html.cine:not(.entered) .hero p.sub,
+html.cine:not(.entered) .hero .flame{animation-play-state:paused}
 </style>
 </head>
 <body>
+
+<script>
+// The title gate rises only for front-door arrivals; deep links go straight to their section
+if (!location.hash) document.documentElement.classList.add('cine');
+</script>
+
+<div class="intro" role="dialog" aria-modal="true" aria-label="Welcome to The Tarnished's Road">
+  <svg class="ring" viewBox="0 0 340 340" aria-hidden="true">
+    <circle class="halo" cx="170" cy="170" r="148"/>
+    <circle class="arc" cx="170" cy="170" r="160"/>
+  </svg>
+  <div class="motes" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="flame" aria-hidden="true"></div>
+  <div class="eyebrow">A Complete Walkthrough &amp; Build Guide</div>
+  <div class="title">The Tarnished's Road</div>
+  <p class="sub">One route, one build, no wasted steps.</p>
+  <button class="enter" type="button">Touch Grace &amp; Enter</button>
+</div>
+
+<div class="thread" aria-hidden="true"><i></i></div>
 
 <header class="hero">
   <div class="wrap">
@@ -261,6 +553,10 @@ footer .fin{font-family:'Cinzel',serif;letter-spacing:.3em;text-transform:upperc
     <li><a href="#side-placidusax">G · Dragonlord Placidusax</a></li>
     <li><a href="#side-npcs">H · Companions of the Road</a></li>
   </ol>
+  <div class="route-progress" hidden>
+    Progress · <span class="num">0%</span>
+    <div class="bar"><i></i></div>
+  </div>
 </nav>
 
 <main>
@@ -1082,9 +1378,160 @@ footer .fin{font-family:'Cinzel',serif;letter-spacing:.3em;text-transform:upperc
   </div>
 </footer>
 
+<button class="to-top" aria-label="Return to the top of the guide" title="Return to the First Step">✦</button>
+
 <script>
-// Progress is per-visit only. To persist checkboxes on your site,
-// wire these inputs to your own storage (e.g. localStorage or a user account).
+(function(){
+  'use strict';
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- The Cinematic Arrival — title gate ---------- */
+  var docEl = document.documentElement;
+  var intro = document.querySelector('.intro');
+  var enterBtn = intro ? intro.querySelector('.enter') : null;
+  if (docEl.classList.contains('cine') && enterBtn) {
+    // Focus the threshold once it has risen into place
+    if (reduceMotion) {
+      enterBtn.focus();
+    } else {
+      enterBtn.addEventListener('animationend', function onRise(e){
+        if (e.animationName !== 'rise') return;
+        enterBtn.removeEventListener('animationend', onRise);
+        enterBtn.focus();
+      });
+    }
+    enterBtn.addEventListener('click', function(){
+      intro.classList.add('leaving');           // the grace blooms, the gate dissolves
+      window.setTimeout(function(){
+        docEl.classList.add('entered');          // overlay fades; hero cascade begins beneath it
+      }, reduceMotion ? 0 : 350);
+      window.setTimeout(function(){
+        intro.remove();
+        docEl.classList.remove('cine', 'entered');
+        var h1 = document.querySelector('.hero h1');
+        if (h1) { h1.setAttribute('tabindex', '-1'); h1.focus({ preventScroll: true }); }
+      }, reduceMotion ? 60 : 1600);
+    }, { once: true });
+  } else if (intro) {
+    intro.remove();                              // deep-link arrival: no gate, no residue
+  }
+
+  /* ---------- Checklist persistence — your progress survives the death screen ---------- */
+  var STORAGE_KEY = 'tarnisheds-road-progress';
+  var boxes = Array.prototype.slice.call(document.querySelectorAll('ul.checklist input[type=checkbox]'));
+  var saved = {};
+  try { saved = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } catch(e) {}
+  boxes.forEach(function(box){
+    if (saved[box.id]) box.checked = true;
+  });
+  function persist(){
+    var state = {};
+    boxes.forEach(function(box){ if (box.checked) state[box.id] = 1; });
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch(e) {}
+  }
+
+  /* ---------- Route progress tally + per-phase completion dots ---------- */
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll('nav.route a'));
+  var linkByPhase = {};
+  navLinks.forEach(function(a){ linkByPhase[a.getAttribute('href').slice(1)] = a.parentElement; });
+
+  var progressEl = document.querySelector('.route-progress');
+  var progressNum = progressEl.querySelector('.num');
+  var progressBar = progressEl.querySelector('.bar i');
+  progressEl.hidden = false;
+
+  function updateProgress(){
+    var done = boxes.filter(function(b){ return b.checked; }).length;
+    var pct = boxes.length ? Math.round(done / boxes.length * 100) : 0;
+    progressNum.textContent = pct + '%';
+    progressBar.style.width = pct + '%';
+    // A waypoint whose every task is ticked earns a filled grace-dot
+    document.querySelectorAll('section.phase[id]').forEach(function(sec){
+      var li = linkByPhase[sec.id];
+      if (!li) return;
+      var secBoxes = sec.querySelectorAll('ul.checklist input[type=checkbox]');
+      if (!secBoxes.length) return;
+      var all = Array.prototype.every.call(secBoxes, function(b){ return b.checked; });
+      li.classList.toggle('done', all);
+    });
+  }
+
+  boxes.forEach(function(box){
+    box.addEventListener('change', function(){ persist(); updateProgress(); });
+  });
+  updateProgress();
+
+  /* ---------- Scrollspy — light the grace you currently rest at ---------- */
+  var phases = Array.prototype.slice.call(document.querySelectorAll('section.phase[id]'));
+  function setHere(li){
+    navLinks.forEach(function(a){ a.parentElement.classList.remove('here'); });
+    li.classList.add('here');
+  }
+  var spy = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if (!entry.isIntersecting) return;
+      var li = linkByPhase[entry.target.id];
+      if (li) setHere(li);
+    });
+  }, { rootMargin: '-10% 0px -75% 0px' });
+  phases.forEach(function(sec){ spy.observe(sec); });
+
+  /* ---------- Arrival flare — jumping via the route makes the grace ignite ---------- */
+  navLinks.forEach(function(a){
+    a.addEventListener('click', function(){
+      // Instant feedback: the destination lights before the scroll lands
+      setHere(a.parentElement);
+      var target = document.getElementById(a.getAttribute('href').slice(1));
+      if (!target || reduceMotion) return;
+      target.classList.remove('arrived');
+      // restart the flare animation
+      void target.offsetWidth;
+      target.classList.add('arrived');
+      // ensure a hidden reveal section is lit when jumped to directly
+      target.classList.add('lit');
+    });
+  });
+
+  /* ---------- Reveal on approach — sections drift up as you reach them ---------- */
+  if (!reduceMotion && 'IntersectionObserver' in window) {
+    var lantern = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) {
+          entry.target.classList.add('lit');
+          lantern.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+    phases.forEach(function(sec, i){
+      // Never hide content already in the viewport on load
+      if (sec.getBoundingClientRect().top < window.innerHeight) return;
+      sec.classList.add('reveal');
+      lantern.observe(sec);
+    });
+  }
+
+  /* ---------- The golden thread + back-to-top ---------- */
+  var thread = document.querySelector('.thread i');
+  var toTop = document.querySelector('.to-top');
+  var ticking = false;
+  function onScroll(){
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function(){
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      var p = max > 0 ? window.scrollY / max : 0;
+      thread.style.transform = 'scaleX(' + p + ')';
+      toTop.classList.toggle('show', window.scrollY > window.innerHeight * 1.5);
+      ticking = false;
+    });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  toTop.addEventListener('click', function(){
+    window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+  });
+})();
 </script>
 </body>
 </html>
