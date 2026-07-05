@@ -1,0 +1,1092 @@
+{
+  "id": "bloodhound-vagabond",
+  "version": "1.0.0",
+  "meta": {
+    "title": "The Tarnished's Road",
+    "eyebrow": "A Complete Walkthrough &amp; Build Guide",
+    "subtitle": "One route, one build, no wasted steps. Follow the golden thread from the Chapel of Anticipation to the Elden Throne — every stop, every item, every level, in order.",
+    "pageTitle": "The Tarnished's Road — An Optimal Elden Ring Walkthrough",
+    "footerTagline": "Well Met, Tarnished",
+    "footerText": "An original walkthrough written for elden-ring newcomers and efficiency runners alike."
+  },
+  "nav": [
+    {
+      "id": "build",
+      "navLabel": "The Build"
+    },
+    {
+      "id": "limgrave",
+      "navLabel": "I · Limgrave"
+    },
+    {
+      "id": "weeping",
+      "navLabel": "II · Weeping Peninsula"
+    },
+    {
+      "id": "stormveil",
+      "navLabel": "III · Stormveil Castle"
+    },
+    {
+      "id": "liurnia",
+      "navLabel": "IV · Liurnia"
+    },
+    {
+      "id": "caelid",
+      "navLabel": "V · Caelid & Radahn"
+    },
+    {
+      "id": "nokron",
+      "navLabel": "VI · Nokron"
+    },
+    {
+      "id": "altus",
+      "navLabel": "VII · Altus Plateau"
+    },
+    {
+      "id": "leyndell",
+      "navLabel": "VIII · Leyndell"
+    },
+    {
+      "id": "mountaintops",
+      "navLabel": "IX · Mountaintops"
+    },
+    {
+      "id": "farum",
+      "navLabel": "X · Farum Azula"
+    },
+    {
+      "id": "endgame",
+      "navLabel": "XI · The Elden Throne"
+    },
+    {
+      "id": "appendix",
+      "navLabel": "Appendices"
+    }
+  ],
+  "phases": [
+    {
+      "id": "build",
+      "navLabel": "The Build",
+      "title": "The Build: Bloodhound Vagabond",
+      "regionTag": "Read First",
+      "blocks": [
+        {
+          "type": "lede",
+          "html": "The single most forgiving, efficient way through Elden Ring: a tanky knight wielding Bloodhound's Fang, backed by the Mimic Tear. High damage, built-in bleed, a dodge baked into your weapon skill, and a clone of yourself tanking every boss."
+        },
+        {
+          "type": "heading",
+          "text": "Why this build wins"
+        },
+        {
+          "type": "paragraph",
+          "html": "<strong>Bloodhound's Fang</strong> is a curved greatsword you can grab within the first hour. It deals huge damage, causes <em>blood loss</em> (a chunk of the enemy's health bar when the meter fills), and its weapon skill — <em>Bloodhound's Finesse</em> — is an attack that doubles as a backflip dodge. It upgrades with <strong>Somber Smithing Stones</strong>, which means only ten stones total to max it, no farming dozens of regular stones."
+        },
+        {
+          "type": "paragraph",
+          "html": "The <strong>Mimic Tear</strong> spirit ash summons a copy of you, with your weapon and gear. From the mid-game onward, every boss fight becomes two-on-one in your favor. Until then, the <strong>Lone Wolf Ashes</strong> carry you."
+        },
+        {
+          "type": "heading",
+          "text": "Character creation"
+        },
+        {
+          "type": "checklist",
+          "items": [
+            {
+              "id": "b1",
+              "html": "<strong>Class: Vagabond.</strong> Best starting stats for this build — high Vigor, solid Strength and Dexterity, good armor."
+            },
+            {
+              "id": "b2",
+              "html": "<strong>Keepsake: Golden Seed.</strong> A free flask charge from minute one. (Nothing else comes close.)"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Stat priority — level in this exact order"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Order",
+            "Target",
+            "Why"
+          ],
+          "rows": [
+            [
+              "1",
+              "Vigor to <strong>20</strong>",
+              "Survive Limgrave. Vigor is the single best stat in the game — never skimp on it."
+            ],
+            [
+              "2",
+              "Strength <strong>18</strong>, Dexterity <strong>17</strong>",
+              "The exact requirements to wield Bloodhound's Fang."
+            ],
+            [
+              "3",
+              "Vigor to <strong>40</strong>",
+              "Your mid-game health pool. Do this before Leyndell."
+            ],
+            [
+              "4",
+              "Endurance to <strong>20</strong>",
+              "More stamina for swings and dodges; enough equip load for medium armor."
+            ],
+            [
+              "5",
+              "Strength to <strong>40</strong>",
+              "Your main damage stat for the Fang."
+            ],
+            [
+              "6",
+              "Vigor to <strong>60</strong>",
+              "The soft cap. Endgame bosses hit like trucks; this is your insurance."
+            ],
+            [
+              "7",
+              "Dexterity to <strong>~30</strong>, then Strength onward",
+              "Extra scaling damage once the essentials are done."
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "html": "Ignore Mind, Intelligence, Faith, and Arcane entirely. If you ever want to experiment, Rennala (Phase IV) lets you fully respec."
+        },
+        {
+          "type": "heading",
+          "text": "How to actually fight"
+        },
+        {
+          "type": "checklist",
+          "items": [
+            {
+              "id": "b3",
+              "html": "<strong>Two-hand the Fang</strong> (hold the interact button while switching weapons). You get 50% bonus Strength scaling and better stagger."
+            },
+            {
+              "id": "b4",
+              "html": "<strong>Jumping heavy attacks</strong> are your bread and butter — they break enemy poise fast, opening huge critical hits."
+            },
+            {
+              "id": "b5",
+              "html": "<strong>Summon before every boss.</strong> There is no penalty. Spirit ashes are a core mechanic, not a crutch."
+            },
+            {
+              "id": "b6",
+              "html": "<strong>If a fight feels impossible, leave.</strong> This guide's route means you're never forced into anything — go level, upgrade, come back."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "variant": "default",
+          "label": "The Golden Rule",
+          "paragraphs": [
+            "Elden Ring's real difficulty setting is preparation. Flask upgrades (Golden Seeds &amp; Sacred Tears), weapon upgrades (Somber Stones), and Vigor matter far more than skill. This guide front-loads all three."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "limgrave",
+      "navLabel": "I · Limgrave",
+      "title": "Phase I — Limgrave",
+      "regionTag": "Levels 1–20",
+      "blocks": [
+        {
+          "type": "lede",
+          "html": "The opening hours set up your entire run: your mount, your flask, your spirit summons, and — most importantly — your endgame weapon."
+        },
+        {
+          "type": "heading",
+          "text": "Step-by-step"
+        },
+        {
+          "type": "checklist",
+          "items": [
+            {
+              "id": "l1",
+              "html": "<strong>Tutorial:</strong> After the Chapel of Anticipation, drop into the glowing pit in the Stranded Graveyard for the Cave of Knowledge tutorial. Do it — it teaches guard counters and stealth, and the Soldier of Godrick at the end is free runes."
+            },
+            {
+              "id": "l2",
+              "html": "<strong>First Steps grace → Church of Elleh:</strong> Buy the <em>Crafting Kit</em> (300 runes) from Kalé the merchant. Craft supplies will save your life all game."
+            },
+            {
+              "id": "l3",
+              "html": "<strong>Gatefront Ruins:</strong> Grab the <em>West Limgrave Map Fragment</em> at the roadside stele, and the <em>Whetstone Knife</em> from the cellar under the ruins (lets you swap Ashes of War). Rest at the Gatefront grace — <strong>Melina appears</strong>, granting leveling and <strong>Torrent</strong>, your horse."
+            },
+            {
+              "id": "l4",
+              "html": "<strong>Return to Church of Elleh at night:</strong> The witch <strong>Renna</strong> sits on the wall. She gives you the <em>Spirit Calling Bell</em> and <strong>Lone Wolf Ashes</strong> — your boss-fight companions for the next twenty hours. (If she doesn't appear, rest at Gatefront until nightfall and ride back.)"
+            },
+            {
+              "id": "l5",
+              "html": "<strong>Third Church of Marika</strong> (far northeast Limgrave, follow the road east then north): Collect the <strong>Flask of Wondrous Physick</strong>, the <em>Crimson Crystal Tear</em> (mix it in — a free half-heal once per rest), and a <strong>Sacred Tear</strong> from the statue (upgrade flask healing at any grace)."
+            },
+            {
+              "id": "l6",
+              "html": "<strong>Golden Seeds:</strong> Small glowing golden saplings mark them. Grab the one on the path up Stormhill toward the castle, and another by <strong>Fort Haight</strong> in the southeast. Every seed = an extra flask charge. Make a habit: <em>see a golden sapling, take the seed</em>."
+            },
+            {
+              "id": "l7",
+              "html": "<strong>Fort Haight</strong> (southeast, in Mistwood): Fight or sneak to the tower top for the <strong>Dectus Medallion (Left)</strong>. This is half your ticket to the Altus Plateau later. Two birds, one trip: the Golden Seed sapling is just outside."
+            },
+            {
+              "id": "l8",
+              "html": "<strong>Murkwater Cave</strong> (in the river ravine north of Agheel Lake): The \"boss\" is <strong>Patches</strong>. Beat him down until he surrenders, then <em>spare him</em>. He becomes a merchant — you'll be back for something special."
+            },
+            {
+              "id": "l9",
+              "html": "<strong>Stormhill Shack</strong> (on the road to Stormveil): Talk to <strong>Roderika</strong> and exhaust her dialogue. She later moves to the Roundtable Hold and unlocks <em>spirit ash upgrades</em> — essential for the Mimic Tear."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "The main event: claim Bloodhound's Fang"
+        },
+        {
+          "type": "bossCard",
+          "subtitle": "Evergaol Duel · Recommended Level 12–18",
+          "name": "Bloodhound Knight Darriwil",
+          "paragraphs": [
+            "The <strong>Forlorn Hound Evergaol</strong> sits on the southern cliffs of Limgrave, just northeast of the Bridge of Sacrifice. Activate the seal to enter. No spirit summons work inside — this one's on you."
+          ],
+          "tips": [
+            "He's fast but fragile. Stay locked on, hold your shield up, and punish the end of his lunging combos with one or two hits — then back off.",
+            "His long leaping slash is your biggest opening: dodge <em>toward</em> him and counter.",
+            "If you struggle, level Vigor a few more times and return — the arena isn't going anywhere."
+          ],
+          "footer": "<strong>Reward: Bloodhound's Fang.</strong> Equip it the moment you meet Str 18 / Dex 17. This weapon carries you to the credits."
+        },
+        {
+          "type": "paragraph",
+          "html": "The <strong>Forlorn Hound Evergaol</strong> sits on the southern cliffs of Limgrave, just northeast of the Bridge of Sacrifice. Activate the seal to enter. No spirit summons work inside — this one's on you."
+        },
+        {
+          "type": "paragraph",
+          "html": "<strong>Reward: Bloodhound's Fang.</strong> Equip it the moment you meet Str 18 / Dex 17. This weapon carries you to the credits."
+        },
+        {
+          "type": "callout",
+          "variant": "default",
+          "label": "Efficiency Tip · Margit's Shackle",
+          "paragraphs": [
+            "Once you have ~5,000 runes, return to Patches in Murkwater Cave and buy <strong>Margit's Shackle</strong>. Used in the first phase of the Margit fight, it pins him to the ground for a free combo — and it works <em>twice</em>. Even better: it works again on a certain boss in Leyndell, much later. Best 5,000 runes you'll ever spend."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Before you leave Limgrave"
+        },
+        {
+          "type": "checklist",
+          "items": [
+            {
+              "id": "l10",
+              "html": "Vigor at 20, and Str 18 / Dex 17 reached — Fang in hand, two-handed."
+            },
+            {
+              "id": "l11",
+              "html": "Flask split: with 4+ charges, keep them all Crimson (healing). You have no use for FP flasks yet beyond one charge for summons — one Cerulean is plenty."
+            },
+            {
+              "id": "l12",
+              "html": "Fang upgraded to <strong>+1 or +2</strong> with any Somber Smithing Stones [1]/[2] you've found (Smithing Master Hewg at the Roundtable Hold does upgrades — you're taken there automatically after resting at graces enough / meeting Melina)."
+            }
+          ]
+        },
+        {
+          "type": "restMarker",
+          "text": "Site of Grace · Rest &amp; Continue"
+        }
+      ]
+    },
+    {
+      "id": "weeping",
+      "navLabel": "II · Weeping Peninsula",
+      "title": "Phase II — Weeping Peninsula",
+      "regionTag": "A 45-Minute Loot Loop",
+      "blocks": [
+        {
+          "type": "lede",
+          "html": "Entirely optional territory — which is exactly why it's the perfect low-risk farm for flask upgrades and levels before Stormveil. Ride the loop, grab everything, leave."
+        },
+        {
+          "type": "checklist",
+          "items": [
+            {
+              "id": "w1",
+              "html": "Cross the <strong>Bridge of Sacrifice</strong> south of Limgrave. Grab the map fragment from the stele on the main road south."
+            },
+            {
+              "id": "w2",
+              "html": "<strong>Church of Pilgrimage</strong> (northwest corner of the peninsula): a <strong>Sacred Tear</strong> at the statue."
+            },
+            {
+              "id": "w3",
+              "html": "<strong>Fourth Church of Marika</strong> (western coast): another <strong>Sacred Tear</strong>."
+            },
+            {
+              "id": "w4",
+              "html": "<strong>Golden Seeds:</strong> two saplings sit along the peninsula's roads — one near the Minor Erdtree at the center, one on the route toward Castle Morne. Watch for the glow."
+            },
+            {
+              "id": "w5",
+              "html": "<strong>Minor Erdtree (optional):</strong> the Erdtree Avatar guarding it drops crystal tears for your Physick. Fight it with Torrent — hit and run. Skip if it's going badly; nothing here is required."
+            },
+            {
+              "id": "w6",
+              "html": "<strong>Castle Morne: skip it.</strong> Its reward is a Strength weapon you don't need. (If you enjoy side content, the Irina &amp; Edgar questline starts on the road south — but it's not on our critical path.)"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "variant": "default",
+          "label": "Checkpoint",
+          "paragraphs": [
+            "Leaving the peninsula you should be around <strong>level 20–25</strong>, with <strong>5–6 flask charges</strong> healing at <strong>+2 or +3</strong> potency. That turns Margit from a wall into a speed bump."
+          ]
+        },
+        {
+          "type": "restMarker",
+          "text": "Site of Grace · Rest &amp; Continue"
+        }
+      ]
+    },
+    {
+      "id": "stormveil",
+      "navLabel": "III · Stormveil Castle",
+      "title": "Phase III — Stormveil Castle",
+      "regionTag": "First Legacy Dungeon",
+      "blocks": [
+        {
+          "type": "lede",
+          "html": "Your first true test — and your first Great Rune. With the Fang, the wolves, and the Shackle, both bosses fold."
+        },
+        {
+          "type": "bossCard",
+          "subtitle": "Castle Gatekeeper · Recommended Level 20–25",
+          "name": "Margit, the Fell Omen",
+          "paragraphs": [],
+          "tips": [
+            "Before the fog: summon the <strong>Lone Wolf Ashes</strong>, and use <strong>Sorcerer Rogier's</strong> gold summon sign near the stairs.",
+            "Open with <strong>Margit's Shackle</strong> — he's pinned, free jumping heavies. Use the second charge when he gets back up. That's often a third of his health gone before he swings.",
+            "He delays his attacks to bait early dodges. Watch the weapon, not his body — dodge when it <em>moves</em>, not when it glows.",
+            "In phase two, his hammer slam has a long recovery. That's your combo window."
+          ],
+          "footer": null
+        },
+        {
+          "type": "heading",
+          "text": "Through the castle"
+        },
+        {
+          "type": "checklist",
+          "items": [
+            {
+              "id": "s1",
+              "html": "At the main gate, Gatekeeper Gostoc opens a <strong>side path</strong> — take it. The main gate is a ballista killbox."
+            },
+            {
+              "id": "s2",
+              "html": "Work upward through the rafters and courtyards, resting at each grace. A <strong>Golden Seed</strong> sits at a sapling in the castle grounds near the Rampart Tower area — keep your eyes open for the glow."
+            },
+            {
+              "id": "s3",
+              "html": "Optional: the <strong>Iron Whetblade</strong> in the armory (behind a locked door — the key is in the room where the hawk-knights nest) lets you put Heavy/Keen affinities on regular weapons. Not needed for the Fang, but grab it if you pass by; future builds thank you."
+            },
+            {
+              "id": "s4",
+              "html": "Talk to <strong>Nepheli Loux</strong> in the room before the boss — this puts her summon sign outside the fog."
+            }
+          ]
+        },
+        {
+          "type": "bossCard",
+          "subtitle": "Shardbearer · Recommended Level 25–30",
+          "name": "Godrick the Grafted",
+          "paragraphs": [],
+          "tips": [
+            "Summon <strong>Nepheli</strong> (sign by the fog gate) plus your wolves. Three targets, one very confused demigod.",
+            "Stay behind him and to his left; nearly everything he does swings forward and right.",
+            "Phase two he grafts a dragon head onto his arm — when he winds up the flame sweep, sprint <em>behind him</em> and attack freely. The fire breath is a damage window for you, not him."
+          ],
+          "footer": "<strong>After the fight:</strong> take <em>Godrick's Great Rune</em>, then ride east from the castle across the long bridge to the <strong>Divine Tower of Limgrave</strong> to activate it. Equipped with a Rune Arc, it raises <em>all</em> your stats. Also visit Nepheli at the Roundtable Hold afterward — she gives you the <strong>Arsenal Charm</strong> (extra equip load)."
+        },
+        {
+          "type": "paragraph",
+          "html": "<strong>After the fight:</strong> take <em>Godrick's Great Rune</em>, then ride east from the castle across the long bridge to the <strong>Divine Tower of Limgrave</strong> to activate it. Equipped with a Rune Arc, it raises <em>all</em> your stats. Also visit Nepheli at the Roundtable Hold afterward — she gives you the <strong>Arsenal Charm</strong> (extra equip load)."
+        },
+        {
+          "type": "restMarker",
+          "text": "Site of Grace · Rest &amp; Continue"
+        }
+      ]
+    },
+    {
+      "id": "liurnia",
+      "navLabel": "IV · Liurnia",
+      "title": "Phase IV — Liurnia of the Lakes",
+      "regionTag": "Levels 30–45",
+      "blocks": [
+        {
+          "type": "lede",
+          "html": "A huge region — but our business here is short: seeds, tears, a key, and the easiest demigod in the game, who happens to hand you unlimited free respecs."
+        },
+        {
+          "type": "heading",
+          "text": "Sweep the lake"
+        },
+        {
+          "type": "checklist",
+          "items": [
+            {
+              "id": "li1",
+              "html": "Exit Stormveil north into Liurnia. Grab <strong>map fragments</strong> from road steles (one on the main road north, more in the west and east)."
+            },
+            {
+              "id": "li2",
+              "html": "<strong>Golden Seeds</strong> line the main northern road — Liurnia has several saplings. Same habit: glow means seed."
+            },
+            {
+              "id": "li3",
+              "html": "Check every ruined <strong>Church of Marika</strong> (small chapels with the goddess statue) for Sacred Tears as you ride — there's one in the region's north."
+            },
+            {
+              "id": "li4",
+              "html": "<strong>The Academy Glintstone Key:</strong> on a small island west of the academy, a colossal dragon sleeps on a pile of treasure. Ride in quietly, grab the key beside it, ride out. Do not wake the dragon. (Or do — I'm a guide, not a cop. But don't.)"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Raya Lucaria Academy"
+        },
+        {
+          "type": "checklist",
+          "items": [
+            {
+              "id": "li5",
+              "html": "Fight through the academy — sorcerers die in one or two Fang combos. Mid-dungeon boss <strong>Red Wolf of Radagon</strong>: summon wolves, stay aggressive, dodge through its blade attacks. It has low health."
+            }
+          ]
+        },
+        {
+          "type": "bossCard",
+          "subtitle": "Shardbearer · Recommended Level 35–40",
+          "name": "Rennala, Queen of the Full Moon",
+          "paragraphs": [],
+          "tips": [
+            "Phase one isn't a fight, it's a puzzle: smash the <em>chanting students with golden glows</em> to break her shield, then wail on her. Repeat.",
+            "Phase two allows spirit summons — bring the wolves. Rush her down between spells; she has very little health and no poise."
+          ],
+          "footer": "<strong>Reward:</strong> her Great Rune (doesn't count for Leyndell entry, but that's fine — Radahn's will) and, crucially, <strong>Rebirth</strong>: unlimited stat respecs using Larval Tears. If you ever misallocate levels, Rennala fixes it."
+        },
+        {
+          "type": "paragraph",
+          "html": "<strong>Reward:</strong> her Great Rune (doesn't count for Leyndell entry, but that's fine — Radahn's will) and, crucially, <strong>Rebirth</strong>: unlimited stat respecs using Larval Tears. If you ever misallocate levels, Rennala fixes it."
+        },
+        {
+          "type": "callout",
+          "variant": "default",
+          "label": "Optional Detour · Ranni",
+          "paragraphs": [
+            "Northwest of Liurnia, at Ranni's Rise, you can begin <strong>Ranni's questline</strong> — the game's best side story with a legendary ending. It's not on the critical path, so this guide skips it, but if you want one questline, it's this one."
+          ]
+        },
+        {
+          "type": "restMarker",
+          "text": "Site of Grace · Rest &amp; Continue"
+        }
+      ]
+    },
+    {
+      "id": "caelid",
+      "navLabel": "V · Caelid & Radahn",
+      "title": "Phase V — Caelid &amp; the Starscourge",
+      "regionTag": "Levels 45–60",
+      "blocks": [
+        {
+          "type": "lede",
+          "html": "Caelid is a rotting hellscape, and we're going in anyway — because killing Radahn unlocks the city where the Mimic Tear sleeps, and Caelid's side loot is absurdly good."
+        },
+        {
+          "type": "heading",
+          "text": "First: flip the festival switch"
+        },
+        {
+          "type": "checklist",
+          "items": [
+            {
+              "id": "c1",
+              "html": "Ride to <strong>Fort Faroth</strong> in Dragonbarrow (northeast Caelid — approach via the ravine road from Limgrave's north, or the beast-statue teleporter behind the Third Church). Climb to the roof, drop through the hole, and loot the <strong>Dectus Medallion (Right)</strong> and <strong>Radagon's Soreseal</strong> — a talisman granting +5 to Vigor, Endurance, Strength, and Dexterity for 15% extra damage taken. On this build, wear it for most of the game."
+            },
+            {
+              "id": "c2",
+              "html": "<strong>Rune windfall:</strong> outside Fort Faroth lies <strong>Greyoll</strong>, a colossal sleeping dragon. Carve at her tail (she never fights back — her hatchlings do, so stay at the tail tip) for a massive rune payout plus a Dragon Heart. This alone funds several levels."
+            },
+            {
+              "id": "c3",
+              "html": "With both medallion halves, warp to the <strong>Grand Lift of Dectus</strong> (far north Liurnia), ride it up, and <strong>touch the first Altus Plateau grace</strong>. Then warp straight back out. This guarantees the <strong>Radahn Festival</strong> is live at Redmane Castle."
+            },
+            {
+              "id": "c4",
+              "html": "<strong>Sellia Crystal Tunnel</strong> (eastern Caelid): fight to the end and beat the <strong>Fallingstar Beast</strong> (bring the wolves; hug its flank). It drops the <strong>Somberstone Miner's Bell Bearing [1]</strong> — hand it to the Twin Maiden Husks at the Roundtable to <em>buy</em> low-tier Somber stones forever. Your Fang upgrade path just became a shopping list."
+            },
+            {
+              "id": "c5",
+              "html": "Ride south to <strong>Redmane Castle</strong> — with the festival live, the front is peaceful. Talk to the announcer, then take the teleporter to the beach."
+            }
+          ]
+        },
+        {
+          "type": "bossCard",
+          "subtitle": "Shardbearer · Recommended Level 50–60 · Fang +5 or higher",
+          "name": "Starscourge Radahn",
+          "paragraphs": [],
+          "tips": [
+            "This fight is designed around the <strong>gold NPC summon signs scattered across the battlefield</strong>. Summon every single one, and re-summon them when they fall — the signs reappear as the fight goes on.",
+            "Stay on Torrent. Let the summons hold his attention while you ride in, land a jumping heavy, and ride out.",
+            "At half health he leaves the arena and <em>crashes back down as a meteor</em>. Ride away from the targeting shadow, then resume the routine.",
+            "You are the distraction manager, not the hero. Patience wins this in two or three attempts."
+          ],
+          "footer": "<strong>Reward:</strong> Radahn's Great Rune — your second qualifying rune for Leyndell — and a cutscene: a falling star punches a hole in Limgrave. That crater is our next stop."
+        },
+        {
+          "type": "paragraph",
+          "html": "<strong>Reward:</strong> Radahn's Great Rune — your second qualifying rune for Leyndell — and a cutscene: a falling star punches a hole in Limgrave. That crater is our next stop."
+        },
+        {
+          "type": "restMarker",
+          "text": "Site of Grace · Rest &amp; Continue"
+        }
+      ]
+    },
+    {
+      "id": "nokron",
+      "navLabel": "VI · Nokron",
+      "title": "Phase VI — Nokron, Eternal City",
+      "regionTag": "The Mimic Tear Heist",
+      "blocks": [
+        {
+          "type": "lede",
+          "html": "One dungeon, one objective: the single best item in Elden Ring. Everything after this fight alongside a copy of yourself."
+        },
+        {
+          "type": "checklist",
+          "items": [
+            {
+              "id": "n1",
+              "html": "Travel to the <strong>crater southeast of Fort Haight</strong> in Mistwood, Limgrave. Descend the floating ruins carefully — fall damage is the real boss here."
+            },
+            {
+              "id": "n2",
+              "html": "Fight through Nokron's outskirts. The <strong>Mimic Tear boss</strong> guarding the bridge copies your gear — a cheeky trick: unequip your weapon before the fog, let it spawn unarmed, then re-equip and destroy it."
+            },
+            {
+              "id": "n3",
+              "html": "Continue across the <strong>Ancestral Woods</strong>, then follow the cliffside path down toward <strong>Night's Sacred Ground</strong>."
+            },
+            {
+              "id": "n4",
+              "html": "In the ruined chamber there, a chest behind an imp-sealed door (1 Stonesword Key — buy from merchants or Twin Maiden Husks if you're out) holds the <strong>Mimic Tear Ashes</strong>. Mission complete."
+            },
+            {
+              "id": "n5",
+              "html": "While you're down here, harvest every <strong>Ghost Glovewort</strong> flower you see in graveyard areas — these upgrade the Mimic via <strong>Roderika's spirit tuning</strong> at the Roundtable. Get it to <strong>+3 or higher now</strong>, and keep feeding it gloveworts all game. A +10 Mimic is functionally a second player."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "variant": "default",
+          "label": "How the Mimic Works",
+          "paragraphs": [
+            "It clones whatever you're wearing and holding <em>when summoned</em>. It has no FP cost — it costs a chunk of HP instead, which your flask refills. Summon it at every boss fog for the rest of the run. From here on, when a boss card says \"summon,\" it means the Mimic."
+          ]
+        },
+        {
+          "type": "restMarker",
+          "text": "Site of Grace · Rest &amp; Continue"
+        }
+      ]
+    },
+    {
+      "id": "altus",
+      "navLabel": "VII · Altus Plateau",
+      "title": "Phase VII — Altus Plateau",
+      "regionTag": "Levels 60–75",
+      "blocks": [
+        {
+          "type": "lede",
+          "html": "Back up the Grand Lift of Dectus, this time to stay. Altus is dense with flask upgrades — the richest seed-and-tear territory in the game."
+        },
+        {
+          "type": "checklist",
+          "items": [
+            {
+              "id": "a1",
+              "html": "Grab the <strong>Altus map fragment</strong> from the stele on the main road heading northeast from the lift."
+            },
+            {
+              "id": "a2",
+              "html": "<strong>Golden Seeds everywhere:</strong> Altus and the capital outskirts hold more saplings than any other region — several along the main roads alone, including a multi-seed sapling. Your flask should reach <strong>10+ charges</strong> before Leyndell."
+            },
+            {
+              "id": "a3",
+              "html": "Check the region's ruined churches — the <strong>Second Church of Marika</strong> in the west holds a <strong>Sacred Tear</strong>, and more chapels dot the plateau. Target: <strong>+8 flask potency</strong> or better before the capital."
+            },
+            {
+              "id": "a4",
+              "html": "<strong>Altus Tunnel</strong> (north-central): more Somber stones and a mid-tier <strong>Somberstone bell bearing</strong> region — mine what you pass; the Fang wants to be <strong>+7</strong> by the end of this phase."
+            },
+            {
+              "id": "a5",
+              "html": "<strong>Skip for efficiency:</strong> the Shaded Castle, Mt. Gelmir, and Volcano Manor (Rykard) are all optional. If you're under-leveled later, Gelmir is your side-quest bank — but our two Great Runes are already banked."
+            },
+            {
+              "id": "a6",
+              "html": "Follow the main road east until the capital's outer wall. Rest at the outskirts graces."
+            }
+          ]
+        },
+        {
+          "type": "restMarker",
+          "text": "Site of Grace · Rest &amp; Continue"
+        }
+      ]
+    },
+    {
+      "id": "leyndell",
+      "navLabel": "VIII · Leyndell",
+      "title": "Phase VIII — Leyndell, Royal Capital",
+      "regionTag": "Levels 75–90 · Vigor 40+",
+      "blocks": [
+        {
+          "type": "lede",
+          "html": "Two Great Runes open the gates. Inside: golden streets, a dragon on the wall, and a familiar face waiting at the throne."
+        },
+        {
+          "type": "bossCard",
+          "subtitle": "Gatekeeper · Fight Mounted",
+          "name": "Draconic Tree Sentinel",
+          "paragraphs": [],
+          "tips": [
+            "Guards the capital's main gate. Stay on Torrent the entire fight — circle him, dart in for single jumping attacks, dart out.",
+            "Respect the lightning in phase two; keep moving laterally and never linger behind him (the horse kicks)."
+          ],
+          "footer": null
+        },
+        {
+          "type": "heading",
+          "text": "Through the golden city"
+        },
+        {
+          "type": "checklist",
+          "items": [
+            {
+              "id": "le1",
+              "html": "Climb the great dragon wing to reach the upper city. Rest at every grace — Leyndell's shortcuts are a maze and graces are your breadcrumbs."
+            },
+            {
+              "id": "le2",
+              "html": "<strong>Golden Seeds:</strong> the capital holds two more saplings within its streets. The glow habit continues indoors."
+            },
+            {
+              "id": "le3",
+              "html": "<strong>Godfrey, First Elden Lord (golden shade):</strong> a warm-up boss. Mimic + jumping heavies. He staggers constantly."
+            }
+          ]
+        },
+        {
+          "type": "bossCard",
+          "subtitle": "Shardbearer · Recommended Level 80+ · Fang +7",
+          "name": "Morgott, the Omen King",
+          "paragraphs": [],
+          "tips": [
+            "Remember Margit? Same Omen, bigger crown — and <strong>Margit's Shackle still works</strong>. Two free pin-downs in phase one.",
+            "Summon <strong>Melina's</strong> gold sign outside the fog, plus your Mimic. Three-on-one.",
+            "He's aggressive but light — jumping heavies stagger him into criticals repeatedly. Dodge his cursed-sword rain by sprinting sideways."
+          ],
+          "footer": "<strong>After the fight:</strong> speak to Melina at the grace — she grants the <strong>Rold Medallion</strong>, your key to the Mountaintops. Before you leave: this is a great moment to bank flask potency, ghost gloveworts, and any capital loot, because the city changes forever near the end of the game."
+        },
+        {
+          "type": "paragraph",
+          "html": "<strong>After the fight:</strong> speak to Melina at the grace — she grants the <strong>Rold Medallion</strong>, your key to the Mountaintops. Before you leave: this is a great moment to bank flask potency, ghost gloveworts, and any capital loot, because the city changes forever near the end of the game."
+        },
+        {
+          "type": "restMarker",
+          "text": "Site of Grace · Rest &amp; Continue"
+        }
+      ]
+    },
+    {
+      "id": "mountaintops",
+      "navLabel": "IX · Mountaintops",
+      "title": "Phase IX — Mountaintops of the Giants",
+      "regionTag": "Levels 90–105 · Vigor 50+",
+      "blocks": [
+        {
+          "type": "lede",
+          "html": "The Grand Lift of Rold carries you into the endgame. The Mountaintops are linear — follow the road, loot the chapels, and prepare to fight a mountain."
+        },
+        {
+          "type": "checklist",
+          "items": [
+            {
+              "id": "m1",
+              "html": "Take the <strong>Grand Lift of Rold</strong> (east of the capital, hoist the Rold Medallion). Grab the map fragment past Zamor Ruins."
+            },
+            {
+              "id": "m2",
+              "html": "Follow the main path across the great chain-bridge and around the valley. More <strong>Golden Seeds</strong> and a chapel <strong>Sacred Tear</strong> await along the route — by now your flask should be nearly maxed (target: <strong>12+ charges, +10 or higher potency</strong>)."
+            },
+            {
+              "id": "m3",
+              "html": "Level check: <strong>Vigor 50–60 before the Fire Giant.</strong> His attacks are the hardest-hitting yet. Greyoll's runes or a lap of skipped Altus content will top you up fast."
+            }
+          ]
+        },
+        {
+          "type": "bossCard",
+          "subtitle": "Guardian of the Forge · Recommended Level 95–105 · Fang +8/+9",
+          "name": "Fire Giant",
+          "paragraphs": [],
+          "tips": [
+            "Phase one: stay mounted, and attack the <strong>glowing shackle on his left ankle</strong> — it takes bonus damage. Ride away when he rolls (yes, he rolls; yes, it's terrifying).",
+            "Phase two (he tears himself apart): dismount, summon the Mimic, and live under his hands and feet. Almost everything dangerous happens far away from his body — the safest place is uncomfortably close.",
+            "The fireball barrage tracks — sprint perpendicular, don't roll early."
+          ],
+          "footer": "<strong>After the fight:</strong> rest at the Forge of the Giants grace and speak with Melina. <strong>Warning:</strong> committing here transports you to Crumbling Farum Azula and permanently transforms Leyndell — several capital-based NPC quests close forever. If any side business matters to you, finish it first. When ready, commit."
+        },
+        {
+          "type": "paragraph",
+          "html": "<strong>After the fight:</strong> rest at the Forge of the Giants grace and speak with Melina. <strong>Warning:</strong> committing here transports you to Crumbling Farum Azula and permanently transforms Leyndell — several capital-based NPC quests close forever. If any side business matters to you, finish it first. When ready, commit."
+        },
+        {
+          "type": "restMarker",
+          "text": "Site of Grace · Rest &amp; Continue"
+        }
+      ]
+    },
+    {
+      "id": "farum",
+      "navLabel": "X · Farum Azula",
+      "title": "Phase X — Crumbling Farum Azula",
+      "regionTag": "Levels 105–120 · Fang +9/+10",
+      "blocks": [
+        {
+          "type": "lede",
+          "html": "A city shattered across the sky, patrolled by dragons and beastmen. The final Somber Ancient Dragon stone for your +10 Fang is found here — keep your eyes on side rooms and corpses as you climb."
+        },
+        {
+          "type": "checklist",
+          "items": [
+            {
+              "id": "f1",
+              "html": "Progress grace to grace — the level loops back on itself with elevators. Beastmen hit hard in groups; pull them one at a time."
+            },
+            {
+              "id": "f2",
+              "html": "Loot thoroughly for <strong>Somber Smithing Stones [8]/[9]</strong> and a <strong>Somber Ancient Dragon Smithing Stone</strong> — your ticket to <strong>Bloodhound's Fang +10</strong>."
+            },
+            {
+              "id": "f3",
+              "html": "<strong>Optional:</strong> Dragonlord Placidusax hides below the floating debris near the dragon temple — a spectacular but skippable fight. Not on our path."
+            }
+          ]
+        },
+        {
+          "type": "bossCard",
+          "subtitle": "Duo Gauntlet · Sleep Is Legal",
+          "name": "Godskin Duo",
+          "paragraphs": [],
+          "tips": [
+            "The most-hated fight in the game — unless you know the secret: <strong>both Godskins can be put to sleep</strong>. Craft <em>Sleep Pots</em> (Trina's Lilies + the pot recipe from Fevor's Cookbook) or just brute-force it.",
+            "Brute-force plan: summon the Mimic, and both of you focus the <strong>Noble (the fat one)</strong> first. Kill him fast, then two-on-one the Apostle.",
+            "Use the pillars — the Noble's rolling attack shatters on them."
+          ],
+          "footer": null
+        },
+        {
+          "type": "bossCard",
+          "subtitle": "Death Incarnate · Recommended Level 110+",
+          "name": "Maliketh, the Black Blade",
+          "paragraphs": [],
+          "tips": [
+            "Phase one (Beast Clergyman) is simple: stay close, punish his dagger combos, break his poise with jumping heavies.",
+            "Phase two, Maliketh goes airborne and hits like doom itself. Summon the Mimic <em>before the fog</em>, let it take aggro, and attack only after his aerial strings end — he's very vulnerable on landing.",
+            "His Destined Death attacks lower your max HP on hit — respect them, chip patiently, and this ends fast: he has one of the smallest health pools of any endgame boss."
+          ],
+          "footer": "<strong>After the fight:</strong> a portal at the site of grace returns you to the <strong>capital of ash</strong>. The end of the road is in sight."
+        },
+        {
+          "type": "paragraph",
+          "html": "<strong>After the fight:</strong> a portal at the site of grace returns you to the <strong>capital of ash</strong>. The end of the road is in sight."
+        },
+        {
+          "type": "restMarker",
+          "text": "Site of Grace · Rest &amp; Continue"
+        }
+      ]
+    },
+    {
+      "id": "endgame",
+      "navLabel": "XI · The Elden Throne",
+      "title": "Phase XI — The Elden Throne",
+      "regionTag": "Final Gauntlet · Vigor 60",
+      "blocks": [
+        {
+          "type": "lede",
+          "html": "Ashen Leyndell. Four fights stand between you and the throne. Final loadout check: Fang +10, Mimic +10, flask maxed, Vigor 60, Radagon's Soreseal traded out if you're feeling fragile."
+        },
+        {
+          "type": "checklist",
+          "items": [
+            {
+              "id": "e1",
+              "html": "<strong>Sir Gideon Ofnir, the All-Knowing:</strong> a mage in a boss room. Sprint at him, stunlock, done. The shortest \"boss\" in the game."
+            }
+          ]
+        },
+        {
+          "type": "bossCard",
+          "subtitle": "First Elden Lord · For Real This Time",
+          "name": "Godfrey / Hoarah Loux",
+          "paragraphs": [],
+          "tips": [
+            "Phase one Godfrey is honest — dodge the axe, punish the stomps' recovery.",
+            "Phase two he throws the axe away and wrestles you. His <strong>grabs cannot be blocked</strong> — dodge them late, the wind-ups are long and theatrical.",
+            "The Mimic shines here: while he suplexes your clone, you get free combos. Poor clone."
+          ],
+          "footer": null
+        },
+        {
+          "type": "bossCard",
+          "subtitle": "The Final Battle · Two Bosses, One Fog Gate",
+          "name": "Radagon of the Golden Order → The Elden Beast",
+          "paragraphs": [],
+          "tips": [
+            "<strong>Radagon</strong> staggers beautifully to jumping heavy attacks — he's a pure physical brawl. Dodge <em>into</em> his hammer slams. His teleport-grab telegraphs with a golden ring; sprint away from it.",
+            "Save your Mimic's health where you can — it carries over into part two. (If it dies, it dies; you can't re-summon between phases.)",
+            "<strong>The Elden Beast</strong> swims away constantly — you can <strong>summon Torrent in this arena</strong> to close distance instead of jogging across the ocean of stars.",
+            "When it casts <em>Elden Stars</em> (a comet stream from above), sprint directly <strong>toward and past the beast</strong> — the stars chase your old position.",
+            "Attack the glowing brand on its body when it surfaces. Patience, chip damage, and hydration."
+          ],
+          "footer": "<strong>Then touch the fractured Marika, and choose your ending.</strong> Mend the ring however you see fit, Elden Lord."
+        },
+        {
+          "type": "paragraph",
+          "html": "<strong>Then touch the fractured Marika, and choose your ending.</strong> Mend the ring however you see fit, Elden Lord."
+        },
+        {
+          "type": "restMarker",
+          "text": "Fracture · Mend the Elden Ring"
+        }
+      ]
+    },
+    {
+      "id": "appendix",
+      "navLabel": "Appendices",
+      "title": "Appendices — Quick Reference",
+      "regionTag": "Keep Open While Playing",
+      "blocks": [
+        {
+          "type": "heading",
+          "text": "A. Level &amp; upgrade milestones"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Milestone",
+            "Level",
+            "Vigor",
+            "Fang",
+            "Flask"
+          ],
+          "rows": [
+            [
+              "Margit",
+              "20–25",
+              "20",
+              "+2",
+              "5–6 charges, +3"
+            ],
+            [
+              "Godrick",
+              "25–30",
+              "25",
+              "+3",
+              "6 charges, +4"
+            ],
+            [
+              "Rennala",
+              "35–40",
+              "30",
+              "+4",
+              "7 charges, +5"
+            ],
+            [
+              "Radahn",
+              "50–60",
+              "35–40",
+              "+5/+6",
+              "8 charges, +6"
+            ],
+            [
+              "Morgott",
+              "75–85",
+              "40+",
+              "+7",
+              "10+ charges, +8"
+            ],
+            [
+              "Fire Giant",
+              "95–105",
+              "50–60",
+              "+8/+9",
+              "12 charges, +10"
+            ],
+            [
+              "Maliketh",
+              "110+",
+              "60",
+              "+9/+10",
+              "13 charges, +11"
+            ],
+            [
+              "Elden Beast",
+              "120–130",
+              "60",
+              "+10",
+              "14 charges, +12"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "B. Talisman loadout by act"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "When",
+            "Wear",
+            "Where It Comes From"
+          ],
+          "rows": [
+            [
+              "Early game",
+              "Green Turtle Talisman",
+              "Imp-sealed room, Summonwater Village catacombs (Limgrave, 1 key) — faster stamina regen, useful forever"
+            ],
+            [
+              "Post-Godrick",
+              "Arsenal Charm",
+              "Nepheli at the Roundtable — carry heavier armor without fat-rolling"
+            ],
+            [
+              "Caelid onward",
+              "Radagon's Soreseal",
+              "Fort Faroth — +5 to your four core stats; the 15% damage-taken tax is worth it until the final bosses"
+            ],
+            [
+              "Whole game",
+              "Any HP / defense talisman you find",
+              "Crimson Amber Medallions and defensive charms round out the fourth slot as slots unlock"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "C. Flask of Wondrous Physick"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Tear",
+            "Effect",
+            "Notes"
+          ],
+          "rows": [
+            [
+              "Crimson Crystal Tear",
+              "Restores half your HP instantly",
+              "Third Church of Marika — your default all game"
+            ],
+            [
+              "Second slot",
+              "Stamina or defense tear",
+              "Minor Erdtree bosses drop tears as you travel — pick whichever utility tear you've collected; a stamina-regen or damage-reduction tear pairs well"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "D. Rune farming (when under-leveled)"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Spot",
+            "When",
+            "Method"
+          ],
+          "rows": [
+            [
+              "Greyoll's tail, Fort Faroth",
+              "Any time after reaching Caelid",
+              "One massive payout — carve the sleeping dragon's tail tip"
+            ],
+            [
+              "Skipped optional zones",
+              "Mid/late game",
+              "Weeping Peninsula, Mt. Gelmir, and Caelid side dungeons are level banks you deliberately saved"
+            ],
+            [
+              "Rune Arc + Godrick's Great Rune",
+              "After every boss attempt streak",
+              "Not farming, but +all stats makes every fight faster"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "E. The five commandments of not dying"
+        },
+        {
+          "type": "checklist",
+          "items": [
+            {
+              "id": "x1",
+              "html": "Vigor before damage. A dead Tarnished deals zero DPS."
+            },
+            {
+              "id": "x2",
+              "html": "See a golden sapling → take the seed. See a ruined church → check the statue."
+            },
+            {
+              "id": "x3",
+              "html": "Summon at every fog gate. The game balances around it."
+            },
+            {
+              "id": "x4",
+              "html": "Stuck for 5+ attempts? Leave. Level, upgrade, return. The wall crumbles on its own."
+            },
+            {
+              "id": "x5",
+              "html": "Dodge on the enemy's swing, not their wind-up. Every boss in this game delays on purpose."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

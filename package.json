@@ -1,0 +1,15 @@
+{
+  "name": "elden-ring-guide",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "extract-guide": "node scripts/extract-guide.mjs"
+  },
+  "devDependencies": {
+    "vite": "^6.3.5"
+  }
+}
