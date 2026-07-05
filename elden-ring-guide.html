@@ -1,28 +1,1090 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Tarnished's Road — An Optimal Elden Ring Walkthrough</title>
-  <meta name="description" content="An optimal Elden Ring walkthrough for newcomers and efficiency runners. Step-by-step route, boss order, and build advice.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/src/styles/guide.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Tarnished's Road — An Optimal Elden Ring Walkthrough</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#16110c;
+  --panel:#1f1811;
+  --panel-2:#261e15;
+  --line:#3a2f21;
+  --gold:#c8a24a;
+  --gold-bright:#ecca74;
+  --grace:#ffd98a;
+  --parchment:#e9dec6;
+  --muted:#a4947a;
+  --ember:#c05a2e;
+  --ember-dim:#7e3d22;
+  --moss:#7d8a54;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
+body{
+  background:var(--ink);
+  color:var(--parchment);
+  font-family:'EB Garamond',Georgia,serif;
+  font-size:1.1rem;
+  line-height:1.65;
+}
+.wrap{max-width:1200px;margin:0 auto;padding:0 1.25rem}
+
+/* ---------- Hero ---------- */
+.hero{
+  position:relative;
+  padding:5rem 0 3.5rem;
+  text-align:center;
+  background:
+    radial-gradient(ellipse 60% 45% at 50% 0%, rgba(200,162,74,.22), transparent 70%),
+    var(--ink);
+  border-bottom:1px solid var(--line);
+}
+.hero .eyebrow{
+  font-family:'Cinzel',serif;
+  font-size:.78rem;
+  letter-spacing:.35em;
+  text-transform:uppercase;
+  color:var(--gold);
+}
+.hero h1{
+  font-family:'Cinzel',serif;
+  font-weight:700;
+  font-size:clamp(2.1rem,5.5vw,3.6rem);
+  line-height:1.15;
+  margin:.75rem auto .5rem;
+  max-width:16ch;
+  color:var(--gold-bright);
+  text-shadow:0 0 32px rgba(255,217,138,.25);
+}
+.hero p.sub{max-width:56ch;margin:0 auto;color:var(--muted);font-size:1.15rem}
+.hero .flame{
+  width:14px;height:14px;border-radius:50%;
+  margin:1.5rem auto 0;
+  background:var(--grace);
+  box-shadow:0 0 12px 4px rgba(255,217,138,.55), 0 0 40px 14px rgba(255,217,138,.18);
+}
+
+/* ---------- Layout: sidebar route + content ---------- */
+.layout{display:grid;grid-template-columns:250px 1fr;gap:3rem;padding:3rem 0}
+@media (max-width:900px){.layout{grid-template-columns:1fr;gap:1.5rem}}
+
+/* The Route of Grace — signature nav */
+nav.route{position:sticky;top:1.25rem;align-self:start}
+@media (max-width:900px){nav.route{position:static}}
+nav.route .route-title{
+  font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.3em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:1rem;
+}
+nav.route ol{list-style:none;position:relative;padding-left:1.4rem}
+nav.route ol::before{
+  content:"";position:absolute;left:6px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold) 0%, var(--ember-dim) 100%);opacity:.6;
+}
+nav.route li{margin:.55rem 0;position:relative}
+nav.route li::before{
+  content:"";position:absolute;left:-1.4rem;top:.5em;width:9px;height:9px;
+  margin-left:2px;border-radius:50%;
+  background:var(--ink);border:1.5px solid var(--gold);
+  box-shadow:0 0 6px rgba(255,217,138,.35);
+}
+nav.route a{
+  color:var(--muted);text-decoration:none;
+  font-family:'Cinzel',serif;font-size:.82rem;letter-spacing:.04em;
+}
+nav.route a:hover,nav.route a:focus-visible{color:var(--gold-bright)}
+nav.route a:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+
+/* ---------- Sections ---------- */
+section.phase{margin-bottom:4.5rem;scroll-margin-top:1.5rem}
+.phase-head{display:flex;align-items:baseline;gap:1rem;border-bottom:1px solid var(--line);padding-bottom:.8rem;margin-bottom:1.5rem}
+.phase-head .grace-mark{
+  flex:none;width:12px;height:12px;border-radius:50%;align-self:center;
+  background:var(--grace);
+  box-shadow:0 0 10px 3px rgba(255,217,138,.5);
+}
+.phase-head h2{
+  font-family:'Cinzel',serif;font-weight:600;
+  font-size:clamp(1.4rem,3vw,1.9rem);color:var(--gold-bright);
+}
+.phase-head .region-tag{
+  margin-left:auto;font-family:'Cinzel',serif;font-size:.7rem;
+  letter-spacing:.25em;text-transform:uppercase;color:var(--muted);white-space:nowrap;
+}
+section.phase h3{
+  font-family:'Cinzel',serif;font-weight:600;font-size:1.15rem;
+  color:var(--gold);margin:2rem 0 .75rem;
+}
+section.phase p{margin-bottom:1rem;max-width:72ch}
+section.phase p.lede{font-size:1.18rem;font-style:italic;color:var(--muted);max-width:68ch}
+em{color:var(--gold-bright);font-style:italic}
+strong{color:var(--gold-bright);font-weight:600}
+
+/* Checklists */
+ul.checklist{list-style:none;margin:0 0 1.25rem;max-width:76ch}
+ul.checklist li{
+  display:flex;gap:.7rem;align-items:flex-start;
+  padding:.55rem .2rem;border-bottom:1px dashed rgba(58,47,33,.7);
+}
+ul.checklist input[type=checkbox]{
+  flex:none;appearance:none;width:1.05rem;height:1.05rem;margin-top:.28rem;
+  border:1.5px solid var(--gold);border-radius:2px;background:transparent;cursor:pointer;
+}
+ul.checklist input[type=checkbox]:checked{
+  background:var(--gold);
+  box-shadow:0 0 8px rgba(255,217,138,.5);
+}
+ul.checklist input[type=checkbox]:checked+label{color:var(--muted)}
+ul.checklist input[type=checkbox]:focus-visible{outline:2px solid var(--gold-bright);outline-offset:2px}
+ul.checklist label{cursor:pointer}
+
+/* Callouts */
+.callout{
+  border-left:3px solid var(--gold);
+  background:var(--panel);
+  padding:1rem 1.25rem;margin:1.25rem 0;max-width:76ch;border-radius:0 4px 4px 0;
+}
+.callout.warn{border-left-color:var(--ember);background:#241611}
+.callout .co-label{
+  font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.25em;
+  text-transform:uppercase;display:block;margin-bottom:.35rem;color:var(--gold);
+}
+.callout.warn .co-label{color:var(--ember)}
+.callout p{margin-bottom:.5rem}
+.callout p:last-child{margin-bottom:0}
+
+/* Boss cards */
+.boss-card{
+  background:linear-gradient(180deg,var(--panel-2),var(--panel));
+  border:1px solid var(--line);border-radius:6px;
+  padding:1.4rem 1.5rem;margin:1.5rem 0;max-width:76ch;
+  position:relative;
+}
+.boss-card::before{
+  content:"";position:absolute;inset:0 0 auto 0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--ember),transparent);
+}
+.boss-card h4{
+  font-family:'Cinzel',serif;font-weight:700;font-size:1.25rem;
+  color:var(--parchment);letter-spacing:.03em;
+}
+.boss-card .boss-sub{
+  font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--ember);margin-bottom:.9rem;
+}
+.boss-card ul{list-style:none;margin-top:.5rem}
+.boss-card ul li{padding:.3rem 0 .3rem 1.2rem;position:relative}
+.boss-card ul li::before{content:"✦";position:absolute;left:0;color:var(--gold);font-size:.75rem;top:.55rem}
+
+/* Tables */
+table{width:100%;max-width:76ch;border-collapse:collapse;margin:1.25rem 0;font-size:1rem}
+th{
+  font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--gold);text-align:left;padding:.6rem .75rem;border-bottom:1px solid var(--gold);
+}
+td{padding:.55rem .75rem;border-bottom:1px solid var(--line);vertical-align:top}
+tr:hover td{background:rgba(200,162,74,.05)}
+
+/* Progress footer per section */
+.rest-marker{
+  margin-top:2.25rem;text-align:center;color:var(--muted);
+  font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;
+}
+.rest-marker::before,.rest-marker::after{content:" ✦ ";color:var(--gold)}
+
+/* Side path variant — ember-marked */
+section.phase.side .grace-mark{background:var(--ember);box-shadow:0 0 10px 3px rgba(192,90,46,.5)}
+section.phase.side .phase-head{border-bottom-color:var(--ember-dim)}
+section.phase.side .phase-head h2{color:var(--parchment)}
+nav.route ol.sideroute::before{background:linear-gradient(var(--ember) 0%, var(--ember-dim) 100%)}
+nav.route ol.sideroute li::before{border-color:var(--ember);box-shadow:0 0 6px rgba(192,90,46,.35)}
+
+/* Cross-reference signpost */
+.side-ref{
+  display:block;max-width:76ch;margin:1.1rem 0;
+  padding:.7rem 1rem;border:1px dashed var(--ember-dim);border-radius:4px;
+  background:rgba(192,90,46,.06);font-size:1.02rem;
+}
+.side-ref::before{content:"⤷ Side Path · ";font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ember)}
+.side-ref a{color:var(--gold-bright);text-decoration:none;border-bottom:1px solid var(--ember-dim)}
+.side-ref a:hover,.side-ref a:focus-visible{color:var(--grace);border-bottom-color:var(--gold)}
+.side-ref a:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.side-ref .why{color:var(--muted)}
+
+footer{border-top:1px solid var(--line);padding:2.5rem 0 3rem;text-align:center;color:var(--muted);font-size:.95rem}
+footer .fin{font-family:'Cinzel',serif;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem}
+</style>
 </head>
 <body>
 
-  <header class="hero" id="guide-hero"></header>
-
+<header class="hero">
   <div class="wrap">
-    <div class="layout">
-      <nav class="route" id="guide-nav" aria-label="Guide sections"></nav>
-      <main id="guide-main"></main>
-    </div>
+    <div class="eyebrow">A Complete Walkthrough &amp; Build Guide</div>
+    <h1>The Tarnished's Road</h1>
+    <p class="sub">One route, one build, no wasted steps. Follow the golden thread from the Chapel of Anticipation to the Elden Throne — every stop, every item, every level, in order.</p>
+    <div class="flame" aria-hidden="true"></div>
+  </div>
+</header>
+
+<div class="wrap">
+<div class="layout">
+
+<nav class="route" aria-label="Guide sections">
+  <div class="route-title">The Route of Grace</div>
+  <ol>
+    <li><a href="#build">The Build</a></li>
+    <li><a href="#limgrave">I · Limgrave</a></li>
+    <li><a href="#weeping">II · Weeping Peninsula</a></li>
+    <li><a href="#stormveil">III · Stormveil Castle</a></li>
+    <li><a href="#liurnia">IV · Liurnia</a></li>
+    <li><a href="#caelid">V · Caelid &amp; Radahn</a></li>
+    <li><a href="#nokron">VI · Nokron</a></li>
+    <li><a href="#altus">VII · Altus Plateau</a></li>
+    <li><a href="#leyndell">VIII · Leyndell</a></li>
+    <li><a href="#mountaintops">IX · Mountaintops</a></li>
+    <li><a href="#farum">X · Farum Azula</a></li>
+    <li><a href="#endgame">XI · The Elden Throne</a></li>
+    <li><a href="#appendix">Appendices</a></li>
+  </ol>
+  <div class="route-title" style="margin-top:1.75rem">Paths Untrodden</div>
+  <ol class="sideroute">
+    <li><a href="#side-morne">A · Castle Morne</a></li>
+    <li><a href="#side-ranni">B · The Age of Stars</a></li>
+    <li><a href="#side-varre">C · Varré &amp; Mohgwyn</a></li>
+    <li><a href="#side-volcano">D · Volcano Manor</a></li>
+    <li><a href="#side-depths">E · Beneath the Capital</a></li>
+    <li><a href="#side-haligtree">F · Haligtree &amp; Malenia</a></li>
+    <li><a href="#side-placidusax">G · Dragonlord Placidusax</a></li>
+    <li><a href="#side-npcs">H · Companions of the Road</a></li>
+  </ol>
+</nav>
+
+<main>
+
+<!-- ================= THE BUILD ================= -->
+<section class="phase" id="build">
+  <div class="phase-head">
+    <span class="grace-mark" aria-hidden="true"></span>
+    <h2>The Build: Bloodhound Vagabond</h2>
+    <span class="region-tag">Read First</span>
   </div>
 
-  <footer id="guide-footer"></footer>
+  <p class="lede">The single most forgiving, efficient way through Elden Ring: a tanky knight wielding Bloodhound's Fang, backed by the Mimic Tear. High damage, built-in bleed, a dodge baked into your weapon skill, and a clone of yourself tanking every boss.</p>
 
-  <script type="module" src="/src/js/render-guide.js"></script>
+  <h3>Why this build wins</h3>
+  <p><strong>Bloodhound's Fang</strong> is a curved greatsword you can grab within the first hour. It deals huge damage, causes <em>blood loss</em> (a chunk of the enemy's health bar when the meter fills), and its weapon skill — <em>Bloodhound's Finesse</em> — is an attack that doubles as a backflip dodge. It upgrades with <strong>Somber Smithing Stones</strong>, which means only ten stones total to max it, no farming dozens of regular stones.</p>
+  <p>The <strong>Mimic Tear</strong> spirit ash summons a copy of you, with your weapon and gear. From the mid-game onward, every boss fight becomes two-on-one in your favor. Until then, the <strong>Lone Wolf Ashes</strong> carry you.</p>
+
+  <h3>Character creation</h3>
+  <ul class="checklist">
+    <li><input type="checkbox" id="b1"><label for="b1"><strong>Class: Vagabond.</strong> Best starting stats for this build — high Vigor, solid Strength and Dexterity, good armor.</label></li>
+    <li><input type="checkbox" id="b2"><label for="b2"><strong>Keepsake: Golden Seed.</strong> A free flask charge from minute one. (Nothing else comes close.)</label></li>
+  </ul>
+
+  <h3>Stat priority — level in this exact order</h3>
+  <table>
+    <tr><th>Order</th><th>Target</th><th>Why</th></tr>
+    <tr><td>1</td><td>Vigor to <strong>20</strong></td><td>Survive Limgrave. Vigor is the single best stat in the game — never skimp on it.</td></tr>
+    <tr><td>2</td><td>Strength <strong>18</strong>, Dexterity <strong>17</strong></td><td>The exact requirements to wield Bloodhound's Fang.</td></tr>
+    <tr><td>3</td><td>Vigor to <strong>40</strong></td><td>Your mid-game health pool. Do this before Leyndell.</td></tr>
+    <tr><td>4</td><td>Endurance to <strong>20</strong></td><td>More stamina for swings and dodges; enough equip load for medium armor.</td></tr>
+    <tr><td>5</td><td>Strength to <strong>40</strong></td><td>Your main damage stat for the Fang.</td></tr>
+    <tr><td>6</td><td>Vigor to <strong>60</strong></td><td>The soft cap. Endgame bosses hit like trucks; this is your insurance.</td></tr>
+    <tr><td>7</td><td>Dexterity to <strong>~30</strong>, then Strength onward</td><td>Extra scaling damage once the essentials are done.</td></tr>
+  </table>
+  <p>Ignore Mind, Intelligence, Faith, and Arcane entirely. If you ever want to experiment, Rennala (Phase IV) lets you fully respec.</p>
+
+  <h3>How to actually fight</h3>
+  <ul class="checklist">
+    <li><input type="checkbox" id="b3"><label for="b3"><strong>Two-hand the Fang</strong> (hold the interact button while switching weapons). You get 50% bonus Strength scaling and better stagger.</label></li>
+    <li><input type="checkbox" id="b4"><label for="b4"><strong>Jumping heavy attacks</strong> are your bread and butter — they break enemy poise fast, opening huge critical hits.</label></li>
+    <li><input type="checkbox" id="b5"><label for="b5"><strong>Summon before every boss.</strong> There is no penalty. Spirit ashes are a core mechanic, not a crutch.</label></li>
+    <li><input type="checkbox" id="b6"><label for="b6"><strong>If a fight feels impossible, leave.</strong> This guide's route means you're never forced into anything — go level, upgrade, come back.</label></li>
+  </ul>
+
+  <div class="callout">
+    <span class="co-label">The Golden Rule</span>
+    <p>Elden Ring's real difficulty setting is preparation. Flask upgrades (Golden Seeds &amp; Sacred Tears), weapon upgrades (Somber Stones), and Vigor matter far more than skill. This guide front-loads all three.</p>
+  </div>
+</section>
+
+<!-- ================= PHASE I: LIMGRAVE ================= -->
+<section class="phase" id="limgrave">
+  <div class="phase-head">
+    <span class="grace-mark" aria-hidden="true"></span>
+    <h2>Phase I — Limgrave</h2>
+    <span class="region-tag">Levels 1–20</span>
+  </div>
+
+  <p class="lede">The opening hours set up your entire run: your mount, your flask, your spirit summons, and — most importantly — your endgame weapon.</p>
+
+  <h3>Step-by-step</h3>
+  <ul class="checklist">
+    <li><input type="checkbox" id="l1"><label for="l1"><strong>Tutorial:</strong> After the Chapel of Anticipation, drop into the glowing pit in the Stranded Graveyard for the Cave of Knowledge tutorial. Do it — it teaches guard counters and stealth, and the Soldier of Godrick at the end is free runes.</label></li>
+    <li><input type="checkbox" id="l2"><label for="l2"><strong>First Steps grace → Church of Elleh:</strong> Buy the <em>Crafting Kit</em> (300 runes) from Kalé the merchant. Craft supplies will save your life all game.</label></li>
+    <li><input type="checkbox" id="l3"><label for="l3"><strong>Gatefront Ruins:</strong> Grab the <em>West Limgrave Map Fragment</em> at the roadside stele, and the <em>Whetstone Knife</em> from the cellar under the ruins (lets you swap Ashes of War). Rest at the Gatefront grace — <strong>Melina appears</strong>, granting leveling and <strong>Torrent</strong>, your horse.</label></li>
+    <li><input type="checkbox" id="l4"><label for="l4"><strong>Return to Church of Elleh at night:</strong> The witch <strong>Renna</strong> sits on the wall. She gives you the <em>Spirit Calling Bell</em> and <strong>Lone Wolf Ashes</strong> — your boss-fight companions for the next twenty hours. (If she doesn't appear, rest at Gatefront until nightfall and ride back.)</label></li>
+    <li><input type="checkbox" id="l5"><label for="l5"><strong>Third Church of Marika</strong> (far northeast Limgrave, follow the road east then north): Collect the <strong>Flask of Wondrous Physick</strong>, the <em>Crimson Crystal Tear</em> (mix it in — a free half-heal once per rest), and a <strong>Sacred Tear</strong> from the statue (upgrade flask healing at any grace).</label></li>
+    <li><input type="checkbox" id="l6"><label for="l6"><strong>Golden Seeds:</strong> Small glowing golden saplings mark them. Grab the one on the path up Stormhill toward the castle, and another by <strong>Fort Haight</strong> in the southeast. Every seed = an extra flask charge. Make a habit: <em>see a golden sapling, take the seed</em>.</label></li>
+    <li><input type="checkbox" id="l7"><label for="l7"><strong>Fort Haight</strong> (southeast, in Mistwood): Fight or sneak to the tower top for the <strong>Dectus Medallion (Left)</strong>. This is half your ticket to the Altus Plateau later. Two birds, one trip: the Golden Seed sapling is just outside.</label></li>
+    <li><input type="checkbox" id="l8"><label for="l8"><strong>Murkwater Cave</strong> (in the river ravine north of Agheel Lake): The "boss" is <strong>Patches</strong>. Beat him down until he surrenders, then <em>spare him</em>. He becomes a merchant — you'll be back for something special.</label></li>
+    <li><input type="checkbox" id="l9"><label for="l9"><strong>Stormhill Shack</strong> (on the road to Stormveil): Talk to <strong>Roderika</strong> and exhaust her dialogue. She later moves to the Roundtable Hold and unlocks <em>spirit ash upgrades</em> — essential for the Mimic Tear.</label></li>
+  </ul>
+
+  <p class="side-ref"><a href="#side-varre">Varré &amp; the Blood Palace (C)</a> — <span class="why">that smug white-masked man at the First Steps grace starts a questline worth remembering: it later unlocks the game's best rune farm. Exhaust his dialogue now; the rest can wait.</span></p>
+  <p class="side-ref"><a href="#side-npcs">Companions of the Road (H)</a> — <span class="why">Limgrave seeds several great NPC stories: free Alexander the jar north of Stormhill, be kind to a talking tree near the Coastal Cave, and chat with the samurai under the ruins by Agheel Lake.</span></p>
+
+  <h3>The main event: claim Bloodhound's Fang</h3>
+  <div class="boss-card">
+    <div class="boss-sub">Evergaol Duel · Recommended Level 12–18</div>
+    <h4>Bloodhound Knight Darriwil</h4>
+    <p>The <strong>Forlorn Hound Evergaol</strong> sits on the southern cliffs of Limgrave, just northeast of the Bridge of Sacrifice. Activate the seal to enter. No spirit summons work inside — this one's on you.</p>
+    <ul>
+      <li>He's fast but fragile. Stay locked on, hold your shield up, and punish the end of his lunging combos with one or two hits — then back off.</li>
+      <li>His long leaping slash is your biggest opening: dodge <em>toward</em> him and counter.</li>
+      <li>If you struggle, level Vigor a few more times and return — the arena isn't going anywhere.</li>
+    </ul>
+    <p><strong>Reward: Bloodhound's Fang.</strong> Equip it the moment you meet Str 18 / Dex 17. This weapon carries you to the credits.</p>
+  </div>
+
+  <div class="callout">
+    <span class="co-label">Efficiency Tip · Margit's Shackle</span>
+    <p>Once you have ~5,000 runes, return to Patches in Murkwater Cave and buy <strong>Margit's Shackle</strong>. Used in the first phase of the Margit fight, it pins him to the ground for a free combo — and it works <em>twice</em>. Even better: it works again on a certain boss in Leyndell, much later. Best 5,000 runes you'll ever spend.</p>
+  </div>
+
+  <h3>Before you leave Limgrave</h3>
+  <ul class="checklist">
+    <li><input type="checkbox" id="l10"><label for="l10">Vigor at 20, and Str 18 / Dex 17 reached — Fang in hand, two-handed.</label></li>
+    <li><input type="checkbox" id="l11"><label for="l11">Flask split: with 4+ charges, keep them all Crimson (healing). You have no use for FP flasks yet beyond one charge for summons — one Cerulean is plenty.</label></li>
+    <li><input type="checkbox" id="l12"><label for="l12">Fang upgraded to <strong>+1 or +2</strong> with any Somber Smithing Stones [1]/[2] you've found (Smithing Master Hewg at the Roundtable Hold does upgrades — you're taken there automatically after resting at graces enough / meeting Melina).</label></li>
+  </ul>
+  <div class="rest-marker">Site of Grace · Rest &amp; Continue</div>
+</section>
+
+<!-- ================= PHASE II: WEEPING PENINSULA ================= -->
+<section class="phase" id="weeping">
+  <div class="phase-head">
+    <span class="grace-mark" aria-hidden="true"></span>
+    <h2>Phase II — Weeping Peninsula</h2>
+    <span class="region-tag">A 45-Minute Loot Loop</span>
+  </div>
+
+  <p class="lede">Entirely optional territory — which is exactly why it's the perfect low-risk farm for flask upgrades and levels before Stormveil. Ride the loop, grab everything, leave.</p>
+
+  <ul class="checklist">
+    <li><input type="checkbox" id="w1"><label for="w1">Cross the <strong>Bridge of Sacrifice</strong> south of Limgrave. Grab the map fragment from the stele on the main road south.</label></li>
+    <li><input type="checkbox" id="w2"><label for="w2"><strong>Church of Pilgrimage</strong> (northwest corner of the peninsula): a <strong>Sacred Tear</strong> at the statue.</label></li>
+    <li><input type="checkbox" id="w3"><label for="w3"><strong>Fourth Church of Marika</strong> (western coast): another <strong>Sacred Tear</strong>.</label></li>
+    <li><input type="checkbox" id="w4"><label for="w4"><strong>Golden Seeds:</strong> two saplings sit along the peninsula's roads — one near the Minor Erdtree at the center, one on the route toward Castle Morne. Watch for the glow.</label></li>
+    <li><input type="checkbox" id="w5"><label for="w5"><strong>Minor Erdtree (optional):</strong> the Erdtree Avatar guarding it drops crystal tears for your Physick. Fight it with Torrent — hit and run. Skip if it's going badly; nothing here is required.</label></li>
+    <li><input type="checkbox" id="w6"><label for="w6"><strong>Castle Morne:</strong> not on the critical path — its reward is a Strength weapon this build doesn't need. But if you're in the mood for your first real side quest, the Irina &amp; Edgar story is a perfect fit for this level range: see <a href="#side-morne">Castle Morne (Side Path A)</a>.</label></li>
+  </ul>
+
+  <div class="callout">
+    <span class="co-label">Checkpoint</span>
+    <p>Leaving the peninsula you should be around <strong>level 20–25</strong>, with <strong>5–6 flask charges</strong> healing at <strong>+2 or +3</strong> potency. That turns Margit from a wall into a speed bump.</p>
+  </div>
+  <div class="rest-marker">Site of Grace · Rest &amp; Continue</div>
+</section>
+
+<!-- ================= PHASE III: STORMVEIL ================= -->
+<section class="phase" id="stormveil">
+  <div class="phase-head">
+    <span class="grace-mark" aria-hidden="true"></span>
+    <h2>Phase III — Stormveil Castle</h2>
+    <span class="region-tag">First Legacy Dungeon</span>
+  </div>
+
+  <p class="lede">Your first true test — and your first Great Rune. With the Fang, the wolves, and the Shackle, both bosses fold.</p>
+
+  <div class="boss-card">
+    <div class="boss-sub">Castle Gatekeeper · Recommended Level 20–25</div>
+    <h4>Margit, the Fell Omen</h4>
+    <ul>
+      <li>Before the fog: summon the <strong>Lone Wolf Ashes</strong>, and use <strong>Sorcerer Rogier's</strong> gold summon sign near the stairs.</li>
+      <li>Open with <strong>Margit's Shackle</strong> — he's pinned, free jumping heavies. Use the second charge when he gets back up. That's often a third of his health gone before he swings.</li>
+      <li>He delays his attacks to bait early dodges. Watch the weapon, not his body — dodge when it <em>moves</em>, not when it glows.</li>
+      <li>In phase two, his hammer slam has a long recovery. That's your combo window.</li>
+    </ul>
+  </div>
+
+  <h3>Through the castle</h3>
+  <ul class="checklist">
+    <li><input type="checkbox" id="s1"><label for="s1">At the main gate, Gatekeeper Gostoc opens a <strong>side path</strong> — take it. The main gate is a ballista killbox.</label></li>
+    <li><input type="checkbox" id="s2"><label for="s2">Work upward through the rafters and courtyards, resting at each grace. A <strong>Golden Seed</strong> sits at a sapling in the castle grounds near the Rampart Tower area — keep your eyes open for the glow.</label></li>
+    <li><input type="checkbox" id="s3"><label for="s3">Optional: the <strong>Iron Whetblade</strong> in the armory (behind a locked door — the key is in the room where the hawk-knights nest) lets you put Heavy/Keen affinities on regular weapons. Not needed for the Fang, but grab it if you pass by; future builds thank you.</label></li>
+    <li><input type="checkbox" id="s4"><label for="s4">Talk to <strong>Nepheli Loux</strong> in the room before the boss — this puts her summon sign outside the fog.</label></li>
+  </ul>
+
+  <div class="boss-card">
+    <div class="boss-sub">Shardbearer · Recommended Level 25–30</div>
+    <h4>Godrick the Grafted</h4>
+    <ul>
+      <li>Summon <strong>Nepheli</strong> (sign by the fog gate) plus your wolves. Three targets, one very confused demigod.</li>
+      <li>Stay behind him and to his left; nearly everything he does swings forward and right.</li>
+      <li>Phase two he grafts a dragon head onto his arm — when he winds up the flame sweep, sprint <em>behind him</em> and attack freely. The fire breath is a damage window for you, not him.</li>
+    </ul>
+    <p><strong>After the fight:</strong> take <em>Godrick's Great Rune</em>, then ride east from the castle across the long bridge to the <strong>Divine Tower of Limgrave</strong> to activate it. Equipped with a Rune Arc, it raises <em>all</em> your stats. Also visit Nepheli at the Roundtable Hold afterward — she gives you the <strong>Arsenal Charm</strong> (extra equip load).</p>
+  </div>
+  <div class="rest-marker">Site of Grace · Rest &amp; Continue</div>
+</section>
+
+<!-- ================= PHASE IV: LIURNIA ================= -->
+<section class="phase" id="liurnia">
+  <div class="phase-head">
+    <span class="grace-mark" aria-hidden="true"></span>
+    <h2>Phase IV — Liurnia of the Lakes</h2>
+    <span class="region-tag">Levels 30–45</span>
+  </div>
+
+  <p class="lede">A huge region — but our business here is short: seeds, tears, a key, and the easiest demigod in the game, who happens to hand you unlimited free respecs.</p>
+
+  <h3>Sweep the lake</h3>
+  <ul class="checklist">
+    <li><input type="checkbox" id="li1"><label for="li1">Exit Stormveil north into Liurnia. Grab <strong>map fragments</strong> from road steles (one on the main road north, more in the west and east).</label></li>
+    <li><input type="checkbox" id="li2"><label for="li2"><strong>Golden Seeds</strong> line the main northern road — Liurnia has several saplings. Same habit: glow means seed.</label></li>
+    <li><input type="checkbox" id="li3"><label for="li3">Check every ruined <strong>Church of Marika</strong> (small chapels with the goddess statue) for Sacred Tears as you ride — there's one in the region's north.</label></li>
+    <li><input type="checkbox" id="li4"><label for="li4"><strong>The Academy Glintstone Key:</strong> on a small island west of the academy, a colossal dragon sleeps on a pile of treasure. Ride in quietly, grab the key beside it, ride out. Do not wake the dragon. (Or do — I'm a guide, not a cop. But don't.)</label></li>
+  </ul>
+
+  <h3>Raya Lucaria Academy</h3>
+  <ul class="checklist">
+    <li><input type="checkbox" id="li5"><label for="li5">Fight through the academy — sorcerers die in one or two Fang combos. Mid-dungeon boss <strong>Red Wolf of Radagon</strong>: summon wolves, stay aggressive, dodge through its blade attacks. It has low health.</label></li>
+  </ul>
+
+  <div class="boss-card">
+    <div class="boss-sub">Shardbearer · Recommended Level 35–40</div>
+    <h4>Rennala, Queen of the Full Moon</h4>
+    <ul>
+      <li>Phase one isn't a fight, it's a puzzle: smash the <em>chanting students with golden glows</em> to break her shield, then wail on her. Repeat.</li>
+      <li>Phase two allows spirit summons — bring the wolves. Rush her down between spells; she has very little health and no poise.</li>
+    </ul>
+    <p><strong>Reward:</strong> her Great Rune (doesn't count for Leyndell entry, but that's fine — Radahn's will) and, crucially, <strong>Rebirth</strong>: unlimited stat respecs using Larval Tears. If you ever misallocate levels, Rennala fixes it.</p>
+  </div>
+
+  <div class="callout">
+    <span class="co-label">Optional Detour · Ranni</span>
+    <p>Northwest of Liurnia, at Ranni's Rise, you can begin <strong>Ranni's questline</strong> — the game's best side story, with a legendary weapon and an alternate ending at the end of it. It's not required, but if you take one side path, take this one — and now is the ideal moment to start Act I: see <a href="#side-ranni">The Age of Stars (Side Path B)</a>. It conveniently walks the same road as our main route for the next two phases.</p>
+  </div>
+  <div class="rest-marker">Site of Grace · Rest &amp; Continue</div>
+</section>
+
+<!-- ================= PHASE V: CAELID & RADAHN ================= -->
+<section class="phase" id="caelid">
+  <div class="phase-head">
+    <span class="grace-mark" aria-hidden="true"></span>
+    <h2>Phase V — Caelid &amp; the Starscourge</h2>
+    <span class="region-tag">Levels 45–60</span>
+  </div>
+
+  <p class="lede">Caelid is a rotting hellscape, and we're going in anyway — because killing Radahn unlocks the city where the Mimic Tear sleeps, and Caelid's side loot is absurdly good.</p>
+
+  <h3>First: flip the festival switch</h3>
+  <ul class="checklist">
+    <li><input type="checkbox" id="c1"><label for="c1">Ride to <strong>Fort Faroth</strong> in Dragonbarrow (northeast Caelid — approach via the ravine road from Limgrave's north, or the beast-statue teleporter behind the Third Church). Climb to the roof, drop through the hole, and loot the <strong>Dectus Medallion (Right)</strong> and <strong>Radagon's Soreseal</strong> — a talisman granting +5 to Vigor, Endurance, Strength, and Dexterity for 15% extra damage taken. On this build, wear it for most of the game.</label></li>
+    <li><input type="checkbox" id="c2"><label for="c2"><strong>Rune windfall:</strong> outside Fort Faroth lies <strong>Greyoll</strong>, a colossal sleeping dragon. Carve at her tail (she never fights back — her hatchlings do, so stay at the tail tip) for a massive rune payout plus a Dragon Heart. This alone funds several levels.</label></li>
+    <li><input type="checkbox" id="c3"><label for="c3">With both medallion halves, warp to the <strong>Grand Lift of Dectus</strong> (far north Liurnia), ride it up, and <strong>touch the first Altus Plateau grace</strong>. Then warp straight back out. This guarantees the <strong>Radahn Festival</strong> is live at Redmane Castle.</label></li>
+    <li><input type="checkbox" id="c4"><label for="c4"><strong>Sellia Crystal Tunnel</strong> (eastern Caelid): fight to the end and beat the <strong>Fallingstar Beast</strong> (bring the wolves; hug its flank). It drops the <strong>Somberstone Miner's Bell Bearing [1]</strong> — hand it to the Twin Maiden Husks at the Roundtable to <em>buy</em> low-tier Somber stones forever. Your Fang upgrade path just became a shopping list.</label></li>
+    <li><input type="checkbox" id="c5"><label for="c5">Ride south to <strong>Redmane Castle</strong> — with the festival live, the front is peaceful. Talk to the announcer, then take the teleporter to the beach.</label></li>
+  </ul>
+
+  <div class="boss-card">
+    <div class="boss-sub">Shardbearer · Recommended Level 50–60 · Fang +5 or higher</div>
+    <h4>Starscourge Radahn</h4>
+    <ul>
+      <li>This fight is designed around the <strong>gold NPC summon signs scattered across the battlefield</strong>. Summon every single one, and re-summon them when they fall — the signs reappear as the fight goes on.</li>
+      <li>Stay on Torrent. Let the summons hold his attention while you ride in, land a jumping heavy, and ride out.</li>
+      <li>At half health he leaves the arena and <em>crashes back down as a meteor</em>. Ride away from the targeting shadow, then resume the routine.</li>
+      <li>You are the distraction manager, not the hero. Patience wins this in two or three attempts.</li>
+    </ul>
+    <p><strong>Reward:</strong> Radahn's Great Rune — your second qualifying rune for Leyndell — and a cutscene: a falling star punches a hole in Limgrave. That crater is our next stop.</p>
+  </div>
+  <div class="rest-marker">Site of Grace · Rest &amp; Continue</div>
+</section>
+
+<!-- ================= PHASE VI: NOKRON ================= -->
+<section class="phase" id="nokron">
+  <div class="phase-head">
+    <span class="grace-mark" aria-hidden="true"></span>
+    <h2>Phase VI — Nokron, Eternal City</h2>
+    <span class="region-tag">The Mimic Tear Heist</span>
+  </div>
+
+  <p class="lede">One dungeon, one objective: the single best item in Elden Ring. Everything after this fight alongside a copy of yourself.</p>
+
+  <ul class="checklist">
+    <li><input type="checkbox" id="n1"><label for="n1">Travel to the <strong>crater southeast of Fort Haight</strong> in Mistwood, Limgrave. Descend the floating ruins carefully — fall damage is the real boss here.</label></li>
+    <li><input type="checkbox" id="n2"><label for="n2">Fight through Nokron's outskirts. The <strong>Mimic Tear boss</strong> guarding the bridge copies your gear — a cheeky trick: unequip your weapon before the fog, let it spawn unarmed, then re-equip and destroy it.</label></li>
+    <li><input type="checkbox" id="n3"><label for="n3">Continue across the <strong>Ancestral Woods</strong>, then follow the cliffside path down toward <strong>Night's Sacred Ground</strong>.</label></li>
+    <li><input type="checkbox" id="n4"><label for="n4">In the ruined chamber there, a chest behind an imp-sealed door (1 Stonesword Key — buy from merchants or Twin Maiden Husks if you're out) holds the <strong>Mimic Tear Ashes</strong>. Mission complete.</label></li>
+    <li><input type="checkbox" id="n5"><label for="n5">While you're down here, harvest every <strong>Ghost Glovewort</strong> flower you see in graveyard areas — these upgrade the Mimic via <strong>Roderika's spirit tuning</strong> at the Roundtable. Get it to <strong>+3 or higher now</strong>, and keep feeding it gloveworts all game. A +10 Mimic is functionally a second player.</label></li>
+  </ul>
+
+  <div class="callout">
+    <span class="co-label">How the Mimic Works</span>
+    <p>It clones whatever you're wearing and holding <em>when summoned</em>. It has no FP cost — it costs a chunk of HP instead, which your flask refills. Summon it at every boss fog for the rest of the run. From here on, when a boss card says "summon," it means the Mimic.</p>
+  </div>
+
+  <p class="side-ref"><a href="#side-ranni">The Age of Stars (B)</a> — <span class="why">running Ranni's quest? The Fingerslayer Blade she wants is in this very district, Night's Sacred Ground, a few rooms from the Mimic Tear chest. Grab both in one trip (Act II of the side path).</span></p>
+  <p class="side-ref"><a href="#side-depths">Beneath the Capital (E)</a> — <span class="why">Nokron's aqueduct (past the Ancestral Woods) hides the coffin-ride to the Deeproot Depths, behind the Valiant Gargoyles. Note it for later — that side path is best taken after Morgott.</span></p>
+  <div class="rest-marker">Site of Grace · Rest &amp; Continue</div>
+</section>
+
+<!-- ================= PHASE VII: ALTUS ================= -->
+<section class="phase" id="altus">
+  <div class="phase-head">
+    <span class="grace-mark" aria-hidden="true"></span>
+    <h2>Phase VII — Altus Plateau</h2>
+    <span class="region-tag">Levels 60–75</span>
+  </div>
+
+  <p class="lede">Back up the Grand Lift of Dectus, this time to stay. Altus is dense with flask upgrades — the richest seed-and-tear territory in the game.</p>
+
+  <ul class="checklist">
+    <li><input type="checkbox" id="a1"><label for="a1">Grab the <strong>Altus map fragment</strong> from the stele on the main road heading northeast from the lift.</label></li>
+    <li><input type="checkbox" id="a2"><label for="a2"><strong>Golden Seeds everywhere:</strong> Altus and the capital outskirts hold more saplings than any other region — several along the main roads alone, including a multi-seed sapling. Your flask should reach <strong>10+ charges</strong> before Leyndell.</label></li>
+    <li><input type="checkbox" id="a3"><label for="a3">Check the region's ruined churches — the <strong>Second Church of Marika</strong> in the west holds a <strong>Sacred Tear</strong>, and more chapels dot the plateau. Target: <strong>+8 flask potency</strong> or better before the capital.</label></li>
+    <li><input type="checkbox" id="a4"><label for="a4"><strong>Altus Tunnel</strong> (north-central): more Somber stones and a mid-tier <strong>Somberstone bell bearing</strong> region — mine what you pass; the Fang wants to be <strong>+7</strong> by the end of this phase.</label></li>
+    <li><input type="checkbox" id="a5"><label for="a5"><strong>Skip for efficiency:</strong> the Shaded Castle, Mt. Gelmir, and Volcano Manor (Rykard) are all optional — our two Great Runes are already banked. But if you want a third Great Rune, an unforgettable gimmick boss, and some morally dubious contract work, this is the era for it: see <a href="#side-volcano">Volcano Manor &amp; Rykard (Side Path D)</a>.</label></li>
+    <li><input type="checkbox" id="a6"><label for="a6">Follow the main road east until the capital's outer wall. Rest at the outskirts graces.</label></li>
+  </ul>
+  <div class="rest-marker">Site of Grace · Rest &amp; Continue</div>
+</section>
+
+<!-- ================= PHASE VIII: LEYNDELL ================= -->
+<section class="phase" id="leyndell">
+  <div class="phase-head">
+    <span class="grace-mark" aria-hidden="true"></span>
+    <h2>Phase VIII — Leyndell, Royal Capital</h2>
+    <span class="region-tag">Levels 75–90 · Vigor 40+</span>
+  </div>
+
+  <p class="lede">Two Great Runes open the gates. Inside: golden streets, a dragon on the wall, and a familiar face waiting at the throne.</p>
+
+  <div class="boss-card">
+    <div class="boss-sub">Gatekeeper · Fight Mounted</div>
+    <h4>Draconic Tree Sentinel</h4>
+    <ul>
+      <li>Guards the capital's main gate. Stay on Torrent the entire fight — circle him, dart in for single jumping attacks, dart out.</li>
+      <li>Respect the lightning in phase two; keep moving laterally and never linger behind him (the horse kicks).</li>
+    </ul>
+  </div>
+
+  <h3>Through the golden city</h3>
+  <ul class="checklist">
+    <li><input type="checkbox" id="le1"><label for="le1">Climb the great dragon wing to reach the upper city. Rest at every grace — Leyndell's shortcuts are a maze and graces are your breadcrumbs.</label></li>
+    <li><input type="checkbox" id="le2"><label for="le2"><strong>Golden Seeds:</strong> the capital holds two more saplings within its streets. The glow habit continues indoors.</label></li>
+    <li><input type="checkbox" id="le3"><label for="le3"><strong>Godfrey, First Elden Lord (golden shade):</strong> a warm-up boss. Mimic + jumping heavies. He staggers constantly.</label></li>
+  </ul>
+
+  <div class="boss-card">
+    <div class="boss-sub">Shardbearer · Recommended Level 80+ · Fang +7</div>
+    <h4>Morgott, the Omen King</h4>
+    <ul>
+      <li>Remember Margit? Same Omen, bigger crown — and <strong>Margit's Shackle still works</strong>. Two free pin-downs in phase one.</li>
+      <li>Summon <strong>Melina's</strong> gold sign outside the fog, plus your Mimic. Three-on-one.</li>
+      <li>He's aggressive but light — jumping heavies stagger him into criticals repeatedly. Dodge his cursed-sword rain by sprinting sideways.</li>
+    </ul>
+    <p><strong>After the fight:</strong> speak to Melina at the grace — she grants the <strong>Rold Medallion</strong>, your key to the Mountaintops. Before you leave: this is a great moment to bank flask potency, ghost gloveworts, and any capital loot, because the city changes forever near the end of the game.</p>
+  </div>
+
+  <p class="side-ref"><a href="#side-depths">Beneath the Capital (E)</a> — <span class="why">now is the window: the sewers below Leyndell, the sealed Frenzied Flame, and Fia's finale in the Deeproot Depths are all best done here, after Morgott and before the Forge of the Giants.</span></p>
+  <p class="side-ref"><a href="#side-npcs">Companions of the Road (H)</a> — <span class="why">same window: Nepheli, Kenneth &amp; Gostoc's Stormveil finale must be wrapped up before the capital burns. Check your loose threads now.</span></p>
+  <div class="rest-marker">Site of Grace · Rest &amp; Continue</div>
+</section>
+
+<!-- ================= PHASE IX: MOUNTAINTOPS ================= -->
+<section class="phase" id="mountaintops">
+  <div class="phase-head">
+    <span class="grace-mark" aria-hidden="true"></span>
+    <h2>Phase IX — Mountaintops of the Giants</h2>
+    <span class="region-tag">Levels 90–105 · Vigor 50+</span>
+  </div>
+
+  <p class="lede">The Grand Lift of Rold carries you into the endgame. The Mountaintops are linear — follow the road, loot the chapels, and prepare to fight a mountain.</p>
+
+  <ul class="checklist">
+    <li><input type="checkbox" id="m1"><label for="m1">Take the <strong>Grand Lift of Rold</strong> (east of the capital, hoist the Rold Medallion). Grab the map fragment past Zamor Ruins.</label></li>
+    <li><input type="checkbox" id="m2"><label for="m2">Follow the main path across the great chain-bridge and around the valley. More <strong>Golden Seeds</strong> and a chapel <strong>Sacred Tear</strong> await along the route — by now your flask should be nearly maxed (target: <strong>12+ charges, +10 or higher potency</strong>).</label></li>
+    <li><input type="checkbox" id="m3"><label for="m3">Level check: <strong>Vigor 50–60 before the Fire Giant.</strong> His attacks are the hardest-hitting yet. Greyoll's runes or a lap of skipped Altus content will top you up fast.</label></li>
+  </ul>
+
+  <p class="side-ref"><a href="#side-haligtree">The Haligtree &amp; Malenia (F)</a> — <span class="why">while you're in the Mountaintops, Castle Sol in the far north holds half of the secret medallion that opens the game's hidden endgame region. Grab it now even if you save the Haligtree itself for after Farum Azula.</span></p>
+  <p class="side-ref"><a href="#side-varre">Varré &amp; Mohgwyn (C)</a> — <span class="why">under-leveled for the Fire Giant? The Mohgwyn Palace rune farm erases any deficit in ten minutes — and the endgame-tier palace dungeon itself is worth a visit around now.</span></p>
+
+  <div class="boss-card">
+    <div class="boss-sub">Guardian of the Forge · Recommended Level 95–105 · Fang +8/+9</div>
+    <h4>Fire Giant</h4>
+    <ul>
+      <li>Phase one: stay mounted, and attack the <strong>glowing shackle on his left ankle</strong> — it takes bonus damage. Ride away when he rolls (yes, he rolls; yes, it's terrifying).</li>
+      <li>Phase two (he tears himself apart): dismount, summon the Mimic, and live under his hands and feet. Almost everything dangerous happens far away from his body — the safest place is uncomfortably close.</li>
+      <li>The fireball barrage tracks — sprint perpendicular, don't roll early.</li>
+    </ul>
+    <p><strong>After the fight:</strong> rest at the Forge of the Giants grace and speak with Melina. <strong>Warning:</strong> committing here transports you to Crumbling Farum Azula and permanently transforms Leyndell — several capital-based NPC quests close forever. If any side business matters to you, finish it first. When ready, commit.</p>
+  </div>
+  <div class="rest-marker">Site of Grace · Rest &amp; Continue</div>
+</section>
+
+<!-- ================= PHASE X: FARUM AZULA ================= -->
+<section class="phase" id="farum">
+  <div class="phase-head">
+    <span class="grace-mark" aria-hidden="true"></span>
+    <h2>Phase X — Crumbling Farum Azula</h2>
+    <span class="region-tag">Levels 105–120 · Fang +9/+10</span>
+  </div>
+
+  <p class="lede">A city shattered across the sky, patrolled by dragons and beastmen. The final Somber Ancient Dragon stone for your +10 Fang is found here — keep your eyes on side rooms and corpses as you climb.</p>
+
+  <ul class="checklist">
+    <li><input type="checkbox" id="f1"><label for="f1">Progress grace to grace — the level loops back on itself with elevators. Beastmen hit hard in groups; pull them one at a time.</label></li>
+    <li><input type="checkbox" id="f2"><label for="f2">Loot thoroughly for <strong>Somber Smithing Stones [8]/[9]</strong> and a <strong>Somber Ancient Dragon Smithing Stone</strong> — your ticket to <strong>Bloodhound's Fang +10</strong>.</label></li>
+    <li><input type="checkbox" id="f3"><label for="f3"><strong>Optional:</strong> Dragonlord Placidusax hides below the floating debris near the dragon temple — the most cinematic optional fight in the game, and you're at the right level for it: see <a href="#side-placidusax">Dragonlord Placidusax (Side Path G)</a>.</label></li>
+  </ul>
+
+  <div class="boss-card">
+    <div class="boss-sub">Duo Gauntlet · Sleep Is Legal</div>
+    <h4>Godskin Duo</h4>
+    <ul>
+      <li>The most-hated fight in the game — unless you know the secret: <strong>both Godskins can be put to sleep</strong>. Craft <em>Sleep Pots</em> (Trina's Lilies + the pot recipe from Fevor's Cookbook) or just brute-force it.</li>
+      <li>Brute-force plan: summon the Mimic, and both of you focus the <strong>Noble (the fat one)</strong> first. Kill him fast, then two-on-one the Apostle.</li>
+      <li>Use the pillars — the Noble's rolling attack shatters on them.</li>
+    </ul>
+  </div>
+
+  <p class="side-ref"><a href="#side-npcs">Companions of the Road (H)</a> — <span class="why">if you've been helping Alexander the jar since Limgrave, his final honorable duel awaits in Farum Azula — and his reward, the Shard of Alexander, is the best talisman this build can equip.</span></p>
+
+  <div class="boss-card">
+    <div class="boss-sub">Death Incarnate · Recommended Level 110+</div>
+    <h4>Maliketh, the Black Blade</h4>
+    <ul>
+      <li>Phase one (Beast Clergyman) is simple: stay close, punish his dagger combos, break his poise with jumping heavies.</li>
+      <li>Phase two, Maliketh goes airborne and hits like doom itself. Summon the Mimic <em>before the fog</em>, let it take aggro, and attack only after his aerial strings end — he's very vulnerable on landing.</li>
+      <li>His Destined Death attacks lower your max HP on hit — respect them, chip patiently, and this ends fast: he has one of the smallest health pools of any endgame boss.</li>
+    </ul>
+    <p><strong>After the fight:</strong> a portal at the site of grace returns you to the <strong>capital of ash</strong>. The end of the road is in sight.</p>
+  </div>
+  <div class="rest-marker">Site of Grace · Rest &amp; Continue</div>
+</section>
+
+<!-- ================= PHASE XI: ENDGAME ================= -->
+<section class="phase" id="endgame">
+  <div class="phase-head">
+    <span class="grace-mark" aria-hidden="true"></span>
+    <h2>Phase XI — The Elden Throne</h2>
+    <span class="region-tag">Final Gauntlet · Vigor 60</span>
+  </div>
+
+  <p class="lede">Ashen Leyndell. Four fights stand between you and the throne. Final loadout check: Fang +10, Mimic +10, flask maxed, Vigor 60, Radagon's Soreseal traded out if you're feeling fragile.</p>
+
+  <ul class="checklist">
+    <li><input type="checkbox" id="e1"><label for="e1"><strong>Sir Gideon Ofnir, the All-Knowing:</strong> a mage in a boss room. Sprint at him, stunlock, done. The shortest "boss" in the game.</label></li>
+  </ul>
+
+  <div class="boss-card">
+    <div class="boss-sub">First Elden Lord · For Real This Time</div>
+    <h4>Godfrey / Hoarah Loux</h4>
+    <ul>
+      <li>Phase one Godfrey is honest — dodge the axe, punish the stomps' recovery.</li>
+      <li>Phase two he throws the axe away and wrestles you. His <strong>grabs cannot be blocked</strong> — dodge them late, the wind-ups are long and theatrical.</li>
+      <li>The Mimic shines here: while he suplexes your clone, you get free combos. Poor clone.</li>
+    </ul>
+  </div>
+
+  <div class="boss-card">
+    <div class="boss-sub">The Final Battle · Two Bosses, One Fog Gate</div>
+    <h4>Radagon of the Golden Order → The Elden Beast</h4>
+    <ul>
+      <li><strong>Radagon</strong> staggers beautifully to jumping heavy attacks — he's a pure physical brawl. Dodge <em>into</em> his hammer slams. His teleport-grab telegraphs with a golden ring; sprint away from it.</li>
+      <li>Save your Mimic's health where you can — it carries over into part two. (If it dies, it dies; you can't re-summon between phases.)</li>
+      <li><strong>The Elden Beast</strong> swims away constantly — you can <strong>summon Torrent in this arena</strong> to close distance instead of jogging across the ocean of stars.</li>
+      <li>When it casts <em>Elden Stars</em> (a comet stream from above), sprint directly <strong>toward and past the beast</strong> — the stars chase your old position.</li>
+      <li>Attack the glowing brand on its body when it surfaces. Patience, chip damage, and hydration.</li>
+    </ul>
+    <p><strong>Then touch the fractured Marika, and choose your ending.</strong> If you finished <a href="#side-ranni">Ranni's questline (Side Path B)</a> or <a href="#side-depths">Fia's dream (Side Path E)</a>, their alternate endings are available here too — Ranni's via her blue summon sign in the arena. Mend the ring however you see fit, Elden Lord.</p>
+  </div>
+  <div class="rest-marker">Fracture · Mend the Elden Ring</div>
+</section>
+
+<!-- ================= SIDE PATHS INTRO ================= -->
+<section class="phase side" id="sidepaths">
+  <div class="phase-head">
+    <span class="grace-mark" aria-hidden="true"></span>
+    <h2>Paths Untrodden — The Side Content</h2>
+    <span class="region-tag">Optional · Read As Referenced</span>
+  </div>
+  <p class="lede">Everything worth doing off the golden road, in the order it becomes available. Each Side Path is self-contained — the Route of Grace signposts the ideal moment to take each one, and nothing here is ever required. Come for the loot, stay for the best stories in the game.</p>
+</section>
+
+<!-- ================= SIDE A: CASTLE MORNE ================= -->
+<section class="phase side" id="side-morne">
+  <div class="phase-head">
+    <span class="grace-mark" aria-hidden="true"></span>
+    <h2>Side Path A — Castle Morne</h2>
+    <span class="region-tag">Weeping Peninsula · Levels 15–25</span>
+  </div>
+
+  <p class="lede">A short castle siege at the peninsula's southern tip — a misbegotten uprising, a father, a daughter, and a letter that was never going to end well. The perfect first taste of a FromSoftware side quest.</p>
+
+  <ul class="checklist">
+    <li><input type="checkbox" id="sa1"><label for="sa1">On the road just south of the <strong>Bridge of Sacrifice</strong>, a blind girl named <strong>Irina</strong> sits by the roadside. Speak with her and accept <strong>Irina's Letter</strong> for her father.</label></li>
+    <li><input type="checkbox" id="sa2"><label for="sa2">Ride the main road south to <strong>Castle Morne</strong>. Inside, fight or sprint through the misbegotten-overrun courtyards — the lift behind the main hall carries you up the ramparts.</label></li>
+    <li><input type="checkbox" id="sa3"><label for="sa3">On the walls, find <strong>Edgar</strong>, the castle's commander, and deliver the letter. He refuses to leave until the castle's sword is safe. So — let's go secure the sword.</label></li>
+    <li><input type="checkbox" id="sa4"><label for="sa4">Descend the broken walkways at the rear of the castle to the beach below.</label></li>
+  </ul>
+
+  <div class="boss-card">
+    <div class="boss-sub">Castle Boss · Recommended Level 18–25</div>
+    <h4>Leonine Misbegotten</h4>
+    <ul>
+      <li>A fast, leaping brute on an open beach — summon the wolves and let them split his attention.</li>
+      <li>All his combos end with a big recovery window. Guard or dodge through the flurry, then land two heavies and reset.</li>
+      <li>He's vulnerable to poise-breaks: jumping heavy attacks stagger him into criticals.</li>
+    </ul>
+    <p><strong>Reward: Grafted Blade Greatsword</strong> — a colossal Strength weapon and one of the game's legendary armaments. Not for this build, but a beautiful trophy (and a Game of Thrones homage — a throne of swords, forged into one blade).</p>
+  </div>
+
+  <div class="callout warn">
+    <span class="co-label">Quest Epilogue</span>
+    <p>Return to Edgar after the fight, then check on Irina at the roadside. FromSoftware quests rarely end happily — this one sets the tone. Edgar's story continues later at the Revenger's Shack in western Liurnia, where his grief has curdled into something you may have to put down.</p>
+  </div>
+  <div class="rest-marker">Side Path Complete · Return to the Route</div>
+</section>
+
+<!-- ================= SIDE B: RANNI ================= -->
+<section class="phase side" id="side-ranni">
+  <div class="phase-head">
+    <span class="grace-mark" aria-hidden="true"></span>
+    <h2>Side Path B — The Age of Stars</h2>
+    <span class="region-tag">Ranni's Questline · Liurnia Onward</span>
+  </div>
+
+  <p class="lede">The longest, best, and most consequential questline in Elden Ring: a witch with a doll's body, a plot older than the Erdtree, and an entire alternate ending. It also hands you two legendary weapons and sends you through the game's most breathtaking hidden zones. If you do one side quest, do this one.</p>
+
+  <h3>Act I — The witch's tower (during Phase IV)</h3>
+  <ul class="checklist">
+    <li><input type="checkbox" id="sb1"><label for="sb1">Ride to <strong>Ranni's Rise</strong> in Three Sisters, the plateau northwest of Liurnia (behind Caria Manor — fight or sprint through the manor's grabbing hands; its boss, Loretta, falls easily to wolves + aggression).</label></li>
+    <li><input type="checkbox" id="sb2"><label for="sb2">Speak to <strong>Ranni</strong> at the tower top and enter her service. Meet her three servants below: <strong>Blaidd</strong> the half-wolf, <strong>Iji</strong> the war counselor (who also sells Somber stones — useful!), and Seluvis.</label></li>
+    <li><input type="checkbox" id="sb3"><label for="sb3">Blaidd asks you to find him in the <strong>Siofra River</strong> underground (well entrance in eastern Limgrave's Mistwood). Speak with him there — the trail points to Radahn, which is exactly where the Route of Grace goes anyway. This quest and the main route walk hand in hand.</label></li>
+  </ul>
+
+  <h3>Act II — The hidden treasure of Nokron (during Phase VI)</h3>
+  <ul class="checklist">
+    <li><input type="checkbox" id="sb4"><label for="sb4">With Radahn dead and Nokron open, you're already going there for the Mimic Tear. In the same <strong>Night's Sacred Ground</strong> district, a chest in the ruins holds the <strong>Fingerslayer Blade</strong>. Two legendary pickups, one dungeon.</label></li>
+    <li><input type="checkbox" id="sb5"><label for="sb5">Bring the blade to Ranni. She rewards you with the <strong>Carian Inverted Statue</strong> and leaves her tower.</label></li>
+    <li><input type="checkbox" id="sb6"><label for="sb6">Take the statue to the <strong>Carian Study Hall</strong> on Liurnia's eastern cliffs — placing it flips the entire tower upside down (one of the game's great "wait, WHAT" moments). Climb <em>down</em> through the inverted hall to the <strong>Divine Tower of Liurnia</strong> and collect the <strong>Cursemark of Death</strong>.</label></li>
+  </ul>
+
+  <h3>Act III — The Lake of Rot and the void (any time after)</h3>
+  <ul class="checklist">
+    <li><input type="checkbox" id="sb7"><label for="sb7">Behind Ranni's Rise, <strong>Renna's Rise</strong> is now open — the portal chest at its top sends you to the <strong>Ainsel River Main</strong>. Pick up the <strong>Miniature Ranni doll</strong> nearby, rest at a grace, and <em>talk to the doll</em> (choose the option repeatedly — she answers on the third try).</label></li>
+    <li><input type="checkbox" id="sb8"><label for="sb8">Ranni asks you to slay the <strong>Baleful Shadow</strong> — press on through glorious <strong>Nokstella, Eternal City</strong> until the assassin ambushes you. Cut him down (he's an NPC duel; the Mimic can't help underground here, but wolves can — and he parries, so vary your timing).</label></li>
+    <li><input type="checkbox" id="sb9"><label for="sb9">Reward: the <strong>Discarded Palace Key</strong>. This opens the treasure chest in <strong>Rennala's boss room library</strong> — inside is the <strong>Dark Moon Ring</strong>.</label></li>
+    <li><input type="checkbox" id="sb10"><label for="sb10">Descend the elevator past Nokstella into the <strong>Lake of Rot</strong>. Yes, the entire lake is scarlet rot. Sprint between the raisable stone platforms, chug Preserving Boluses (craftable — buy the cookbook from Gowry in Caelid, or just flask through it), and take the coffin at the far shrine.</label></li>
+  </ul>
+
+  <div class="boss-card">
+    <div class="boss-sub">Hidden Boss · Recommended Level 60–70</div>
+    <h4>Astel, Naturalborn of the Void</h4>
+    <ul>
+      <li>A cosmic horror at the bottom of the world. Summon the Mimic and stay glued to its head — most of its scariest attacks (laser, meteor shower) target range.</li>
+      <li>When it teleports, sprint — it often reappears above you for a slam, or behind you for a <strong>grab with its pincers</strong>. The grab is the only real killer; dodge sideways the instant it materializes.</li>
+      <li>Jumping heavies to the face stagger it for massive criticals.</li>
+    </ul>
+  </div>
+
+  <h3>Finale — The Moonlight Altar</h3>
+  <ul class="checklist">
+    <li><input type="checkbox" id="sb11"><label for="sb11">Past Astel, ride up to the <strong>Moonlight Altar</strong> plateau. In the <strong>Cathedral of Manus Celes</strong>, descend into the crevice and place the <strong>Dark Moon Ring</strong> on Ranni's tiny cold finger.</label></li>
+    <li><input type="checkbox" id="sb12"><label for="sb12">Rewards: her blessing (an <strong>alternate ending</strong> — her summon sign appears after the final boss), and the <strong>Dark Moon Greatsword</strong>, the legendary Moonlight Greatsword of FromSoftware tradition. An Intelligence weapon — respec bait for a second playthrough.</label></li>
+  </ul>
+
+  <div class="callout warn">
+    <span class="co-label">Fair Warning</span>
+    <p>Completing certain steps turns <strong>Blaidd hostile</strong> at Ranni's Rise afterward — that confrontation is part of the story, and his armor is yours when it ends. Also: choosing Ranni's ending happens at the very end of the game, and only if you use <em>her</em> summon sign instead of the throne. You can still pick any other ending — having this option costs nothing.</p>
+  </div>
+  <div class="rest-marker">Side Path Complete · Return to the Route</div>
+</section>
+
+<!-- ================= SIDE C: VARRE & MOHGWYN ================= -->
+<section class="phase side" id="side-varre">
+  <div class="phase-head">
+    <span class="grace-mark" aria-hidden="true"></span>
+    <h2>Side Path C — Varré &amp; the Blood Palace</h2>
+    <span class="region-tag">Any Act · The Great Rune Farm</span>
+  </div>
+
+  <p class="lede">The smug white-masked man who called you maidenless at the very first grace has a proposal — and it ends at Mohgwyn Palace, home of an optional demigod and the most famous rune farm in the game.</p>
+
+  <h3>The proposal</h3>
+  <ul class="checklist">
+    <li><input type="checkbox" id="sc1"><label for="sc1">Speak with <strong>White Mask Varré</strong> at the First Steps grace early on, exhausting his dialogue. After Godrick falls (and you've touched the Roundtable), he relocates to the <strong>Rose Church</strong> in southern Liurnia.</label></li>
+    <li><input type="checkbox" id="sc2"><label for="sc2">At the Rose Church, answer his question about the Two Fingers however you like, and receive <strong>Festering Bloody Fingers</strong>. He asks you to invade other players three times — you don't need to win, just try. <em>Playing offline?</em> A patch added an alternative: defeat the NPC invader at the Writheblood Ruins in Altus instead.</label></li>
+    <li><input type="checkbox" id="sc3"><label for="sc3">Next task: soak his <strong>Lord of Blood's Favor</strong> cloth in a maiden's blood. The nearest maiden is at the <strong>Church of Inhibition</strong> (northeastern Liurnia highlands) — or, poetically, back at the <strong>Chapel of Anticipation</strong> where you died at minute one (reachable via a portal at the Four Belfries in western Liurnia).</label></li>
+    <li><input type="checkbox" id="sc4"><label for="sc4">Return the cloth. Varré knights you into the service of Luminary Mohg and hands over the <strong>Pureblood Knight's Medal</strong> — an item that teleports you to <strong>Mohgwyn Palace</strong> at will, a region otherwise locked until deep endgame. This is a colossal sequence break in your favor.</label></li>
+  </ul>
+
+  <h3>The farm</h3>
+  <div class="callout">
+    <span class="co-label">Palace Approach Ledge-Road</span>
+    <p>From the first Mohgwyn grace, the ledge outside overlooks a canyon of dormant albinaurics worth huge runes each — and across the ravine roosts a giant bird that, when aggroed with a ranged attack (a throwing dagger works), charges straight off the cliff. <strong>Tens of thousands of runes in seconds, repeatable forever.</strong> Whenever the Route of Grace says "if under-leveled, go farm" — this is where it means. Ten minutes here erases any level deficit in the game.</p>
+  </div>
+
+  <div class="boss-card">
+    <div class="boss-sub">Optional Shardbearer · Recommended Level 90+ · Endgame</div>
+    <h4>Mohg, Lord of Blood</h4>
+    <ul>
+      <li>Save the man himself for the late game — the palace dungeon between you and him is endgame-tier.</li>
+      <li>His signature move, <strong>Nihil</strong>, drains your health three times at half HP no matter what you do. Counter it: the <strong>Purifying Crystal Tear</strong> (dropped by an invader at the Second Church of Marika in Altus, part of Yura's quest) neutralizes the ritual entirely when mixed in your Physick.</li>
+      <li>Otherwise: Mimic, aggression, and dodge the blood-flame claw sweeps diagonally forward. His bleed buildup is the real threat — Stanching Boluses help.</li>
+      <li>Rewards: <strong>Mohg's Great Rune</strong>, a Remembrance, and — for owners of the <em>Shadow of the Erdtree</em> expansion — the cocoon in his arena is the DLC's front door.</li>
+    </ul>
+  </div>
+  <div class="rest-marker">Side Path Complete · Return to the Route</div>
+</section>
+
+<!-- ================= SIDE D: VOLCANO MANOR ================= -->
+<section class="phase side" id="side-volcano">
+  <div class="phase-head">
+    <span class="grace-mark" aria-hidden="true"></span>
+    <h2>Side Path D — Volcano Manor &amp; Rykard</h2>
+    <span class="region-tag">Mt. Gelmir · Altus Era · Levels 60–75</span>
+  </div>
+
+  <p class="lede">A polite manor of assassins built into a volcano, run by a demigod who ate his own god-devouring serpent. Join the family business, take a few contracts, then betray absolutely everyone. It counts as a Great Rune, too.</p>
+
+  <ul class="checklist">
+    <li><input type="checkbox" id="sd1"><label for="sd1"><strong>Getting there:</strong> ride northwest from Altus into <strong>Mt. Gelmir</strong> and follow the winding trail (past the Wyndham Ruins and up the ravine), or befriend <strong>Rya</strong> — the hooded girl in northern Liurnia / Altus — whose quest earns you a direct teleport to the manor.</label></li>
+    <li><input type="checkbox" id="sd2"><label for="sd2">Inside, speak to <strong>Lady Tanith</strong> and join the Manor. You receive a drawing-room key — and find familiar faces in the lounge, including <strong>Patches</strong>, still alive, still Patches.</label></li>
+    <li><input type="checkbox" id="sd3"><label for="sd3"><strong>Contracts:</strong> letters in the drawing room mark targets across the Lands Between (Old Knight Istvan in Limgrave, then further afield). Each is a quick NPC duel via a red summon sign, each pays out gear. Complete at least the first two — Tanith then grants an audience with the Lord.</label></li>
+    <li><input type="checkbox" id="sd4"><label for="sd4"><strong>Shortcut for the impatient:</strong> you can skip the contracts entirely by exploring the manor's hidden wall passage (in the first hallway's dead-end room) and fighting through the Prison Town beneath — including the <strong>Godskin Noble</strong> on the temple bridge — to reach the Lord the honest way.</label></li>
+  </ul>
+
+  <div class="boss-card">
+    <div class="boss-sub">Shardbearer · Recommended Level 65–75 · Bring the Big Spear</div>
+    <h4>Rykard, Lord of Blasphemy</h4>
+    <ul>
+      <li>A gimmick fight — and the gimmick is glorious. On the arena floor lies the <strong>Serpent-Hunter</strong>, a great spear made for exactly this. Equip it (no stat requirements) and two-hand it.</li>
+      <li>Its sweeping ranged slashes shred the God-Devouring Serpent. Stay mid-range, swing, and dodge the lava lunges.</li>
+      <li>Phase two, Rykard himself rises: keep swinging, sprint away when he plants his sword for the exploding skull-swarm, and finish the job.</li>
+      <li>Rewards: <strong>Rykard's Great Rune</strong>, a Remembrance (tradeable for the <strong>Blasphemous Blade</strong> — a top-tier Faith weapon for a future playthrough), and Tanith's grief.</li>
+    </ul>
+  </div>
+  <div class="rest-marker">Side Path Complete · Return to the Route</div>
+</section>
+
+<!-- ================= SIDE E: BENEATH THE CAPITAL ================= -->
+<section class="phase side" id="side-depths">
+  <div class="phase-head">
+    <span class="grace-mark" aria-hidden="true"></span>
+    <h2>Side Path E — Beneath the Capital</h2>
+    <span class="region-tag">Post-Morgott · Do Before Burning the Erdtree</span>
+  </div>
+
+  <p class="lede">Under Leyndell's golden streets: a shunning-ground of omens, a sealed madness that can end the world, and — deeper still — the roots of the Erdtree itself, where Fia's story concludes. All of it becomes harder or stranger once the capital turns to ash, so this window (after Morgott, before the Forge of the Giants) is the time.</p>
+
+  <h3>The Subterranean Shunning-Grounds</h3>
+  <ul class="checklist">
+    <li><input type="checkbox" id="se1"><label for="se1">From the capital's central avenue, find the <strong>well shaft</strong> (near the Avenue Balcony area, a round well with a ladder descending into darkness). Climb down into the sewers.</label></li>
+    <li><input type="checkbox" id="se2"><label for="se2">Work through the pipes and catacomb corridors — watch for the basilisk pits and grab <strong>Mohg's Shackle</strong> from a corpse-filled side chamber along the main sewer route. Like Margit's Shackle, it pins the boss ahead. Twice.</label></li>
+  </ul>
+
+  <div class="boss-card">
+    <div class="boss-sub">Sewer King · Recommended Level 70–80</div>
+    <h4>Mohg, the Omen</h4>
+    <ul>
+      <li>The same Mohg as the Blood Palace, before his ascension — with none of the blood-flame nonsense. Shackle, Mimic, jumping heavies. Routine.</li>
+    </ul>
+    <p><strong>After the fight:</strong> strike the altar behind his throne — it's an illusion, hiding a long descent of jumps and ledges to the <strong>Cathedral of the Forsaken's deepest dark</strong>.</p>
+  </div>
+
+  <div class="callout warn">
+    <span class="co-label">The Three Fingers · Point of No Return</span>
+    <p>At the very bottom of that descent, beyond a door that only opens when you are <em>naked of all armor</em>, waits the <strong>Frenzied Flame</strong>. Touching the Three Fingers grants an ending — and <strong>locks you out of every other ending</strong> unless you later undo it with a needle found through Millicent's questline and a hidden dragon's arena. Feel free to walk down and look at the door. Do not open it casually. This is the one choice in Elden Ring the game will not forgive on a whim.</p>
+  </div>
+
+  <h3>Deeproot Depths &amp; Fia's Dream</h3>
+  <ul class="checklist">
+    <li><input type="checkbox" id="se3"><label for="se3"><strong>Getting there:</strong> in Nokron's aqueduct (past the Ancestral Woods), the <strong>Valiant Gargoyles</strong> guard a waterfall — beat them (Mimic; fight one at a time near the water's edge; their poison breath is the killer) and ride the <strong>stone coffin</strong> over the falls into the Deeproot Depths.</label></li>
+    <li><input type="checkbox" id="se4"><label for="se4">Climb the great roots to the region's crowning ruin, <strong>the Prince of Death's Throne</strong>, where <strong>Fia</strong> — the deathbed companion from the Roundtable Hold — now waits. (Her Roundtable quest steps along the way: accept her hug, take the Weathered Dagger, give it to D, and watch the Roundtable get a little darker. It all leads here.)</label></li>
+    <li><input type="checkbox" id="se5"><label for="se5">Give Fia the <strong>Cursemark of Death</strong> — collected from the inverted Carian Study Hall during <a href="#side-ranni">Ranni's questline (Side Path B)</a>. The two quests are braided together.</label></li>
+    <li><input type="checkbox" id="se6"><label for="se6">Let her sleep, enter her dream, and face what waits inside it.</label></li>
+  </ul>
+
+  <div class="boss-card">
+    <div class="boss-sub">Dream Boss · Recommended Level 80+</div>
+    <h4>Lichdragon Fortissax</h4>
+    <ul>
+      <li>A death-lightning dragon in an open void. Fight it like every dragon: live under its chest, hit the legs, sprint out when it flies.</li>
+      <li>The red death-lightning pillars linger — never dodge <em>into</em> the glowing ground.</li>
+      <li>Reward: the <strong>Mending Rune of the Death-Prince</strong>, unlocking another alternate ending — again, only if you choose it at the throne. Options cost nothing.</li>
+    </ul>
+  </div>
+  <div class="rest-marker">Side Path Complete · Return to the Route</div>
+</section>
+
+<!-- ================= SIDE F: HALIGTREE ================= -->
+<section class="phase side" id="side-haligtree">
+  <div class="phase-head">
+    <span class="grace-mark" aria-hidden="true"></span>
+    <h2>Side Path F — The Haligtree &amp; Malenia</h2>
+    <span class="region-tag">Hidden Endgame Region · Levels 110+ · Fang +9/+10</span>
+  </div>
+
+  <p class="lede">The most-missed region in Elden Ring, hidden behind two medallion halves and a snowstorm — ending at the hardest boss FromSoftware has ever shipped. This is the true final exam. The Route of Grace's build was quietly designed with her in mind: the Fang's bleed is one of the best answers to Malenia in the game.</p>
+
+  <h3>Assembling the Haligtree Secret Medallion</h3>
+  <ul class="checklist">
+    <li><input type="checkbox" id="sf1"><label for="sf1"><strong>Right half — Village of the Albinaurics</strong> (southwestern Liurnia, below the manor cliffs): among the ruins, strike the suspiciously large <strong>pot</strong> to reveal Albus, who surrenders the half. Gently. He's had a hard century.</label></li>
+    <li><input type="checkbox" id="sf2"><label for="sf2"><strong>Left half — Castle Sol</strong> (far northern Mountaintops): a proper castle gauntlet ending in <strong>Commander Niall</strong> — the hardest non-demigod on this list. Kill his two spectral knights first (or cheese them: Bewitching Branches charm them to your side), then Mimic + bleed the commander down. The medallion half sits in the tower behind him.</label></li>
+    <li><input type="checkbox" id="sf3"><label for="sf3">At the <strong>Grand Lift of Rold</strong>, choose the <em>hidden</em> prompt — "hoist secret medallion" — to descend instead into the <strong>Consecrated Snowfield</strong>, an entire secret region under permanent blizzard. (Its map stele is along the buried main road.)</label></li>
+    <li><input type="checkbox" id="sf4"><label for="sf4">Ride north to <strong>Ordina, Liturgical Town</strong>: an evergaol puzzle. Light the four candles atop the town's ladders while invisible assassins hunt you — sprint, climb, don't fight what you can't see. The portal at the town's rear then opens the way to Miquella's Haligtree.</label></li>
+  </ul>
+
+  <h3>The Haligtree itself</h3>
+  <ul class="checklist">
+    <li><input type="checkbox" id="sf5"><label for="sf5">The canopy is a branch-walking gauntlet — patience on the narrow limbs, and let ranged enemies come to you. <strong>Loretta, Knight of the Haligtree</strong> guards the descent: a rematch of the Caria Manor ghost, now flesh and much angrier. Mimic, stay close, punish the greatbow wind-ups.</label></li>
+    <li><input type="checkbox" id="sf6"><label for="sf6"><strong>Elphael, Brace of the Haligtree</strong> below is one of the game's best legacy dungeons — and its most dangerous. The scarlet-rot lake at its base hides upgrade materials and the region's final graces. Take every shortcut lever you see.</label></li>
+  </ul>
+
+  <div class="boss-card">
+    <div class="boss-sub">The Final Exam · Recommended Level 120+ · Fang +10 · Mimic +10</div>
+    <h4>Malenia, Blade of Miquella</h4>
+    <ul>
+      <li>Two rules define her: she <strong>heals with every hit she lands</strong> — even on your shield — and at half health of phase one she unleashes <strong>Waterfowl Dance</strong>, the most lethal combo in the game.</li>
+      <li><strong>Waterfowl survival:</strong> when she leaps and hangs in the air — <em>sprint away immediately</em>. Outrun the first two flurries entirely, then dodge <em>into</em> the final spin. If she's point-blank when it starts, your best odds are dodging diagonally back-left through the first flurry. It's a skill check; expect to pay tuition.</li>
+      <li>Everything else favors you: she has low poise (jumping heavies interrupt her), and <strong>bleed procs devastate her</strong> — the Fang was born for this. Your Mimic's bleed procs count too.</li>
+      <li>Phase two adds scarlet rot — dodge the dive-bomb opener (run, then roll late), keep Preserving Boluses hotbarred, and never greed past two hits.</li>
+      <li>Rewards: <strong>Malenia's Great Rune</strong>, her Remembrance, and the right to say you did it. She is optional. She is also the point.</li>
+    </ul>
+  </div>
+  <div class="rest-marker">Side Path Complete · Return to the Route</div>
+</section>
+
+<!-- ================= SIDE G: PLACIDUSAX ================= -->
+<section class="phase side" id="side-placidusax">
+  <div class="phase-head">
+    <span class="grace-mark" aria-hidden="true"></span>
+    <h2>Side Path G — Dragonlord Placidusax</h2>
+    <span class="region-tag">Farum Azula Secret · Levels 110+</span>
+  </div>
+
+  <p class="lede">Before the Erdtree, there was a dragon who was Elden Lord — and he's still waiting at the eye of Farum Azula's storm for a god who never came back. The most cinematic optional fight in the game, hidden behind a leap of faith.</p>
+
+  <ul class="checklist">
+    <li><input type="checkbox" id="sg1"><label for="sg1">From the grace <strong>Beside the Great Bridge</strong> (near the Dragon Temple), backtrack to the outdoor plaza and look over the ledge toward the floating rubble — you can <strong>drop down</strong> a chain of ruins to a lower, wind-swept platform.</label></li>
+    <li><input type="checkbox" id="sg2"><label for="sg2">At the platform's far edge is a body-shaped <strong>indentation in the stone</strong>. Choose to <em>lie down</em>. The storm takes you to him.</label></li>
+  </ul>
+
+  <div class="boss-card">
+    <div class="boss-sub">The Old Lord · Recommended Level 110+</div>
+    <h4>Dragonlord Placidusax</h4>
+    <ul>
+      <li>A two-headed storm dragon fought on a floating slab of rock. Live at his <strong>side, by the hind legs</strong> — both breath attacks and the twin-head snaps all rake the space in front of him.</li>
+      <li>When he <strong>vanishes into the storm</strong>, sprint and keep sprinting — he rematerializes with a dive or a lightning lance aimed at where you <em>were</em>. Roll on the thunderclap.</li>
+      <li>The gold laser-beam sweep: run perpendicular, jump the ground-shock. The Mimic gleefully face-tanks the rest.</li>
+      <li>Reward: his Remembrance — and one of the great "how was this optional?" stories to tell.</li>
+    </ul>
+  </div>
+  <div class="rest-marker">Side Path Complete · Return to the Route</div>
+</section>
+
+<!-- ================= SIDE H: COMPANIONS ================= -->
+<section class="phase side" id="side-npcs">
+  <div class="phase-head">
+    <span class="grace-mark" aria-hidden="true"></span>
+    <h2>Side Path H — Companions of the Road</h2>
+    <span class="region-tag">NPC Quests Worth Your Time</span>
+  </div>
+
+  <p class="lede">Shorter questlines that run alongside the main route. Each row: where it starts, what to do, and what you get. Talk to everyone twice — FromSoftware NPCs only move forward when their dialogue runs dry.</p>
+
+  <table>
+    <tr><th>Who</th><th>The Short Version</th><th>Payoff</th></tr>
+    <tr><td><strong>Alexander</strong>, Warrior Jar</td><td>Free the big jar stuck in the dirt north of Stormhill (whack his back). He appears at the Radahn festival, then stuck <em>again</em> near Mt. Gelmir (needs an Oil Pot), and finally requests an honorable duel in Farum Azula.</td><td><strong>Shard of Alexander</strong> — a talisman that supercharges weapon skills, including Bloodhound's Finesse. The best talisman this build can get.</td></tr>
+    <tr><td><strong>Millicent</strong></td><td>Sage Gowry in eastern Caelid asks you to fetch the <strong>Unalloyed Gold Needle</strong> from Commander O'Neil in the Swamp of Aeonia. Millicent then journeys ahead of you — Altus, the Shaded Castle (Valkyrie's Prosthesis), and the Haligtree, where her story ends in a choice.</td><td><strong>Rotten Winged Sword Insignia</strong> (huge attack boost on consecutive hits) if you side with her — plus the needle that can undo the Frenzied Flame.</td></tr>
+    <tr><td><strong>Yura</strong>, Bloody Finger Hunter</td><td>The samurai under the Limgrave ruin awning warns you about dragons, then leaves invasion-duel breadcrumbs: Agheel Lake, the Murkwater ravine, Raya Lucaria's bridge, and finally the <strong>Second Church of Marika</strong> in Altus.</td><td>The <strong>Purifying Crystal Tear</strong> from that final invader — the item that trivializes Mohg, Lord of Blood (<a href="#side-varre">Side Path C</a>).</td></tr>
+    <tr><td><strong>Nepheli, Kenneth &amp; Gostoc</strong></td><td>After Godrick: exhaust Nepheli's Roundtable dialogue, meet Kenneth Haight on his ruin in Limgrave, and let their stories converge back at Stormveil's throne room. Finish <em>before</em> the capital burns.</td><td>An <strong>Ancient Dragon Smithing Stone</strong> (a free +25 for a regular weapon) and a restored Limgrave — one of the game's only happy endings.</td></tr>
+    <tr><td><strong>Boc</strong>, the Seamster</td><td>A talking tree near the Coastal Cave is actually a demi-human in hiding — hit it gently. Boc follows you between graces all game, asking only for sewing tools (Coastal Cave) and kindness.</td><td>Free <strong>garment alteration</strong>, and a small story about self-worth that lands harder than most boss fights. Tell him he's beautiful. You'll know when.</td></tr>
+    <tr><td><strong>Patches</strong></td><td>Spared in Murkwater Cave (Route Phase I), he resurfaces at the Radahn festival and later tends bar at <a href="#side-volcano">Volcano Manor (Side Path D)</a>, with one last kick — literally — near the end of his story.</td><td>Margit's Shackle, rare wares, and the longest-running joke in FromSoftware history.</td></tr>
+  </table>
+  <div class="rest-marker">Side Path Complete · Return to the Route</div>
+</section>
+
+<!-- ================= APPENDICES ================= -->
+<section class="phase" id="appendix">
+  <div class="phase-head">
+    <span class="grace-mark" aria-hidden="true"></span>
+    <h2>Appendices — Quick Reference</h2>
+    <span class="region-tag">Keep Open While Playing</span>
+  </div>
+
+  <h3>A. Level &amp; upgrade milestones</h3>
+  <table>
+    <tr><th>Milestone</th><th>Level</th><th>Vigor</th><th>Fang</th><th>Flask</th></tr>
+    <tr><td>Margit</td><td>20–25</td><td>20</td><td>+2</td><td>5–6 charges, +3</td></tr>
+    <tr><td>Godrick</td><td>25–30</td><td>25</td><td>+3</td><td>6 charges, +4</td></tr>
+    <tr><td>Rennala</td><td>35–40</td><td>30</td><td>+4</td><td>7 charges, +5</td></tr>
+    <tr><td>Radahn</td><td>50–60</td><td>35–40</td><td>+5/+6</td><td>8 charges, +6</td></tr>
+    <tr><td>Morgott</td><td>75–85</td><td>40+</td><td>+7</td><td>10+ charges, +8</td></tr>
+    <tr><td>Fire Giant</td><td>95–105</td><td>50–60</td><td>+8/+9</td><td>12 charges, +10</td></tr>
+    <tr><td>Maliketh</td><td>110+</td><td>60</td><td>+9/+10</td><td>13 charges, +11</td></tr>
+    <tr><td>Elden Beast</td><td>120–130</td><td>60</td><td>+10</td><td>14 charges, +12</td></tr>
+  </table>
+
+  <h3>B. Talisman loadout by act</h3>
+  <table>
+    <tr><th>When</th><th>Wear</th><th>Where It Comes From</th></tr>
+    <tr><td>Early game</td><td>Green Turtle Talisman</td><td>Imp-sealed room, Summonwater Village catacombs (Limgrave, 1 key) — faster stamina regen, useful forever</td></tr>
+    <tr><td>Post-Godrick</td><td>Arsenal Charm</td><td>Nepheli at the Roundtable — carry heavier armor without fat-rolling</td></tr>
+    <tr><td>Caelid onward</td><td>Radagon's Soreseal</td><td>Fort Faroth — +5 to your four core stats; the 15% damage-taken tax is worth it until the final bosses</td></tr>
+    <tr><td>Whole game</td><td>Any HP / defense talisman you find</td><td>Crimson Amber Medallions and defensive charms round out the fourth slot as slots unlock</td></tr>
+  </table>
+
+  <h3>C. Flask of Wondrous Physick</h3>
+  <table>
+    <tr><th>Tear</th><th>Effect</th><th>Notes</th></tr>
+    <tr><td>Crimson Crystal Tear</td><td>Restores half your HP instantly</td><td>Third Church of Marika — your default all game</td></tr>
+    <tr><td>Second slot</td><td>Stamina or defense tear</td><td>Minor Erdtree bosses drop tears as you travel — pick whichever utility tear you've collected; a stamina-regen or damage-reduction tear pairs well</td></tr>
+  </table>
+
+  <h3>D. Rune farming (when under-leveled)</h3>
+  <table>
+    <tr><th>Spot</th><th>When</th><th>Method</th></tr>
+    <tr><td>Greyoll's tail, Fort Faroth</td><td>Any time after reaching Caelid</td><td>One massive payout — carve the sleeping dragon's tail tip</td></tr>
+    <tr><td>Palace Approach Ledge-Road, Mohgwyn</td><td>After Varré's quest — <a href="#side-varre">Side Path C</a></td><td>The best repeatable farm in the game: sleeping albinaurics + one very gullible bird</td></tr>
+    <tr><td>Skipped optional zones</td><td>Mid/late game</td><td>Weeping Peninsula, Mt. Gelmir, and Caelid side dungeons are level banks you deliberately saved</td></tr>
+    <tr><td>Rune Arc + Godrick's Great Rune</td><td>After every boss attempt streak</td><td>Not farming, but +all stats makes every fight faster</td></tr>
+  </table>
+
+  <h3>E. The five commandments of not dying</h3>
+  <ul class="checklist">
+    <li><input type="checkbox" id="x1"><label for="x1">Vigor before damage. A dead Tarnished deals zero DPS.</label></li>
+    <li><input type="checkbox" id="x2"><label for="x2">See a golden sapling → take the seed. See a ruined church → check the statue.</label></li>
+    <li><input type="checkbox" id="x3"><label for="x3">Summon at every fog gate. The game balances around it.</label></li>
+    <li><input type="checkbox" id="x4"><label for="x4">Stuck for 5+ attempts? Leave. Level, upgrade, return. The wall crumbles on its own.</label></li>
+    <li><input type="checkbox" id="x5"><label for="x5">Dodge on the enemy's swing, not their wind-up. Every boss in this game delays on purpose.</label></li>
+  </ul>
+</section>
+
+
+</main>
+</div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="fin">Well Met, Tarnished</div>
+    <p>An original walkthrough written for elden-ring newcomers and efficiency runners alike.</p>
+  </div>
+</footer>
+
+<script>
+// Progress is per-visit only. To persist checkboxes on your site,
+// wire these inputs to your own storage (e.g. localStorage or a user account).
+</script>
 </body>
 </html>
