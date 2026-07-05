@@ -491,31 +491,51 @@ html.cine:not(.entered) .hero .flame{animation-play-state:paused}
 /* ================= Mobile — same site, pocket-sized grace ================= */
 @media (max-width:900px){
   html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
-  html,body{overflow-x:clip}
   body{font-size:1.05rem}
-  .wrap{padding:0 1rem}
+  .wrap{max-width:100%;padding:0 1rem}
 
   /* Hero */
   .hero{padding:3rem 0 2.25rem}
   .hero .eyebrow{letter-spacing:.22em;font-size:.7rem}
-  .hero p.sub{font-size:1.05rem;padding:0 .25rem}
+  .hero p.sub{font-size:1.05rem;padding:0;max-width:100%}
+  .hero h1{max-width:100%}
 
-  /* Layout */
-  .layout{grid-template-columns:1fr;padding:1.5rem 0 2.5rem;gap:1.25rem}
+  /* Layout — min-width:0 lets grid children shrink instead of overflowing */
+  .layout{
+    grid-template-columns:minmax(0,1fr);
+    padding:1.5rem 0 2.5rem;gap:1.25rem;
+    max-width:100%;
+  }
+  .layout>nav.route,.layout>main{min-width:0;max-width:100%}
 
-  /* Route of Grace — sticky horizontal pill strip instead of a full-page timeline */
+  /* Guide content — wrap naturally, never scroll sideways */
+  .layout>main{
+    overflow-x:hidden;
+    overflow-wrap:break-word;
+    word-wrap:break-word;
+  }
+  .layout>main p,.layout>main li,.layout>main label,
+  .layout>main td,.layout>main th,.layout>main h2,.layout>main h3,
+  .layout>main h4,.layout>main .side-ref{overflow-wrap:break-word;word-wrap:break-word}
+
+  /* Route of Grace — sticky strip; only the pill row scrolls horizontally */
   nav.route{
     position:sticky;top:0;z-index:30;align-self:auto;
-    margin:0 -1rem;padding:.65rem 1rem .85rem;
+    width:100%;max-width:100%;
+    margin:0;padding:.65rem 0 .85rem;
     background:linear-gradient(180deg,var(--ink) 78%,rgba(22,17,12,0));
     border-bottom:1px solid rgba(58,47,33,.55);
+    overflow:visible;
   }
-  nav.route .route-title{font-size:.66rem;letter-spacing:.22em;margin-bottom:.55rem}
+  nav.route .route-title{font-size:.66rem;letter-spacing:.22em;margin-bottom:.55rem;padding:0 .1rem}
   nav.route ol{
     display:flex;flex-wrap:nowrap;gap:.45rem;
+    width:100%;max-width:100%;
     overflow-x:auto;overflow-y:hidden;
-    padding:.2rem 0 .55rem;padding-left:0;
+    padding:.2rem 0 .55rem;
     -webkit-overflow-scrolling:touch;
+    overscroll-behavior-x:contain;
+    touch-action:pan-x;
     scroll-snap-type:x proximity;scrollbar-width:none;
   }
   nav.route ol::-webkit-scrollbar{display:none}
@@ -538,41 +558,51 @@ html.cine:not(.entered) .hero .flame{animation-play-state:paused}
     box-shadow:0 0 12px rgba(192,90,46,.18);
   }
   nav.route li.done:not(.here) a{border-color:rgba(200,162,74,.55)}
-  .route-progress{margin-top:1rem;font-size:.62rem;letter-spacing:.2em}
+  .route-progress{margin-top:1rem;font-size:.62rem;letter-spacing:.2em;padding:0 .1rem}
 
   /* Sections */
-  section.phase{margin-bottom:3.25rem;scroll-margin-top:6.5rem}
-  .phase-head{flex-wrap:wrap;gap:.45rem .65rem;padding-bottom:.65rem}
-  .phase-head .grace-mark{align-self:flex-start;margin-top:.35rem}
-  .phase-head h2{flex:1 1 calc(100% - 2rem);min-width:0}
+  section.phase{margin-bottom:3.25rem;scroll-margin-top:6.5rem;max-width:100%}
+  .phase-head{flex-wrap:wrap;gap:.45rem .65rem;padding-bottom:.65rem;max-width:100%}
+  .phase-head .grace-mark{align-self:flex-start;margin-top:.35rem;flex-shrink:0}
+  .phase-head h2{flex:1 1 calc(100% - 2rem);min-width:0;max-width:100%}
   .phase-head .region-tag{
     margin-left:0;width:100%;white-space:normal;
     letter-spacing:.18em;line-height:1.4;
   }
   section.phase h3{margin:1.65rem 0 .65rem;font-size:1.08rem}
   section.phase p.lede{font-size:1.08rem}
-  section.phase p,ul.checklist,.callout,.boss-card,table,.side-ref{max-width:100%}
+  section.phase p,ul.checklist,.callout,.boss-card,table,.side-ref{
+    max-width:100%;width:100%;
+  }
   .phase-head h2{overflow-wrap:break-word}
 
-  /* Checklists — larger touch targets */
-  ul.checklist li{gap:.85rem;padding:.72rem 0}
+  /* Checklists — larger touch targets, labels wrap */
+  ul.checklist li{gap:.85rem;padding:.72rem 0;align-items:flex-start}
+  ul.checklist label{flex:1;min-width:0}
   ul.checklist input[type=checkbox]{
-    width:1.35rem;height:1.35rem;margin-top:.12rem;
+    width:1.35rem;height:1.35rem;margin-top:.12rem;flex-shrink:0;
   }
   ul.checklist input[type=checkbox]::after{left:.38rem;top:.1rem}
 
   /* Cards & callouts */
-  .callout,.boss-card,.side-ref{padding-left:1rem;padding-right:1rem}
-  .boss-card{padding-top:1.2rem;padding-bottom:1.2rem}
-  .boss-card .boss-sub{letter-spacing:.18em;line-height:1.45}
-
-  /* Tables — swipe to read wide columns */
-  table{
-    display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;
-    max-width:100%;font-size:.95rem;
+  .callout,.boss-card,.side-ref{
+    padding-left:1rem;padding-right:1rem;box-sizing:border-box;
   }
-  th,td{padding:.5rem .6rem;word-break:break-word;vertical-align:top}
-  th{font-size:.66rem;letter-spacing:.14em}
+  .boss-card{padding-top:1.2rem;padding-bottom:1.2rem}
+  .boss-card .boss-sub{letter-spacing:.18em;line-height:1.45;white-space:normal}
+
+  /* Tables — reflow in place, no sideways scroll */
+  table{
+    display:table;table-layout:fixed;
+    width:100%;max-width:100%;font-size:.95rem;
+    overflow-x:visible;
+  }
+  th,td{
+    padding:.5rem .45rem;
+    overflow-wrap:break-word;word-wrap:break-word;word-break:break-word;
+    vertical-align:top;
+  }
+  th{font-size:.66rem;letter-spacing:.12em}
 
   /* Fixed chrome — safe areas for notched phones */
   .thread i{height:2px}
@@ -586,15 +616,16 @@ html.cine:not(.entered) .hero .flame{animation-play-state:paused}
   html.cine .intro{padding:max(1rem,env(safe-area-inset-top)) 1rem max(1rem,env(safe-area-inset-bottom))}
   .intro .eyebrow{letter-spacing:.22em;font-size:.68rem;padding:0 .5rem}
   .intro .title{max-width:11ch}
-  .intro .sub{font-size:1rem;padding:0 .75rem}
+  .intro .sub{font-size:1rem;padding:0 .75rem;max-width:100%}
   .intro .enter{
     width:min(100%,20rem);padding:1rem 1.25rem .95rem;
     letter-spacing:.22em;margin-top:2.2rem;
   }
   .intro .flame{margin-bottom:1.8rem}
 
-  footer{padding:2rem 0 max(2.5rem,env(safe-area-inset-bottom))}
+  footer{padding:2rem 0 max(2.5rem,env(safe-area-inset-bottom));max-width:100%}
   footer .fin{letter-spacing:.22em;font-size:.85rem}
+  footer p{padding:0 .25rem}
 }
 
 /* Very small phones */
